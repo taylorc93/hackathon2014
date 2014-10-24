@@ -1,0 +1,13 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, "6.0"
+
+target "Hackathon2014" do
+	pod 'libpd', '~> 0.7'
+	pod 'CocoaLumberjack', '2.0.0-beta3'
+end
+
+target "Hackathon2014Tests" do
+
+end
+
+
