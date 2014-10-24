@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  INTInstrumentNote.h
 //  Hackathon2014
 //
 //  Created by Connor Taylor on 10/24/14.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface INTInstrumentNote : UIView
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) UIColor *noteColor;
 
 @end
-

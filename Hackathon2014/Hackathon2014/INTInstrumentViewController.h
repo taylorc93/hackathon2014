@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  INTInstrumentViewController.h
 //  Hackathon2014
 //
 //  Created by Connor Taylor on 10/24/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface INTInstrumentViewController : UIViewController
 
 @end
-
