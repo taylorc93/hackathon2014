@@ -22,53 +22,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EcV-Hh-xXb" customClass="INTInstrumentNote">
-                                <rect key="frame" x="84" y="77" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.87442680029999997" green="0.00738915884" blue="0.060177184850000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRn-7x-hqa" customClass="INTInstrumentNote">
-                                <rect key="frame" x="409" y="77" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.87442680029999997" green="0.00738915884" blue="0.060177184850000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1iq-Vu-jvO" customClass="INTInstrumentNote">
-                                <rect key="frame" x="526" y="77" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.87442680029999997" green="0.00738915884" blue="0.060177184850000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R4z-Fy-AAU" customClass="INTInstrumentNote">
-                                <rect key="frame" x="645" y="77" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.87442680029999997" green="0.00738915884" blue="0.060177184850000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6G2-OO-bJF" customClass="INTInstrumentNote">
-                                <rect key="frame" x="766" y="77" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.87442680029999997" green="0.00738915884" blue="0.060177184850000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oE7-mu-e7g" customClass="INTInstrumentNote">
-                                <rect key="frame" x="890" y="77" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.87442680029999997" green="0.00738915884" blue="0.060177184850000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUm-TN-5Cy" customClass="INTInstrumentNote">
-                                <rect key="frame" x="194" y="77" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.87442680029999997" green="0.00738915884" blue="0.060177184850000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pBQ-Wg-vJV" customClass="INTInstrumentNote">
-                                <rect key="frame" x="309" y="77" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.87442680029999997" green="0.00738915884" blue="0.060177184850000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
-                    <connections>
-                        <outletCollection property="notes" destination="EcV-Hh-xXb" id="u0o-a9-RTn"/>
-                        <outletCollection property="notes" destination="zUm-TN-5Cy" id="JEc-pu-ZUj"/>
-                        <outletCollection property="notes" destination="pBQ-Wg-vJV" id="S88-f0-TGY"/>
-                        <outletCollection property="notes" destination="pRn-7x-hqa" id="H1F-Bl-OOK"/>
-                        <outletCollection property="notes" destination="1iq-Vu-jvO" id="T8h-mL-oBo"/>
-                        <outletCollection property="notes" destination="R4z-Fy-AAU" id="aY6-j9-1WA"/>
-                        <outletCollection property="notes" destination="6G2-OO-bJF" id="esO-Tn-2ES"/>
-                        <outletCollection property="notes" destination="oE7-mu-e7g" id="zdL-hB-hoE"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

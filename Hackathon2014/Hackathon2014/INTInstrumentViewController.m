@@ -21,11 +21,22 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [super viewDidLoad];
     DDLogVerbose(@"Instrument View Loaded");
 
+    self.notes = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 8; i++){
+        float x = i * 100.0 + 10.0;
+        INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, 300.0, 60.0, 60.0)];
+        
+        note.backgroundColor = note.color;
+        [self.view addSubview:note];
+        [self.notes addObject:note];
+    }
+    
     for (int i = 0; i < [self.notes count]; i++){
         UIPanGestureRecognizer *pgRec = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                                 action:@selector(panNote:)];
         [self.notes[i] addGestureRecognizer:pgRec];
     }
+    [self.view.window makeKeyAndVisible];
 }
 
 - (void)didReceiveMemoryWarning {

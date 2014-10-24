@@ -13,6 +13,16 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation INTInstrumentNote
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    
+    if (self){
+        self.color = [UIColor redColor];
+    }
+    return self;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

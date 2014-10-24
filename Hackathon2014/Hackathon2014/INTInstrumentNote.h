@@ -10,6 +10,6 @@
 
 @interface INTInstrumentNote : UIView
 
-@property (nonatomic, strong) UIColor *noteColor;
+@property (nonatomic, strong) UIColor *color;
 
 @end

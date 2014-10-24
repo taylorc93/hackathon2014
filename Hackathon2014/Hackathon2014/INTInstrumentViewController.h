@@ -11,6 +11,6 @@
 
 @interface INTInstrumentViewController : UIViewController
 
-@property (nonatomic, strong) IBOutletCollection(INTInstrumentNote) NSArray *notes;
+@property (nonatomic, strong) NSMutableArray *notes;
 
 @end
