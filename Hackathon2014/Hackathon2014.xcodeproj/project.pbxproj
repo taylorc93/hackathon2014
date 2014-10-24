@@ -98,10 +98,10 @@
 		BED4739D19FAF4F0006DD472 /* Hackathon2014 */ = {
 			isa = PBXGroup;
 			children = (
+				BED473C419FAFBBA006DD472 /* Controllers */,
 				BED473C619FAFBCD006DD472 /* Views */,
 				BED473A219FAF4F0006DD472 /* AppDelegate.h */,
 				BED473A319FAF4F0006DD472 /* AppDelegate.m */,
-				BED473C419FAFBBA006DD472 /* Controllers */,
 				BED473A819FAF4F0006DD472 /* Main.storyboard */,
 				BED473AB19FAF4F0006DD472 /* Images.xcassets */,
 				BED473AD19FAF4F0006DD472 /* LaunchScreen.xib */,

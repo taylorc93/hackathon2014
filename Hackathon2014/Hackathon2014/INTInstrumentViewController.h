@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "INTInstrumentNote.h"
 
 @interface INTInstrumentViewController : UIViewController
+
+@property (nonatomic, strong) IBOutletCollection(INTInstrumentNote) NSArray *notes;
 
 @end

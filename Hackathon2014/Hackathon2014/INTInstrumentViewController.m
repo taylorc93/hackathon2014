@@ -7,6 +7,9 @@
 //
 
 #import "INTInstrumentViewController.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface INTInstrumentViewController ()
 
@@ -16,7 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    for (int i = 0; i < [self.notes count]; i++){
+        DDLogInfo(@"all good");
+    }
 }
 
 - (void)didReceiveMemoryWarning {
