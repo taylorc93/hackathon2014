@@ -7,6 +7,9 @@
 //
 
 #import "INTInstrumentNote.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation INTInstrumentNote
 
@@ -17,5 +20,10 @@
     // Drawing code
 }
 */
+
+//- (void)panNote:(UIPanGestureRecognizer *)panRecognizer
+//{
+//    DDLogVerbose(@"Got gesture");
+//}
 
 @end
