@@ -1,9 +1,9 @@
-Wavely - Pure Data Interface
+Pure Data Interface
 
-Main patch: Wavely.pd
+Main patch: Main.pd
 
 Master List of Receivers
-Last Updated 10/15/14
+Last Updated 10/24/14
 
 Formula for scaling slider values (if sliders go from .1 to 1):
 
@@ -12,22 +12,30 @@ Formula for scaling slider values (if sliders go from .1 to 1):
 Documentation Format:
 Functionality: [receiver name] message to send (comment/restriction)
 
-Example: [$0-chorus_on] 1 (on) / 0 (off)
+Example: [$0-chorus_on] 1 / 0 (on / off)
 Meaning: Turn the chorus module on or off by sending a 1 or 0 to $0-chorus_on
 
-list{ float float float } signifies a list to be sent to the receiver
+list{ float float float } specifies a list to be sent to the receiver
+
+TEST:
+
+	[$0-test] bang (Plays Middle C)
+
+	Plays a brief test tone.
 
 ///////////////////////////////////////////////////////////////////////////////
 
 
 MIDI:
 
+
+
 Create Note with Fixed Duration: 
 
-	[$0-makenote] list{ float float float } (Note Value, Duration)
+	[$0-makenote] list{ float float } (Note Value, Duration in ms)
 
-	Note Value, Velocity should be integers from 0 to 127.
-	Duration is time in ms.
+	Note values should be integers from 0 to 127.
+	Duration should be an integer - time in milliseconds.
 
 Manually Trigger / Turn off a note:
 
@@ -41,7 +49,7 @@ Turn off All Notes Immediately:
 
 	[$0-flush] bang
 
-	It sends a note off message for every note. 
+	Sends a note off message for every note. 
 	Good for stuck notes and effective muting.
 
 
@@ -53,6 +61,12 @@ AUDIO:
 
 
 MASTER CONTROLS:
+
+Change Waveform:
+
+	[$0-wave] float (Integer from 0 - 16, Different Waveform Types)
+
+	_Wave_Types.png shows the waveforms.
 
 Volume:
 
@@ -67,13 +81,6 @@ Pan Control:
 	The value is restricted to be between 0 and 100.
 	0 = Left, 50 = Center, 100 = Right.
 
-Set Wavetable Waveform:
-
-	[$0-wave_table-] array
-
-	Array has 515 points.
-
-
 
 ENVELOPE CONTROLS:
 
@@ -87,6 +94,8 @@ ADSR:
 
 	See https://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope
 
+
+///////////////////////////////////////////////////////////////////////////////
 
 
 AUDIO EFFECTS:
@@ -108,9 +117,11 @@ CHORUS:
 	[$0-chorus_depth] float (Value from 0 - 1, depth of detuning)
 	[$0-chorus_mix]   float (Value from 0 - 100)
 
-	3-voice Chorus module, large rates can be used for Frequency Modulation.
+	3-voice Chorus module.
 	The mix is the balance between the original and processed signals.
 	50% => equal amounts of both, 100% => processed signal only.
+
+	At high values you can create Frequency Modulation.
 
 RING MODULATOR:
 
@@ -132,7 +143,8 @@ TREMOLO:
 	[$0-tremolo_shape] float (Value from 0 - 3, see below)
 
 	The Tremolo plugin multiplies the amplitude of the input signal with
-	a waveform set by $0-tremolo_shape.  
+	a waveform set by $0-tremolo_shape.  Also creates Amplitude Modulation 
+	with high rate values. 
 
 	Shapes:
 			0 - Sine
@@ -142,8 +154,23 @@ TREMOLO:
 
 EQ: 
 
-	[$0-eq_on]   1 / 0 (On / Off)
-	[$0-eq_hp]	 list{ float float } ()
+	[$0-eq_on]	1 / 0 (On / Off)
+	[$0-eq_hp]	list{ float float } ( 1/0 (On/Off), Cutoff Freq (Hz))
+	[$0-eq_bp1]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp2]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp3]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp4]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp5]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp6]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp7]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp8]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_lp]	list{ float float } ( 1/0 (On/Off), Cutoff Freq (Hz))
+
+	The EQ Plugin offers 8 Bandpass Filters, a Highpass, and a Lowpass.
+	Each plugin receives a list containing an on/off bit, the main frequency,
+	and (if applicable) the Q factor.  
+
+	The Q factor relates to the slope of the filter's attenuation.
 
 
 
