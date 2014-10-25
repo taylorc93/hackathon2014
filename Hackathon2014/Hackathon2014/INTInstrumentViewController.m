@@ -28,10 +28,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     float xVals[] = {574, 490, 422, 422, 490, 574, 612};
     float yVals[] = {306, 287, 341, 427, 481, 462, 384};
+    int midiNums[] = {64, 65, 66, 67, 68, 69, 70};
     
     self.notes = [[NSMutableArray alloc] init];
     for (int i = 0; i < 7; i++){
-        INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(xVals[i], yVals[i], 60.0, 60.0)];
+        INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(xVals[i], yVals[i], 60.0, 60.0)
+                                                                   noteNum:midiNums[i]
+                                                                     color:[UIColor greenColor]];
         note.center = CGPointMake(xVals[i], yVals[i]);
         
         note.layer.cornerRadius = note.frame.size.width / 2;
@@ -73,8 +76,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)panNote:(UIPanGestureRecognizer *)gestureRecognizer
 {
-    DDLogVerbose(@"will move");
-    
     INTInstrumentNote *note = (INTInstrumentNote *)[gestureRecognizer view];
     
     [self adjustAnchorPointForGestureRecognizer:gestureRecognizer];

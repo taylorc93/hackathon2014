@@ -10,6 +10,12 @@
 
 @interface INTInstrumentNote : UIView
 
+- (instancetype)initWithFrame:(CGRect)frame
+                      noteNum:(int)midiNum
+                        color:(UIColor *)color;
+
 @property (nonatomic, strong) UIColor *color;
+@property int midiNum;
+@property (nonatomic, strong) NSString *noteName;
 
 @end
