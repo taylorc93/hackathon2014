@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PdDispatcher.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
 @interface AppDelegate ()
@@ -24,6 +25,8 @@
         NSLog(@"failed to initialize audio components");
     }
 
+    PdDispatcher *dispatcher = [[PdDispatcher alloc] init];
+    [PdBase setDelegate:dispatcher];
     
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];

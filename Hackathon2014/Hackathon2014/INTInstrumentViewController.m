@@ -22,11 +22,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)viewDidLoad {
     [super viewDidLoad];
     DDLogVerbose(@"Instrument View Loaded");
-    
-    NSString *pdDir = [[[NSBundle mainBundle] resourcePath]
-                       stringByAppendingPathComponent:@"Pure-Data/"];
+
     void *patch = [PdBase openFile:@"Main.pd"
-                        path:pdDir];
+                              path: [[NSBundle mainBundle] resourcePath]];
     if (!patch){
         DDLogError(@"Couldn't open patch");
     }
@@ -101,7 +99,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     INTInstrumentNote *note = gestureRecognizer.view;
     
     NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:note.midiNum],
-                                                [NSNumber numberWithInteger:500], nil];
+                                                [NSNumber numberWithInteger:250], nil];
     
     NSString *receiver = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
     [PdBase sendList:data toReceiver:receiver];
