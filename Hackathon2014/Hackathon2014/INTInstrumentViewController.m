@@ -34,7 +34,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.currentOctave = 5;
     
     float xVals[] = {574, 490, 422, 422, 490, 574, 612};
-    float yVals[] = {306, 287, 341, 427, 481, 462, 384};
+    float yVals[] = {306, 287, 341, 427,3 481, 462, 384};
     int midiNums[] = {60, 62, 64, 65, 67, 69, 71};
     NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
@@ -101,13 +101,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:note.midiNum],
                                                 [NSNumber numberWithInteger:250], nil];
     
-//    NSString *duration = [NSString stringWithFormat:@"%d-duration", self.dollarZero];
-//    NSString *playnote = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
-//    
-//    [PdBase sendFloat:500 toReceiver:duration];
-//    [PdBase sendFloat:note.midiNum toReceiver:playnote];
-    
-    [PdBase sendBangToReceiver:@"test"];
+    NSString *playnote = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
+    [PdBase sendList:data toReceiver:playnote];
 }
 
 - (IBAction)incrementNote:(id)sender
