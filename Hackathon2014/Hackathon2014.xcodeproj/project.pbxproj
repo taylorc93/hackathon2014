@@ -16,6 +16,7 @@
 		BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473C819FAFBE8006DD472 /* INTInstrumentNote.m */; };
 		BED473CF19FAFD40006DD472 /* INTInstrumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */; };
 		E3BC1ACB1A88471588F2A91B /* libPods-Hackathon2014.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */; };
+		FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */ = {isa = PBXBuildFile; fileRef = FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		BED473C819FAFBE8006DD472 /* INTInstrumentNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTInstrumentNote.m; sourceTree = "<group>"; };
 		BED473CD19FAFD40006DD472 /* INTInstrumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTInstrumentViewController.h; sourceTree = "<group>"; };
 		BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTInstrumentViewController.m; sourceTree = "<group>"; };
+		FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = septagon_coordinates.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				BED473AB19FAF4F0006DD472 /* Images.xcassets */,
 				BED473AD19FAF4F0006DD472 /* LaunchScreen.xib */,
 				BED4739E19FAF4F0006DD472 /* Supporting Files */,
+				FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */,
 			);
 			path = Hackathon2014;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			files = (
 				BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */,
 				BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */,
+				FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */,
 				BED473A119FAF4F0006DD472 /* main.m in Sources */,
 				BED473CF19FAFD40006DD472 /* INTInstrumentViewController.m in Sources */,
 			);
