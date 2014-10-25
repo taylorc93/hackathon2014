@@ -11,6 +11,11 @@
 
 @interface INTInstrumentViewController : UIViewController
 
+@property (nonatomic, strong) IBOutlet UILabel *noteLabel;
+@property (nonatomic, strong) IBOutlet UILabel *octaveLabel;
+
 @property (nonatomic, strong) NSMutableArray *notes;
+@property int currentNote;
+@property int currentOctave;
 
 @end

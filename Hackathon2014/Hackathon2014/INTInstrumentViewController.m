@@ -21,14 +21,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [super viewDidLoad];
     DDLogVerbose(@"Instrument View Loaded");
     
-    float width = self.view.bounds.size.width;
-    float height = self.view.bounds.size.height;
-    
-    DDLogVerbose(@"%@", NSStringFromCGPoint(self.view.center));
+    self.currentNote = 0;
+    self.currentOctave = 5;
     
     float xVals[] = {574, 490, 422, 422, 490, 574, 612};
     float yVals[] = {306, 287, 341, 427, 481, 462, 384};
-    int midiNums[] = {64, 65, 66, 67, 68, 69, 70};
+    int midiNums[] = {60, 62, 64, 65, 67, 69, 71};
     
     self.notes = [[NSMutableArray alloc] init];
     for (int i = 0; i < 7; i++){
@@ -41,7 +39,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         note.layer.borderColor = [UIColor blackColor].CGColor;
         note.layer.borderWidth = 2;
         
-        note.backgroundColor = note.color;
         [self.view addSubview:note];
         [self.notes addObject:note];
     }
@@ -56,6 +53,98 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (IBAction)addNote:(id)sender
+{
+    int noteNum = self.currentNote + 12 * self.currentOctave;
+    
+    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 60.0, 60.0)
+                                                               noteNum:noteNum
+                                                                 color:[UIColor greenColor]];
+    note.layer.cornerRadius = note.frame.size.width / 2;
+    note.layer.borderColor = [UIColor blackColor].CGColor;
+    note.layer.borderWidth = 2;
+    
+    UIPanGestureRecognizer *pgRec = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                            action:@selector(panNote:)];
+    [note addGestureRecognizer:pgRec];
+    
+    [self.view addSubview:note];
+    [self.notes addObject:note];
+}
+
+- (IBAction)incrementNote:(id)sender
+{
+    if (self.currentNote < 11){
+        self.currentNote++;
+    } else{
+        self.currentNote = 0;
+    }
+    
+    NSString *labelText = [NSString stringWithFormat:@"Current Note: %@", [self getNoteName:self.currentNote]];
+    self.noteLabel.text = labelText;
+}
+
+- (IBAction)decrementNote:(id)sender
+{
+    if (self.currentNote > 0){
+        self.currentNote--;
+    } else {
+        self.currentNote = 11;
+    }
+    
+    NSString *labelText = [NSString stringWithFormat:@"Current Note: %@", [self getNoteName:self.currentNote]];
+    self.noteLabel.text = labelText;
+}
+
+- (IBAction)incrementOctave:(id)sender
+{
+    if (self.currentOctave < 8){
+        self.currentOctave++;
+        self.octaveLabel.text = [NSString stringWithFormat:@"Current Octave: %d", self.currentOctave];
+    }
+}
+
+- (IBAction)decrementOctave:(id)sender
+{
+    if (self.currentOctave > 1){
+        self.currentOctave--;
+        self.octaveLabel.text = [NSString stringWithFormat:@"Current Octave: %d", self.currentOctave];
+    }
+}
+
+- (NSString *)getNoteName:(int)noteNum
+{
+    switch (noteNum) {
+        case 0:
+            return @"C";
+        case 1:
+            return @"C#";
+        case 2:
+            return @"D";
+        case 3:
+            return @"D#";
+        case 4:
+            return @"E";
+        case 5:
+            return @"F";
+        case 6:
+            return @"F#";
+        case 7:
+            return @"G";
+        case 8:
+            return @"G#";
+        case 9:
+            return @"A";
+        case 10:
+            return @"A#";
+        case 11:
+            return @"B";
+        default:
+            DDLogInfo(@"Incompatible Midi Num");
+            return @"";
+    }
 }
 
 /**

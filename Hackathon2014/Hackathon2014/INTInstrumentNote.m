@@ -20,12 +20,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self = [super initWithFrame:frame];
     float width = frame.size.width;
     float height = frame.size.height;
-    
-    DDLogInfo(@"%f %f", width, height);
-    
+        
     if (self){
         UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 4 + 8, height / 4, width / 2, height / 2)];
         self.color = color;
+        self.backgroundColor = color;
         self.midiNum = midiNum;
         [self getNoteName];
         noteLabel.text = self.noteName;
@@ -35,28 +34,45 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return self;
 }
 
-- (void) getNoteName
+- (void)getNoteName
 {
-    switch (self.midiNum) {
-        case 64:
+    int noteNum = self.midiNum % 12;
+    DDLogVerbose(@"%d", noteNum);
+    switch (noteNum) {
+        case 0:
             self.noteName = @"C";
             break;
-        case 65:
+        case 1:
+            self.noteName = @"C#";
+            break;
+        case 2:
             self.noteName = @"D";
             break;
-        case 66:
+        case 3:
+            self.noteName = @"D#";
+            break;
+        case 4:
             self.noteName = @"E";
             break;
-        case 67:
+        case 5:
             self.noteName = @"F";
             break;
-        case 68:
+        case 6:
+            self.noteName = @"F#";
+            break;
+        case 7:
             self.noteName = @"G";
             break;
-        case 69:
+        case 8:
+            self.noteName = @"G#";
+            break;
+        case 9:
             self.noteName = @"A";
             break;
-        case 70:
+        case 10:
+            self.noteName = @"A#";
+            break;
+        case 11:
             self.noteName = @"B";
             break;
         default:
