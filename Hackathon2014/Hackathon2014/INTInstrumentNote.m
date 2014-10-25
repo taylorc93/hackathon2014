@@ -31,7 +31,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         
         [self getNoteName];
         
-        UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 4 + 8, height / 4, width / 2, height / 2)];
+        UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 4 + 10, height / 4, width / 2, height / 2)];
         noteLabel.text = self.noteName;
         [self addSubview:noteLabel];
     }

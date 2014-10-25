@@ -15,6 +15,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *octaveLabel;
 @property (nonatomic, strong) INTInstrumentViewController *instrumentVC;
 @property int editFlag; //set to 1 when in edit mode
+@property BOOL chorusPlaying;
 
 - (void)setLabelsNeedUpdate;
 

@@ -66,7 +66,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         for (int j = 0; j < 7; j++){
             float x = coords[0][j];
             float y = coords[1][j];
-            INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 60.0, 60.0)
+            INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 70.0, 70.0)
                                                                        noteNum:[midiNums[j] integerValue]
                                                                     noteOctave:i + 4
                                                                          color:colors[i]];

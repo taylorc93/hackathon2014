@@ -8,6 +8,7 @@
 
 #import "INTRootViewController.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
+#import "PdBase.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
@@ -16,6 +17,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.chorusPlaying = NO;
     self.instrumentVC = [self childViewControllers][0];
 }
 
@@ -66,6 +68,35 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     self.editFlag = 0;
     [self.instrumentVC updateEditFlag:self.editFlag];
+}
+
+- (IBAction)changeChorusRate:(UISlider *)sender
+{
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-chorus_rate", dollarZero];
+    
+    float value = sender.value;
+    [PdBase sendFloat:value toReceiver:receiver];}
+
+- (IBAction)changeChorusDepth:(UISlider *)sender
+{
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-chorus_depth", dollarZero];
+    
+    float value = sender.value;
+    [PdBase sendFloat:value toReceiver:receiver];
+}
+
+- (IBAction)toggleChorus:(id)sender
+{
+    DDLogVerbose(@"toggling");
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-chorus_on", dollarZero];
+    if (self.chorusPlaying){
+        [PdBase sendFloat:0 toReceiver:receiver];
+    } else {
+        [PdBase sendFloat:1 toReceiver:receiver];
+    }
 }
 
 - (void)setLabelsNeedUpdate
