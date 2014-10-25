@@ -8,6 +8,7 @@
 
 #import "INTInstrumentViewController.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
+#import "PdBase.h"
 #include "septagon_coordinates.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -22,6 +23,15 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [super viewDidLoad];
     DDLogVerbose(@"Instrument View Loaded");
     
+    NSString *pdDir = [[[NSBundle mainBundle] resourcePath]
+                       stringByAppendingPathComponent:@"Pure-Data/"];
+    void *patch = [PdBase openFile:@"Main.pd"
+                        path:pdDir];
+    if (!patch){
+        DDLogError(@"Couldn't open patch");
+    }
+    
+    self.dollarZero = [PdBase dollarZeroForFile:patch];
     self.currentNote = 0;
     self.currentOctave = 5;
     
@@ -32,7 +42,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     self.notes = [[NSMutableArray alloc] init];
     for (int i = 0; i < 3; i++){
-        int **coords = septagon_coordinates(100 * (i + 1), 512, 384);
+        int **coords = septagon_coordinates(75 * (i + 1), 512, 384);
         for (int j = 0; j < 7; j++){
             float x = coords[0][j];
             float y = coords[1][j];
@@ -54,6 +64,10 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         UIPanGestureRecognizer *pgRec = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                                 action:@selector(panNote:)];
         [self.notes[i] addGestureRecognizer:pgRec];
+        
+        UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(playNote:)];
+        [self.notes[i] addGestureRecognizer:tapRec];
     }
     [self.view.window makeKeyAndVisible];
 }
@@ -79,6 +93,18 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     [self.view addSubview:note];
     [self.notes addObject:note];
+}
+
+- (void)playNote:(UITapGestureRecognizer*)gestureRecognizer
+{
+    DDLogDebug(@"OK");
+    INTInstrumentNote *note = gestureRecognizer.view;
+    
+    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:note.midiNum],
+                                                [NSNumber numberWithInteger:500], nil];
+    
+    NSString *receiver = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
+    [PdBase sendList:data toReceiver:receiver];
 }
 
 - (IBAction)incrementNote:(id)sender

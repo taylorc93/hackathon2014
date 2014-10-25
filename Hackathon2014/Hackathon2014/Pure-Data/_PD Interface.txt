@@ -1,0 +1,162 @@
+Wavely - Pure Data Interface
+
+Main patch: Wavely.pd
+
+Master List of Receivers
+Last Updated 10/15/14
+
+Formula for scaling slider values (if sliders go from .1 to 1):
+
+	max_value * abs(log(abs(value - 1.1)) / log(scale_factor))
+
+Documentation Format:
+Functionality: [receiver name] message to send (comment/restriction)
+
+Example: [$0-chorus_on] 1 (on) / 0 (off)
+Meaning: Turn the chorus module on or off by sending a 1 or 0 to $0-chorus_on
+
+list{ float float float } signifies a list to be sent to the receiver
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+MIDI:
+
+Create Note with Fixed Duration: 
+
+	[$0-makenote] list{ float float float } (Note Value, Duration)
+
+	Note Value, Velocity should be integers from 0 to 127.
+	Duration is time in ms.
+
+Manually Trigger / Turn off a note:
+
+	[$0-note] list{ float float } (Note Value, Velocity)
+
+	Both values should be integers from 0 to 127.
+	A velocity value != 0 triggers note on.
+	A velocity value == 0 triggers note off.
+
+Turn off All Notes Immediately:
+
+	[$0-flush] bang
+
+	It sends a note off message for every note. 
+	Good for stuck notes and effective muting.
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+AUDIO:
+
+
+
+MASTER CONTROLS:
+
+Volume:
+
+	[$0-volume] float
+
+	The value is restricted to be between 0 and 1.
+
+Pan Control:
+
+	[$0-pan] float
+
+	The value is restricted to be between 0 and 100.
+	0 = Left, 50 = Center, 100 = Right.
+
+Set Wavetable Waveform:
+
+	[$0-wave_table-] array
+
+	Array has 515 points.
+
+
+
+ENVELOPE CONTROLS:
+
+
+ADSR:
+
+	[$0-attack]  float (Time in ms)
+	[$0-decay]   float (Time in ms)
+	[$0-sustain] float (Sustain Level from 0 - 1)
+	[$0-release] float (Time in ms)
+
+	See https://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope
+
+
+
+AUDIO EFFECTS:
+
+
+
+GAIN:
+
+	[$0-gain_on]     1 / 0 (On / Off)
+	[$0-gain_amount] float (Value from 0 - 10)
+
+	This module adds additional gain to the output. 
+	Useful for quiet waveforms. 
+
+CHORUS:
+	
+	[$0-chorus_on]    1 / 0 (On / Off)
+	[$0-chorus_rate]  float (Flutter speed in Hz)
+	[$0-chorus_depth] float (Value from 0 - 1, depth of detuning)
+	[$0-chorus_mix]   float (Value from 0 - 100)
+
+	3-voice Chorus module, large rates can be used for Frequency Modulation.
+	The mix is the balance between the original and processed signals.
+	50% => equal amounts of both, 100% => processed signal only.
+
+RING MODULATOR:
+
+	[$0-ringmod_on]    1 / 0 (On / Off)
+	[$0-ringmod_rate]  float (Oscillation speed in Hz)
+	[$0-ringmod_depth] float (Value from 0 - 1, Maximum amplitude reduction)
+
+	This plugin multiplies the amplitude of the input signal with a sine wave
+	with a frequency == $0-ringmod_rate.  At low values it is equivalent to 
+	the tremolo plugin on a sine wave setting.
+
+	At high values you can create Amplitude Modulation.
+
+TREMOLO:
+
+	[$0-tremolo_on]    1 / 0 (On / Off)
+	[$0-tremolo_rate]  float (Speed in Hz)
+	[$0-tremolo_depth] float (Value from 0 - 1, Maximum amplitude reduction)
+	[$0-tremolo_shape] float (Value from 0 - 3, see below)
+
+	The Tremolo plugin multiplies the amplitude of the input signal with
+	a waveform set by $0-tremolo_shape.  
+
+	Shapes:
+			0 - Sine
+			1 - Sawtooth (/)
+			2 - Sawtooth (\)
+			3 - Square
+
+EQ: 
+
+	[$0-eq_on]   1 / 0 (On / Off)
+	[$0-eq_hp]	 list{ float float } ()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

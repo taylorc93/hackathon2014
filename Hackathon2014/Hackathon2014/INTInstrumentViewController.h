@@ -14,6 +14,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *noteLabel;
 @property (nonatomic, strong) IBOutlet UILabel *octaveLabel;
 
+@property int dollarZero;
 @property (nonatomic, strong) NSMutableArray *notes;
 @property int currentNote;
 @property int currentOctave;

@@ -1,0 +1,31 @@
+#N canvas 206 126 475 169 10;
+#X obj -311 -146 == 0;
+#X text -169 -175 The toggle switch activates the spigot;
+#X obj -173 -219 cnv 15 285 125 \$0-from_ggate_canvas \$0-to_ggate_canvas
+ggate: 6 10 1 18 -204800 -1 0;
+#X text -168 -149 The toggle switch sets the gate of the spigot;
+#X text -167 -135 while the [== 0] ensures each spigot is;
+#X text -167 -120 opposite the other.;
+#X text -90 -218 Named after equivalent Max object;
+#X text -168 -193 Left Inlet - send item through active outlet;
+#X text -168 -179 Right Inlet - set active outlet;
+#X obj -257 -209 loadbang;
+#X obj -277 -170 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg -257 -187 0;
+#X obj -319 -230 inlet~;
+#X obj -344 -123 transistor~;
+#X obj -259 -122 transistor~;
+#X obj -344 -100 outlet~;
+#X obj -259 -99 outlet~;
+#X obj -278 -231 inlet;
+#X connect 0 0 13 1;
+#X connect 9 0 11 0;
+#X connect 10 0 0 0;
+#X connect 10 0 14 1;
+#X connect 11 0 10 0;
+#X connect 12 0 13 0;
+#X connect 12 0 14 0;
+#X connect 13 0 15 0;
+#X connect 14 0 16 0;
+#X connect 17 0 10 0;
