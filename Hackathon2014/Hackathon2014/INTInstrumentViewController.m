@@ -28,20 +28,26 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     float xVals[] = {574, 490, 422, 422, 490, 574, 612};
     float yVals[] = {306, 287, 341, 427, 481, 462, 384};
     int midiNums[] = {60, 62, 64, 65, 67, 69, 71};
+    NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
     self.notes = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 7; i++){
-        INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(xVals[i], yVals[i], 60.0, 60.0)
-                                                                   noteNum:midiNums[i]
-                                                                     color:[UIColor greenColor]];
-        note.center = CGPointMake(xVals[i], yVals[i]);
-        
-        note.layer.cornerRadius = note.frame.size.width / 2;
-        note.layer.borderColor = [UIColor blackColor].CGColor;
-        note.layer.borderWidth = 2;
-        
-        [self.view addSubview:note];
-        [self.notes addObject:note];
+    for (int i = 0; i < 3; i++){
+        int **coords = septagon_coordinates(100 * (i + 1), 512, 384);
+        for (int j = 0; j < 7; j++){
+            float x = coords[0][j];
+            float y = coords[1][j];
+            INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 60.0, 60.0)
+                                                                       noteNum:midiNums[j]
+                                                                         color:colors[i]];
+            note.center = CGPointMake(x, y);
+            
+            note.layer.cornerRadius = note.frame.size.width / 2;
+            note.layer.borderColor = [UIColor blackColor].CGColor;
+            note.layer.borderWidth = 2;
+            
+            [self.view addSubview:note];
+            [self.notes addObject:note];
+        }
     }
     
     for (int i = 0; i < [self.notes count]; i++){

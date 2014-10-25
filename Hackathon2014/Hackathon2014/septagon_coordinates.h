@@ -9,6 +9,6 @@
 #ifndef Hackathon2014_septagon_coordinates_h
 #define Hackathon2014_septagon_coordinates_h
 
-int **septagon_coordinates(int r, int center);
+int **septagon_coordinates(int r, int x_center, int y_center);
 
 #endif
