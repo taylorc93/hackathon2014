@@ -9373,7 +9373,7 @@ center;
 #X msg -176 374 \; pd dsp 1 \; \$1-pan 50 \; \$1-volume 0.7 \; \$1-panner_on
 1 \; \$1-panner_rate 2.7 \; \$1-panner_depth 0.3 \; \$1-attack 10 \;
 \$1-decay 300 \; \$1-sustain 0.7 \; \$1-release 1000 \; \$1-wave 8
-\; \$1-tremolo_on 1 \; \$1-tremolo_rate 10 \;;
+\;;
 #X connect 0 0 3 4;
 #X connect 1 0 3 3;
 #X connect 2 0 3 2;
