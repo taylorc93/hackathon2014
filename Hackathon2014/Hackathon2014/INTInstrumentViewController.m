@@ -20,11 +20,23 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)viewDidLoad {
     [super viewDidLoad];
     DDLogVerbose(@"Instrument View Loaded");
-
+    
+    float width = self.view.bounds.size.width;
+    float height = self.view.bounds.size.height;
+    
+    DDLogVerbose(@"%@", NSStringFromCGPoint(self.view.center));
+    
+    float xVals[] = {574, 490, 422, 422, 490, 574, 612};
+    float yVals[] = {306, 287, 341, 427, 481, 462, 384};
+    
     self.notes = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 8; i++){
-        float x = i * 100.0 + 10.0;
-        INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, 300.0, 60.0, 60.0)];
+    for (int i = 0; i < 7; i++){
+        INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(xVals[i], yVals[i], 60.0, 60.0)];
+        note.center = CGPointMake(xVals[i], yVals[i]);
+        
+        note.layer.cornerRadius = note.frame.size.width / 2;
+        note.layer.borderColor = [UIColor blackColor].CGColor;
+        note.layer.borderWidth = 2;
         
         note.backgroundColor = note.color;
         [self.view addSubview:note];
@@ -41,7 +53,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /**
