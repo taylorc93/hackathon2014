@@ -18,7 +18,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @end
 
-@implementation INTInstrumentViewController
+@implementation INTInstrumentViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,7 +67,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                                        noteNum:[midiNums[j] integerValue]
                                                                     noteOctave:i + 4
                                                                          color:colors[i]];
-            
             note.center = CGPointMake(x, y);
             note.layer.cornerRadius = note.frame.size.width / 2;
             note.layer.borderColor = [UIColor blackColor].CGColor;
@@ -83,10 +82,34 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                                                 action:@selector(panNote:)];
         [self.notes[i] addGestureRecognizer:pgRec];
         
-        UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                 action:@selector(playNote:)];
-        [self.notes[i] addGestureRecognizer:tapRec];
+        UILongPressGestureRecognizer *pressRec = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(playNote:)];
+        [pressRec setCancelsTouchesInView:NO];
+        [pressRec setMinimumPressDuration:0.0];
+        
+        pressRec.delegate = self;
+        pgRec.delegate = self;
+        
+        [self.notes[i] addGestureRecognizer:pressRec];
     }
+}
+
+- (void)initTrashBin
+{
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    float x = self.view.bounds.origin.x + self.view.bounds.size.width -  74.0;
+    float y = self.view.bounds.origin.y + self.view.bounds.size.height;
+
+    DDLogVerbose(@"%f %f", x, y);
+    
+    [path moveToPoint:CGPointMake(x, y)];
+    [path addLineToPoint:CGPointMake(x, y - 74.0)];
+    [path addLineToPoint:CGPointMake(x + 74.0, y - 74.0)];
+    [path addLineToPoint:CGPointMake(x + 74.0, y)];
+    [path addLineToPoint:CGPointMake(x, y)];
+
+    [path stroke];
+    [path closePath];
 }
 
 - (void)addNote
@@ -102,17 +125,23 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     UIPanGestureRecognizer *pgRec = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                             action:@selector(panNote:)];
     
-    UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc] initWithTarget:self
+    UILongPressGestureRecognizer *pressRec = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                              action:@selector(playNote:)];
     
+    [pressRec setMinimumPressDuration:0.0];
+    [pressRec setCancelsTouchesInView:NO];
+    
+    pressRec.delegate = self;
+    pgRec.delegate = self;
+    
     [note addGestureRecognizer:pgRec];
-    [note addGestureRecognizer:tapRec];
+    [note addGestureRecognizer:pressRec];
     
     [self.view addSubview:note];
     [self.notes addObject:note];
 }
 
-- (void)playNote:(UITapGestureRecognizer*)gestureRecognizer
+- (void)playNote:(UILongPressGestureRecognizer*)gestureRecognizer
 {
     INTInstrumentNote *note = gestureRecognizer.view;
     if (self.editFlag){
@@ -120,13 +149,20 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         self.currentOctave = note.octave;
         [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
     } else {
-        INTInstrumentNote *note = gestureRecognizer.view;
+        if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+            NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
+                             [NSNumber numberWithInteger:50], nil];
+            
+            NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
+            [PdBase sendList:data toReceiver:playnote];
+        } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
+            NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
+                             [NSNumber numberWithInteger:0], nil];
+            
+            NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
+            [PdBase sendList:data toReceiver:playnote];
+        }
         
-        NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
-                         [NSNumber numberWithInteger:250], nil];
-        
-        NSString *playnote = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
-        [PdBase sendList:data toReceiver:playnote];
     }
 }
 
@@ -220,6 +256,10 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)panNote:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    if (self.editFlag != 1){
+        return;
+    }
+
     INTInstrumentNote *note = (INTInstrumentNote *)[gestureRecognizer view];
     
     [self adjustAnchorPointForGestureRecognizer:gestureRecognizer];
@@ -230,6 +270,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         [note setCenter:CGPointMake([note center].x + translation.x, [note center].y + translation.y)];
         [gestureRecognizer setTranslation:CGPointZero inView:[note superview]];
     }
+}
+
+
+- (BOOL)gestureRecognizer:(UILongPressGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIPanGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
 }
 
 

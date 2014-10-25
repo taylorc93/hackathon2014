@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "INTInstrumentNote.h"
 
-@interface INTInstrumentViewController : UIViewController
+@interface INTInstrumentViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) NSString *currentScale;
 @property (nonatomic, strong) NSMutableArray *notes;
