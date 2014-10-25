@@ -1,8 +1,8 @@
 #N canvas 392 293 1127 617 10;
 #X obj 326 440 tgl 15 0 empty \$0-panner_on Panner_off/on 17 7 0 10
 -262144 -1 -1 1 1;
-#X floatatom 316 420 5 0 0 1 Panner_depth #0-panner_depth -, f 5;
-#X floatatom 306 400 5 0 0 1 Panner_Rate #0-panner_rate -, f 5;
+#X floatatom 316 420 5 0 0 1 Panner_depth #0-panner_depth -;
+#X floatatom 306 400 5 0 0 1 Panner_Rate #0-panner_rate -;
 #X obj 287 459 panner~;
 #X obj 287 347 remove_dc_offset~;
 #X obj 287 373 normalize~;
@@ -15,21 +15,21 @@
 #X obj 19 14 inlet~;
 #X obj 46 116 tgl 15 0 empty empty Gain_off/on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 32 95 5 0 0 1 Gain_amount - -, f 5;
+#X floatatom 32 95 5 0 0 1 Gain_amount - -;
 #X obj 182 187 tgl 15 0 empty empty Chorus_off/on 17 7 0 10 -262144
 -1 -1 1 1;
-#X floatatom 172 167 5 0 0 1 Chorus_mix - -, f 5;
-#X floatatom 162 147 5 0 0 1 Chorus_depth - -, f 5;
-#X floatatom 152 127 5 0 0 1 Chorus_rate - -, f 5;
+#X floatatom 172 167 5 0 0 1 Chorus_mix - -;
+#X floatatom 162 147 5 0 0 1 Chorus_depth - -;
+#X floatatom 152 127 5 0 0 1 Chorus_rate - -;
 #X obj 544 269 tgl 15 0 empty empty Tremolo_off/on 17 7 0 10 -262144
--1 -1 1 1;
-#X floatatom 532 250 5 0 0 1 Tremolo_Shape_(0-3) - -, f 5;
-#X floatatom 521 231 5 0 0 1 Tremolo_Depth - -, f 5;
-#X floatatom 510 212 5 0 0 1 Tremolo_rate - -, f 5;
+-1 -1 0 1;
+#X floatatom 532 250 5 0 0 1 Tremolo_Shape_(0-3) - -;
+#X floatatom 521 231 5 0 0 1 Tremolo_Depth - -;
+#X floatatom 510 212 5 0 0 1 Tremolo_rate - -;
 #X obj 350 205 tgl 15 0 empty empty Ring_Modulator_off/on 17 7 0 10
 -262144 -1 -1 0 1;
-#X floatatom 335 185 5 0 0 1 Ring_Modulator_depth - -, f 5;
-#X floatatom 320 165 5 0 0 1 Ring_Modulator_rate - -, f 5;
+#X floatatom 335 185 5 0 0 1 Ring_Modulator_depth - -;
+#X floatatom 320 165 5 0 0 1 Ring_Modulator_rate - -;
 #X obj 32 42 r \$0-gain_amount;
 #X obj 46 62 r \$0-gain_on;
 #X obj 152 98 r \$0-chorus_rate;
@@ -45,68 +45,68 @@
 #X obj 278 504 pack 1 20;
 #X obj 282 437 tgl 15 0 empty empty EQ_hp_on 17 7 0 10 -262144 -1 -1
 0 1;
-#X floatatom 289 456 5 0 0 1 EQ_hp_freq - -, f 5;
+#X floatatom 289 456 5 0 0 1 EQ_hp_freq - -;
 #X obj 378 504 pack 1 80 0.3;
 #X obj 302 484 t b f;
 #X obj 388 484 t b f;
 #X obj 426 484 t b f;
 #X obj 381 418 tgl 15 0 empty empty EQ_bp1_on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 390 438 5 0 0 1 EQ_bp1_freq - -, f 5;
-#X floatatom 399 460 5 0 0 1 EQ_bp1_q - -, f 5;
+#X floatatom 390 438 5 0 0 1 EQ_bp1_freq - -;
+#X floatatom 399 460 5 0 0 1 EQ_bp1_q - -;
 #X obj 494 504 pack 1 80 0.3;
 #X obj 504 484 t b f;
 #X obj 542 484 t b f;
 #X obj 497 418 tgl 15 0 empty empty EQ_bp1_on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 506 438 5 0 0 1 EQ_bp1_freq - -, f 5;
-#X floatatom 515 460 5 0 0 1 EQ_bp1_q - -, f 5;
+#X floatatom 506 438 5 0 0 1 EQ_bp1_freq - -;
+#X floatatom 515 460 5 0 0 1 EQ_bp1_q - -;
 #X obj 611 504 pack 1 80 0.3;
 #X obj 621 484 t b f;
 #X obj 659 484 t b f;
 #X obj 614 418 tgl 15 0 empty empty EQ_bp1_on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 623 438 5 0 0 1 EQ_bp1_freq - -, f 5;
-#X floatatom 632 460 5 0 0 1 EQ_bp1_q - -, f 5;
+#X floatatom 623 438 5 0 0 1 EQ_bp1_freq - -;
+#X floatatom 632 460 5 0 0 1 EQ_bp1_q - -;
 #X obj 724 504 pack 1 80 0.3;
 #X obj 734 484 t b f;
 #X obj 772 484 t b f;
 #X obj 727 418 tgl 15 0 empty empty EQ_bp1_on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 736 438 5 0 0 1 EQ_bp1_freq - -, f 5;
-#X floatatom 745 460 5 0 0 1 EQ_bp1_q - -, f 5;
+#X floatatom 736 438 5 0 0 1 EQ_bp1_freq - -;
+#X floatatom 745 460 5 0 0 1 EQ_bp1_q - -;
 #X obj 838 504 pack 1 80 0.3;
 #X obj 848 484 t b f;
 #X obj 886 484 t b f;
 #X obj 841 418 tgl 15 0 empty empty EQ_bp1_on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 850 438 5 0 0 1 EQ_bp1_freq - -, f 5;
-#X floatatom 859 460 5 0 0 1 EQ_bp1_q - -, f 5;
+#X floatatom 850 438 5 0 0 1 EQ_bp1_freq - -;
+#X floatatom 859 460 5 0 0 1 EQ_bp1_q - -;
 #X obj 953 504 pack 1 80 0.3;
 #X obj 963 484 t b f;
 #X obj 1001 484 t b f;
 #X obj 956 418 tgl 15 0 empty empty EQ_bp1_on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 965 438 5 0 0 1 EQ_bp1_freq - -, f 5;
-#X floatatom 974 460 5 0 0 1 EQ_bp1_q - -, f 5;
+#X floatatom 965 438 5 0 0 1 EQ_bp1_freq - -;
+#X floatatom 974 460 5 0 0 1 EQ_bp1_q - -;
 #X obj 1068 504 pack 1 80 0.3;
 #X obj 1078 484 t b f;
 #X obj 1116 484 t b f;
 #X obj 1071 418 tgl 15 0 empty empty EQ_bp1_on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 1080 438 5 0 0 1 EQ_bp1_freq - -, f 5;
-#X floatatom 1089 460 5 0 0 1 EQ_bp1_q - -, f 5;
+#X floatatom 1080 438 5 0 0 1 EQ_bp1_freq - -;
+#X floatatom 1089 460 5 0 0 1 EQ_bp1_q - -;
 #X obj 1178 504 pack 1 80 0.3;
 #X obj 1188 484 t b f;
 #X obj 1226 484 t b f;
 #X obj 1181 418 tgl 15 0 empty empty EQ_bp1_on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 1190 438 5 0 0 1 EQ_bp1_freq - -, f 5;
-#X floatatom 1199 460 5 0 0 1 EQ_bp1_q - -, f 5;
+#X floatatom 1190 438 5 0 0 1 EQ_bp1_freq - -;
+#X floatatom 1199 460 5 0 0 1 EQ_bp1_q - -;
 #X obj 1293 504 pack 1 20;
 #X obj 1297 437 tgl 15 0 empty empty EQ_hp_on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 1304 456 5 0 0 1 EQ_hp_freq - -, f 5;
+#X floatatom 1304 456 5 0 0 1 EQ_hp_freq - -;
 #X obj 1317 484 t b f;
 #X obj 196 486 tgl 15 0 empty empty EQ_off/on 17 7 0 10 -262144 -1
 -1 0 1;
@@ -268,13 +268,13 @@ center;
 #X restore 287 321 pd audio_effects~;
 #X obj 287 486 volume~;
 #X obj 309 271 pack 50 100 0.6 250;
-#X floatatom 309 160 5 0 0 1 Attack - -, f 5;
+#X floatatom 309 160 5 0 0 1 Attack - -;
 #X obj 346 243 t b f;
 #X obj 383 243 t b f;
 #X obj 420 243 t b f;
-#X floatatom 346 180 5 0 0 1 Decay - -, f 5;
-#X floatatom 383 201 5 0 0 1 Sustain - -, f 5;
-#X floatatom 420 222 5 0 0 1 Release - -, f 5;
+#X floatatom 346 180 5 0 0 1 Decay - -;
+#X floatatom 383 201 5 0 0 1 Sustain - -;
+#X floatatom 420 222 5 0 0 1 Release - -;
 #X obj 466 281 bng 15 250 50 0 empty empty Note_Flush 17 7 0 10 -262144
 -1 -1;
 #X obj -152 320 loadbang;
@@ -300,12 +300,12 @@ center;
 #X obj 180 33 makenote 60 1 500;
 #X text 121 -51 List: Note Value \, Duration;
 #X obj 83 -8 pack 0 0;
-#X floatatom 128 -32 5 0 0 0 - - -, f 5;
-#X floatatom 83 -31 5 0 0 0 - - -, f 5;
+#X floatatom 128 -32 5 0 0 0 - - -;
+#X floatatom 83 -31 5 0 0 0 - - -;
 #X msg 37 -4 500;
 #X obj 3 -30 t b b;
 #X obj 3 -51 r \$0-test;
-#X floatatom 191 245 5 0 0 0 - - -, f 5;
+#X floatatom 191 245 5 0 0 0 - - -;
 #X obj 191 219 r \$0-wave;
 #X obj -170 321 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -9373,7 +9373,7 @@ center;
 #X msg -176 374 \; pd dsp 1 \; \$1-pan 50 \; \$1-volume 0.7 \; \$1-panner_on
 1 \; \$1-panner_rate 2.7 \; \$1-panner_depth 0.3 \; \$1-attack 10 \;
 \$1-decay 300 \; \$1-sustain 0.7 \; \$1-release 1000 \; \$1-wave 8
-\;;
+\; \$1-tremolo_rate 8 \; \$1-tremolo_depth 1 \;;
 #X connect 0 0 3 4;
 #X connect 1 0 3 3;
 #X connect 2 0 3 2;
