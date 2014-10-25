@@ -17,16 +17,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [super viewDidLoad];
     
     self.instrumentVC = [self childViewControllers][0];
-    DDLogVerbose(@"%@", self.instrumentVC);
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
 }
 
 - (IBAction)incrementOctave:(id)sender
@@ -66,6 +56,28 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [self.instrumentVC addNote];
 }
 
+- (IBAction)toggleEditMode:(id)sender
+{
+    self.editFlag = 1;
+    [self.instrumentVC updateEditFlag:self.editFlag];
+}
+
+- (IBAction)togglePlayMode:(id)sender
+{
+    self.editFlag = 0;
+    [self.instrumentVC updateEditFlag:self.editFlag];
+}
+
+- (void)setLabelsNeedUpdate
+{
+    NSString *noteName = [self getNoteName:self.instrumentVC.currentNote];
+    NSString *noteText = [NSString stringWithFormat:@"Current Note: %@", noteName];
+    self.noteLabel.text = noteText;
+    
+    NSString *octaveText = [NSString stringWithFormat:@"Current Octave: %d", self.instrumentVC.currentOctave];
+    self.octaveLabel.text = octaveText;
+}
+
 - (NSString *)getNoteName:(int)noteNum
 {
     switch (noteNum) {
@@ -98,11 +110,5 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             return @"";
     }
 }
-
-//NSString *labelText = [NSString stringWithFormat:@"Current Note: %@", [self getNoteName:self.currentNote]];
-//self.noteLabel.text = labelText;
-
-//self.octaveLabel.text = [NSString stringWithFormat:@"Current Octave: %d", self.currentOctave];
-
 
 @end

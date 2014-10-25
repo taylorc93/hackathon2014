@@ -7,6 +7,7 @@
 //
 
 #import "INTInstrumentViewController.h"
+#import "INTRootViewController.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "PdBase.h"
 #include "septagon_coordinates.h"
@@ -109,12 +110,19 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     DDLogDebug(@"OK");
     INTInstrumentNote *note = gestureRecognizer.view;
-    
-    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
-                                                [NSNumber numberWithInteger:250], nil];
-    
-    NSString *playnote = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
-    [PdBase sendList:data toReceiver:playnote];
+    if (self.editFlag){
+        self.currentNote = note.midiNum;
+        self.currentOctave = note.octave;
+        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
+    } else {
+        INTInstrumentNote *note = gestureRecognizer.view;
+        
+        NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
+                         [NSNumber numberWithInteger:250], nil];
+        
+        NSString *playnote = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
+        [PdBase sendList:data toReceiver:playnote];
+    }
 }
 
 - (void)incrementNote
@@ -182,6 +190,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     } else{
         return @[];
     }
+}
+
+- (void)updateEditFlag:(int)editFlag
+{
+    self.editFlag = editFlag;
 }
 
 /**

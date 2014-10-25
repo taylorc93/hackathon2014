@@ -17,7 +17,9 @@
 @property int dollarZero;
 @property int currentNote;
 @property int currentOctave;
+@property int editFlag;
 
+- (void)updateEditFlag:(int)editFlag;
 - (BOOL)incrementOctave;
 - (BOOL)decrementOctave;
 - (void)incrementNote;
