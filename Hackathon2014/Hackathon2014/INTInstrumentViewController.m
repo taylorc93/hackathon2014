@@ -16,6 +16,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface INTInstrumentViewController ()
 
+@property (nonatomic, strong) NSMutableArray *playingNotes;
+
 @end
 
 @implementation INTInstrumentViewController 
@@ -34,7 +36,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.currentOctave = 5;
     self.currentScale = @"C";
     self.notes = [[NSMutableArray alloc] init];
-
+    self.playingNotes = [[NSMutableArray alloc] init];
+    
     DDLogVerbose(@"Instrument View finished loading");
 }
 
@@ -81,16 +84,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         UIPanGestureRecognizer *pgRec = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                                 action:@selector(panNote:)];
         [self.notes[i] addGestureRecognizer:pgRec];
-        
-        UILongPressGestureRecognizer *pressRec = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                                               action:@selector(playNote:)];
-        [pressRec setCancelsTouchesInView:NO];
-        [pressRec setMinimumPressDuration:0.0];
-        
-        pressRec.delegate = self;
-        pgRec.delegate = self;
-        
-        [self.notes[i] addGestureRecognizer:pressRec];
     }
 }
 
@@ -125,44 +118,116 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     UIPanGestureRecognizer *pgRec = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                             action:@selector(panNote:)];
     
-    UILongPressGestureRecognizer *pressRec = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                             action:@selector(playNote:)];
-    
-    [pressRec setMinimumPressDuration:0.0];
-    [pressRec setCancelsTouchesInView:NO];
-    
-    pressRec.delegate = self;
-    pgRec.delegate = self;
-    
     [note addGestureRecognizer:pgRec];
-    [note addGestureRecognizer:pressRec];
     
     [self.view addSubview:note];
     [self.notes addObject:note];
 }
 
-- (void)playNote:(UILongPressGestureRecognizer*)gestureRecognizer
+- (void)playNote:(INTInstrumentNote *)note
 {
-    INTInstrumentNote *note = gestureRecognizer.view;
+    if (self.editFlag){
+        self.currentNote = note.midiNum;
+        self.currentOctave = note.octave;
+        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
+    } else if (!note.playing){
+        NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
+                         [NSNumber numberWithInteger:50], nil];
+        
+        NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
+        [PdBase sendList:data toReceiver:playnote];
+        note.playing = YES;
+        
+        CABasicAnimation *theAnimation;
+        
+        theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        theAnimation.duration=0.2;
+        theAnimation.repeatCount=HUGE_VALF;
+        theAnimation.autoreverses=NO;
+        theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+        theAnimation.toValue=[NSNumber numberWithFloat:0.3];
+        [note.layer addAnimation:theAnimation forKey:@"animateOpacity"];
+    }
+}
+
+- (void)killNote:(INTInstrumentNote *)note
+{
     if (self.editFlag){
         self.currentNote = note.midiNum;
         self.currentOctave = note.octave;
         [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
     } else {
-        if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-            NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
-                             [NSNumber numberWithInteger:50], nil];
-            
-            NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
-            [PdBase sendList:data toReceiver:playnote];
-        } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
-            NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
-                             [NSNumber numberWithInteger:0], nil];
-            
-            NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
-            [PdBase sendList:data toReceiver:playnote];
-        }
+        NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
+                         [NSNumber numberWithInteger:0], nil];
         
+        NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
+        [PdBase sendList:data toReceiver:playnote];
+        note.playing = NO;
+        [self.playingNotes removeObject:note];
+        [note.layer removeAllAnimations];
+    }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"Started");
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self.view];
+
+    CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
+    
+    for (int i = 0; i < [self.playingNotes count]; i++){
+        INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
+
+        CGRect noteRect = note.frame;
+        if (!CGRectIntersectsRect(touchRect, noteRect)){
+            [self killNote:note];
+        }
+    }
+    
+    for (int i = 0; i < [self.notes count]; i++){
+        INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
+        CGRect noteRect = note.frame;
+        
+        if (CGRectIntersectsRect(touchRect, noteRect)){
+            [self playNote:note];
+            [self.playingNotes addObject:note];
+        }
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self.view];
+    
+    CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
+    
+    for (int i = 0; i < [self.playingNotes count]; i++){
+        INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
+        
+        CGRect noteRect = note.frame;
+        if (!CGRectIntersectsRect(touchRect, noteRect)){
+            [self killNote:note];
+        }
+    }
+    
+    for (int i = 0; i < [self.notes count]; i++){
+        INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
+        CGRect noteRect = note.frame;
+        
+        if (CGRectIntersectsRect(touchRect, noteRect)){
+            [self playNote:note];
+            [self.playingNotes addObject:note];
+        }
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    DDLogVerbose(@"ended");
+    for (int i = 0; i < [self.playingNotes count]; i++){
+        [self killNote:(INTInstrumentNote *)self.playingNotes[i]];
     }
 }
 
@@ -260,6 +325,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         return;
     }
 
+    DDLogVerbose(@"NOT OK");
+
     INTInstrumentNote *note = (INTInstrumentNote *)[gestureRecognizer view];
     
     [self adjustAnchorPointForGestureRecognizer:gestureRecognizer];
@@ -271,13 +338,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         [gestureRecognizer setTranslation:CGPointZero inView:[note superview]];
     }
 }
-
-
-- (BOOL)gestureRecognizer:(UILongPressGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIPanGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
-}
-
 
 /*
 #pragma mark - Navigation

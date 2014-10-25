@@ -27,6 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         self.midiNum = midiNum;
         self.octave = octave;
         self.backgroundColor = color;
+        self.playing = NO;
         
         [self getNoteName];
         

@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIColor *color;
 @property int midiNum;
 @property int octave;
+@property BOOL playing;
 @property (nonatomic, strong) NSString *noteName;
 
 @end
