@@ -8,6 +8,7 @@
 
 #import "INTInstrumentViewController.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
+#include "septagon_coordinates.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 

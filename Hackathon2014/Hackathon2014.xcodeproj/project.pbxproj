@@ -47,6 +47,7 @@
 		BED473C819FAFBE8006DD472 /* INTInstrumentNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTInstrumentNote.m; sourceTree = "<group>"; };
 		BED473CD19FAFD40006DD472 /* INTInstrumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTInstrumentViewController.h; sourceTree = "<group>"; };
 		BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTInstrumentViewController.m; sourceTree = "<group>"; };
+		BED473D019FB3968006DD472 /* septagon_coordinates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = septagon_coordinates.h; sourceTree = "<group>"; };
 		FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = septagon_coordinates.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +110,7 @@
 				BED473AD19FAF4F0006DD472 /* LaunchScreen.xib */,
 				BED4739E19FAF4F0006DD472 /* Supporting Files */,
 				FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */,
+				BED473D019FB3968006DD472 /* septagon_coordinates.h */,
 			);
 			path = Hackathon2014;
 			sourceTree = "<group>";
