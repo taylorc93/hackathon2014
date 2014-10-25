@@ -19,6 +19,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     self.chorusPlaying = NO;
     self.tremeloPlaying = NO;
+    self.waveNum = 8;
     self.instrumentVC = [self childViewControllers][0];
 }
 
@@ -129,6 +130,28 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         [PdBase sendFloat:1 toReceiver:receiver];
         self.tremeloPlaying = YES;
     }
+}
+
+- (IBAction)incrementWave:(id)sender
+{
+    if (self.waveNum < 16){
+        self.waveNum++;
+    }
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-wave", dollarZero];
+    [PdBase sendFloat:self.waveNum toReceiver:receiver];
+    self.waveLabel.text = [NSString stringWithFormat:@"Current Wave: %d", self.waveNum];
+}
+
+- (IBAction)decrementWave:(id)sender
+{
+    if (self.waveNum > 0){
+        self.waveNum--;
+    }
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-wave", dollarZero];
+    [PdBase sendFloat:self.waveNum toReceiver:receiver];
+    self.waveLabel.text = [NSString stringWithFormat:@"Current Wave: %d", self.waveNum];
 }
 
 - (void)setLabelsNeedUpdate
