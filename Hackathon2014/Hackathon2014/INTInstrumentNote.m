@@ -15,6 +15,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (instancetype)initWithFrame:(CGRect)frame
                       noteNum:(int)midiNum
+                   noteOctave:(int)octave
                         color:(UIColor *)color
 {
     self = [super initWithFrame:frame];
@@ -22,16 +23,23 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     float height = frame.size.height;
         
     if (self){
-        UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 4 + 8, height / 4, width / 2, height / 2)];
         self.color = color;
-        self.backgroundColor = color;
         self.midiNum = midiNum;
-        [self getNoteName];
-        noteLabel.text = self.noteName;
+        self.octave = octave;
+        self.backgroundColor = color;
         
+        [self getNoteName];
+        
+        UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 4 + 8, height / 4, width / 2, height / 2)];
+        noteLabel.text = self.noteName;
         [self addSubview:noteLabel];
     }
     return self;
+}
+
+- (int)getScaledMidiNum
+{
+    return self.midiNum + self.octave * 12;
 }
 
 - (void)getNoteName

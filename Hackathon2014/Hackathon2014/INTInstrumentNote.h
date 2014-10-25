@@ -12,10 +12,14 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
                       noteNum:(int)midiNum
+                   noteOctave:(int)octave
                         color:(UIColor *)color;
+
+- (int)getScaledMidiNum;
 
 @property (nonatomic, strong) UIColor *color;
 @property int midiNum;
+@property int octave;
 @property (nonatomic, strong) NSString *noteName;
 
 @end

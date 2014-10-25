@@ -21,8 +21,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    DDLogVerbose(@"Instrument View Loaded");
-
+    
     void *patch = [PdBase openFile:@"Main.pd"
                               path: [[NSBundle mainBundle] resourcePath]];
     if (!patch){
@@ -32,10 +31,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.dollarZero = [PdBase dollarZeroForFile:patch];
     self.currentNote = 0;
     self.currentOctave = 5;
+    self.currentScale = @"C";
     
-    float xVals[] = {574, 490, 422, 422, 490, 574, 612};
-    float yVals[] = {306, 287, 341, 427,3 481, 462, 384};
-    int midiNums[] = {60, 62, 64, 65, 67, 69, 71};
+    NSArray *midiNums = [self getCurrentScale];
     NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
     self.notes = [[NSMutableArray alloc] init];
@@ -45,8 +43,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             float x = coords[0][j];
             float y = coords[1][j];
             INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 60.0, 60.0)
-                                                                       noteNum:midiNums[j]
+                                                                       noteNum:[midiNums[j] integerValue]
+                                                                    noteOctave:i + 4
                                                                          color:colors[i]];
+            
+            DDLogVerbose(@"%d %d", note.midiNum, note.octave);
             note.center = CGPointMake(x, y);
             
             note.layer.cornerRadius = note.frame.size.width / 2;
@@ -67,7 +68,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                                                  action:@selector(playNote:)];
         [self.notes[i] addGestureRecognizer:tapRec];
     }
-    [self.view.window makeKeyAndVisible];
+
+    DDLogVerbose(@"Instrument View finished loading");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,10 +78,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (IBAction)addNote:(id)sender
 {
-    int noteNum = self.currentNote + 12 * self.currentOctave;
-    
     INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 60.0, 60.0)
-                                                               noteNum:noteNum
+                                                               noteNum:self.currentNote
+                                                            noteOctave:self.currentOctave
                                                                  color:[UIColor greenColor]];
     note.layer.cornerRadius = note.frame.size.width / 2;
     note.layer.borderColor = [UIColor blackColor].CGColor;
@@ -87,7 +88,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     UIPanGestureRecognizer *pgRec = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                             action:@selector(panNote:)];
+    
+    UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                             action:@selector(playNote:)];
+    
     [note addGestureRecognizer:pgRec];
+    [note addGestureRecognizer:tapRec];
     
     [self.view addSubview:note];
     [self.notes addObject:note];
@@ -98,7 +104,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     DDLogDebug(@"OK");
     INTInstrumentNote *note = gestureRecognizer.view;
     
-    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:note.midiNum],
+    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
                                                 [NSNumber numberWithInteger:250], nil];
     
     NSString *playnote = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
@@ -142,6 +148,37 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     if (self.currentOctave > 1){
         self.currentOctave--;
         self.octaveLabel.text = [NSString stringWithFormat:@"Current Octave: %d", self.currentOctave];
+    }
+}
+
+- (NSArray *)getCurrentScale
+{
+    if([self.currentScale  isEqual: @"C"]){
+        return @[@0,@2,@4,@5,@7,@9,@11];
+    } else if ([self.currentScale  isEqual: @"C#"]){
+        return @[@1,@3,@5,@6,@8,@10,@0];
+    } else if ([self.currentScale  isEqual: @"D"]){
+        return @[@2,@4,@6,@7,@9,@11,@1];
+    } else if ([self.currentScale  isEqual: @"D#"]){
+        return @[@3,@5,@7,@8,@10,@0,@2];
+    } else if ([self.currentScale  isEqual: @"E"]){
+        return @[@4,@6,@8,@9,@11,@1,@3];
+    } else if ([self.currentScale  isEqual: @"F"]){
+        return @[@5,@7,@9,@10,@0,@2,@4];
+    } else if ([self.currentScale  isEqual: @"F#"]){
+        return @[@6,@8,@10,@11,@1,@3,@5];
+    } else if ([self.currentScale  isEqual: @"G"]){
+        return @[@7,@9,@11,@0,@2,@4,@6];
+    } else if ([self.currentScale  isEqual: @"G#"]){
+        return @[@8,@10,@0,@1,@3,@5,@7];
+    } else if ([self.currentScale  isEqual: @"A"]){
+        return @[@9,@11,@1,@2,@4,@6,@8];
+    } else if ([self.currentScale  isEqual: @"A#"]){
+        return @[@10,@0,@2,@3,@5,@7,@9];
+    } else if ([self.currentScale  isEqual: @"B"]){
+        return @[@11,@1,@3,@4,@6,@8,@10];
+    } else{
+        return @[];
     }
 }
 

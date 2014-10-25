@@ -6,7 +6,6 @@ This repository contains the iOS app that was built for the Tufts Fall 2014 Hack
 
 ## Todo
 
-1. Correct octaves for preset notes
-2. Swipe gestures
-3. Long press gestures
-4. Minimum duration for notes
+1. Swipe gestures
+2. Long press gestures
+3. Minimum duration for notes
