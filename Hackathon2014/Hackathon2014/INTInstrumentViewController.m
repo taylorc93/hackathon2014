@@ -33,21 +33,31 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.currentNote = 0;
     self.currentOctave = 5;
     self.currentScale = @"C";
+    self.notes = [[NSMutableArray alloc] init];
 
     DDLogVerbose(@"Instrument View finished loading");
 }
 
+// Cannot do this in viewWillLoad as bounds are not set properly at that time
 - (void)viewWillLayoutSubviews
+{
+    if ([self.notes count] == 0){
+        [self initNotes];
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+- (void)initNotes
 {
     float width = self.view.bounds.size.width;
     float height = self.view.bounds.size.height;
-    DDLogVerbose(@"%f %f", width, height);
-
     
     NSArray *midiNums = [self getCurrentScale];
     NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
-    self.notes = [[NSMutableArray alloc] init];
     for (int i = 0; i < 3; i++){
         int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
         for (int j = 0; j < 7; j++){
@@ -58,7 +68,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                                     noteOctave:i + 4
                                                                          color:colors[i]];
             
-            note.center = CGPointMake(x, y);            
+            note.center = CGPointMake(x, y);
             note.layer.cornerRadius = note.frame.size.width / 2;
             note.layer.borderColor = [UIColor blackColor].CGColor;
             note.layer.borderWidth = 2;
@@ -77,10 +87,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                                                  action:@selector(playNote:)];
         [self.notes[i] addGestureRecognizer:tapRec];
     }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 - (void)addNote
@@ -108,7 +114,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)playNote:(UITapGestureRecognizer*)gestureRecognizer
 {
-    DDLogDebug(@"OK");
     INTInstrumentNote *note = gestureRecognizer.view;
     if (self.editFlag){
         self.currentNote = note.midiNum;

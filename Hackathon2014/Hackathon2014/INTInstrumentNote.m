@@ -45,7 +45,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)getNoteName
 {
     int noteNum = self.midiNum % 12;
-    DDLogVerbose(@"%d", noteNum);
     switch (noteNum) {
         case 0:
             self.noteName = @"C";
