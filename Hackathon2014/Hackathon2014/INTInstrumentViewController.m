@@ -107,10 +107,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)addNote
 {
-    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 60.0, 60.0)
+    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 70.0, 70.0)
                                                                noteNum:self.currentNote
                                                             noteOctave:self.currentOctave
                                                                  color:[UIColor greenColor]];
+    note.center = CGPointMake(10.0, 300.0);
     note.layer.cornerRadius = note.frame.size.width / 2;
     note.layer.borderColor = [UIColor blackColor].CGColor;
     note.layer.borderWidth = 2;
@@ -141,7 +142,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         CABasicAnimation *theAnimation;
         
         theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        theAnimation.duration=0.2;
+        theAnimation.duration=0.3;
         theAnimation.repeatCount=HUGE_VALF;
         theAnimation.autoreverses=NO;
         theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
@@ -173,40 +174,27 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSLog(@"Started");
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self.view];
-
-    CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
     
-    for (int i = 0; i < [self.playingNotes count]; i++){
-        INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
-
-        CGRect noteRect = note.frame;
-        if (!CGRectIntersectsRect(touchRect, noteRect)){
-            [self killNote:note];
-        }
-    }
-    
-    for (int i = 0; i < [self.notes count]; i++){
-        INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
-        CGRect noteRect = note.frame;
-        
-        if (CGRectIntersectsRect(touchRect, noteRect)){
-            [self playNote:note];
-            [self.playingNotes addObject:note];
-        }
-    }
+    [self updateNotes:location];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    NSLog(@"Moved");
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self.view];
     
+    [self updateNotes:location];
+}
+
+- (void)updateNotes:(CGPoint)location
+{
     CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
     
     for (int i = 0; i < [self.playingNotes count]; i++){
         INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
-        
         CGRect noteRect = note.frame;
+        
         if (!CGRectIntersectsRect(touchRect, noteRect)){
             [self killNote:note];
         }
@@ -322,10 +310,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)panNote:(UIPanGestureRecognizer *)gestureRecognizer
 {
     if (self.editFlag != 1){
+        NSUInteger numTouches = [gestureRecognizer numberOfTouches];
+        if (numTouches > 0){
+            [self updateNotes:[gestureRecognizer locationOfTouch:0 inView:self.view]];
+        }
         return;
     }
-
-    DDLogVerbose(@"NOT OK");
 
     INTInstrumentNote *note = (INTInstrumentNote *)[gestureRecognizer view];
     
