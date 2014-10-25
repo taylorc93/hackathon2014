@@ -24,7 +24,7 @@ MIDI:
 
 Create Note with Fixed Duration: 
 
-	[$0-makenote] list{ float float float } (Note Value, Velocity, Duration)
+	[$0-makenote] list{ float float float } (Note Value, Duration)
 
 	Note Value, Velocity should be integers from 0 to 127.
 	Duration is time in ms.

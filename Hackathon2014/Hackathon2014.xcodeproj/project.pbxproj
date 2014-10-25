@@ -16,6 +16,7 @@
 		BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473C819FAFBE8006DD472 /* INTInstrumentNote.m */; };
 		BED473CF19FAFD40006DD472 /* INTInstrumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */; };
 		E3BC1ACB1A88471588F2A91B /* libPods-Hackathon2014.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */; };
+		FAAA008D19FB452700822D23 /* Pure Data in Resources */ = {isa = PBXBuildFile; fileRef = FAAA008C19FB452700822D23 /* Pure Data */; };
 		FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */ = {isa = PBXBuildFile; fileRef = FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		BED473CD19FAFD40006DD472 /* INTInstrumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTInstrumentViewController.h; sourceTree = "<group>"; };
 		BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTInstrumentViewController.m; sourceTree = "<group>"; };
 		BED473D019FB3968006DD472 /* septagon_coordinates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = septagon_coordinates.h; sourceTree = "<group>"; };
+		FAAA008C19FB452700822D23 /* Pure Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Pure Data"; sourceTree = SOURCE_ROOT; };
 		FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = septagon_coordinates.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 		BED4739D19FAF4F0006DD472 /* Hackathon2014 */ = {
 			isa = PBXGroup;
 			children = (
+				FAAA008C19FB452700822D23 /* Pure Data */,
 				BED473C419FAFBBA006DD472 /* Controllers */,
 				BED473C619FAFBCD006DD472 /* Views */,
 				BED473A219FAF4F0006DD472 /* AppDelegate.h */,
@@ -244,6 +247,7 @@
 				BED473AA19FAF4F0006DD472 /* Main.storyboard in Resources */,
 				BED473AF19FAF4F0006DD472 /* LaunchScreen.xib in Resources */,
 				BED473AC19FAF4F0006DD472 /* Images.xcassets in Resources */,
+				FAAA008D19FB452700822D23 /* Pure Data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
