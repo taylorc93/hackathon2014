@@ -10,11 +10,11 @@
 #include <stdlib.h>
 #include <math.h>
 
-int **septagon_coordinates(int r, int center)
+int **septagon_coordinates(int r, int x_center, int y_center)
 {
     double theta[7] = { 0, 0.897597901025655, 1.795195802051310,
-        2.692793703076966, 3.590391604102621,
-        4.487989505128276, 5.385587406153931 };
+                           2.692793703076966, 3.590391604102621,
+                           4.487989505128276, 5.385587406153931 };
     
     int *x = malloc(sizeof(int) * 7);
     int *y = malloc(sizeof(int) * 7);
@@ -29,13 +29,10 @@ int **septagon_coordinates(int r, int center)
     coordinates[0] = x;
     coordinates[1] = y;
     
-    
-    for(int j = 0; j < 2; j++)
+    for(int i = 0; i < 7; i++)
     {
-        for(int i = 0; i < 7; i++)
-        {
-            coordinates[j][i] = coordinates[j][i] + center;
-        }
+        coordinates[0][i] = coordinates[0][i] + x_center;
+        coordinates[1][i] = coordinates[1][i] + y_center;
     }
     
     return coordinates;
