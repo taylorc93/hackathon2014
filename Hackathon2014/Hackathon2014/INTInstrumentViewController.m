@@ -101,8 +101,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:note.midiNum],
                                                 [NSNumber numberWithInteger:250], nil];
     
-    NSString *receiver = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
-    [PdBase sendList:data toReceiver:receiver];
+//    NSString *duration = [NSString stringWithFormat:@"%d-duration", self.dollarZero];
+//    NSString *playnote = [NSString stringWithFormat:@"%d-makenote", self.dollarZero];
+//    
+//    [PdBase sendFloat:500 toReceiver:duration];
+//    [PdBase sendFloat:note.midiNum toReceiver:playnote];
+    
+    [PdBase sendBangToReceiver:@"test"];
 }
 
 - (IBAction)incrementNote:(id)sender

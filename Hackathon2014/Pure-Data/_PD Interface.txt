@@ -17,6 +17,10 @@ Meaning: Turn the chorus module on or off by sending a 1 or 0 to $0-chorus_on
 
 list{ float float float } signifies a list to be sent to the receiver
 
+TEST:
+
+	[$0-test] bang (Plays Middle C)
+
 ///////////////////////////////////////////////////////////////////////////////
 
 
