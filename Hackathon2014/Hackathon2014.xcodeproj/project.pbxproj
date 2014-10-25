@@ -15,9 +15,36 @@
 		BED473BB19FAF4F1006DD472 /* Hackathon2014Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473BA19FAF4F1006DD472 /* Hackathon2014Tests.m */; };
 		BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473C819FAFBE8006DD472 /* INTInstrumentNote.m */; };
 		BED473CF19FAFD40006DD472 /* INTInstrumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */; };
-		BED473D219FB466D006DD472 /* Pure-Data in Resources */ = {isa = PBXBuildFile; fileRef = BED473D119FB466D006DD472 /* Pure-Data */; };
 		E3BC1ACB1A88471588F2A91B /* libPods-Hackathon2014.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */; };
 		FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */ = {isa = PBXBuildFile; fileRef = FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */; };
+		FAFB878919FB4FA800A54A83 /* _PD Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = FAFB876D19FB4FA800A54A83 /* _PD Interface.txt */; };
+		FAFB878A19FB4FA800A54A83 /* adsr~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB876E19FB4FA800A54A83 /* adsr~.pd */; };
+		FAFB878B19FB4FA800A54A83 /* chorus~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB876F19FB4FA800A54A83 /* chorus~.pd */; };
+		FAFB878C19FB4FA800A54A83 /* eq~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877019FB4FA800A54A83 /* eq~.pd */; };
+		FAFB878D19FB4FA800A54A83 /* gain~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877119FB4FA800A54A83 /* gain~.pd */; };
+		FAFB878E19FB4FA800A54A83 /* gate2.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877219FB4FA800A54A83 /* gate2.pd */; };
+		FAFB878F19FB4FA800A54A83 /* ggate.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877319FB4FA800A54A83 /* ggate.pd */; };
+		FAFB879019FB4FA800A54A83 /* ggate~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877419FB4FA800A54A83 /* ggate~.pd */; };
+		FAFB879119FB4FA800A54A83 /* gswitch.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877519FB4FA800A54A83 /* gswitch.pd */; };
+		FAFB879219FB4FA800A54A83 /* gswitch~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877619FB4FA800A54A83 /* gswitch~.pd */; };
+		FAFB879319FB4FA800A54A83 /* iterator.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877719FB4FA800A54A83 /* iterator.pd */; };
+		FAFB879419FB4FA800A54A83 /* Main.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877819FB4FA800A54A83 /* Main.pd */; };
+		FAFB879519FB4FA800A54A83 /* multitremolo~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877919FB4FA800A54A83 /* multitremolo~.pd */; };
+		FAFB879619FB4FA800A54A83 /* normalize~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877A19FB4FA800A54A83 /* normalize~.pd */; };
+		FAFB879719FB4FA800A54A83 /* noteflush.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877B19FB4FA800A54A83 /* noteflush.pd */; };
+		FAFB879819FB4FA800A54A83 /* number.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877C19FB4FA800A54A83 /* number.pd */; };
+		FAFB879919FB4FA800A54A83 /* panner~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877D19FB4FA800A54A83 /* panner~.pd */; };
+		FAFB879A19FB4FA800A54A83 /* piano.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877E19FB4FA800A54A83 /* piano.pd */; };
+		FAFB879B19FB4FA800A54A83 /* remove_dc_offset~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB877F19FB4FA800A54A83 /* remove_dc_offset~.pd */; };
+		FAFB879C19FB4FA800A54A83 /* ringmod~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB878019FB4FA800A54A83 /* ringmod~.pd */; };
+		FAFB879D19FB4FA800A54A83 /* synth~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB878119FB4FA800A54A83 /* synth~.pd */; };
+		FAFB879E19FB4FA800A54A83 /* toint.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB878219FB4FA800A54A83 /* toint.pd */; };
+		FAFB879F19FB4FA800A54A83 /* transistor~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB878319FB4FA800A54A83 /* transistor~.pd */; };
+		FAFB87A019FB4FA800A54A83 /* UZI.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB878419FB4FA800A54A83 /* UZI.pd */; };
+		FAFB87A119FB4FA800A54A83 /* view~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB878519FB4FA800A54A83 /* view~.pd */; };
+		FAFB87A219FB4FA800A54A83 /* voice~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB878619FB4FA800A54A83 /* voice~.pd */; };
+		FAFB87A319FB4FA800A54A83 /* volume~-help.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB878719FB4FA800A54A83 /* volume~-help.pd */; };
+		FAFB87A419FB4FA800A54A83 /* volume~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FAFB878819FB4FA800A54A83 /* volume~.pd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +76,35 @@
 		BED473CD19FAFD40006DD472 /* INTInstrumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTInstrumentViewController.h; sourceTree = "<group>"; };
 		BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTInstrumentViewController.m; sourceTree = "<group>"; };
 		BED473D019FB3968006DD472 /* septagon_coordinates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = septagon_coordinates.h; sourceTree = "<group>"; };
-		BED473D119FB466D006DD472 /* Pure-Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Pure-Data"; sourceTree = "<group>"; };
 		FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = septagon_coordinates.c; sourceTree = "<group>"; };
+		FAFB876D19FB4FA800A54A83 /* _PD Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "_PD Interface.txt"; sourceTree = "<group>"; };
+		FAFB876E19FB4FA800A54A83 /* adsr~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "adsr~.pd"; sourceTree = "<group>"; };
+		FAFB876F19FB4FA800A54A83 /* chorus~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "chorus~.pd"; sourceTree = "<group>"; };
+		FAFB877019FB4FA800A54A83 /* eq~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "eq~.pd"; sourceTree = "<group>"; };
+		FAFB877119FB4FA800A54A83 /* gain~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gain~.pd"; sourceTree = "<group>"; };
+		FAFB877219FB4FA800A54A83 /* gate2.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gate2.pd; sourceTree = "<group>"; };
+		FAFB877319FB4FA800A54A83 /* ggate.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ggate.pd; sourceTree = "<group>"; };
+		FAFB877419FB4FA800A54A83 /* ggate~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ggate~.pd"; sourceTree = "<group>"; };
+		FAFB877519FB4FA800A54A83 /* gswitch.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gswitch.pd; sourceTree = "<group>"; };
+		FAFB877619FB4FA800A54A83 /* gswitch~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gswitch~.pd"; sourceTree = "<group>"; };
+		FAFB877719FB4FA800A54A83 /* iterator.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iterator.pd; sourceTree = "<group>"; };
+		FAFB877819FB4FA800A54A83 /* Main.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Main.pd; sourceTree = "<group>"; };
+		FAFB877919FB4FA800A54A83 /* multitremolo~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "multitremolo~.pd"; sourceTree = "<group>"; };
+		FAFB877A19FB4FA800A54A83 /* normalize~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "normalize~.pd"; sourceTree = "<group>"; };
+		FAFB877B19FB4FA800A54A83 /* noteflush.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = noteflush.pd; sourceTree = "<group>"; };
+		FAFB877C19FB4FA800A54A83 /* number.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = number.pd; sourceTree = "<group>"; };
+		FAFB877D19FB4FA800A54A83 /* panner~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "panner~.pd"; sourceTree = "<group>"; };
+		FAFB877E19FB4FA800A54A83 /* piano.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = piano.pd; sourceTree = "<group>"; };
+		FAFB877F19FB4FA800A54A83 /* remove_dc_offset~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "remove_dc_offset~.pd"; sourceTree = "<group>"; };
+		FAFB878019FB4FA800A54A83 /* ringmod~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ringmod~.pd"; sourceTree = "<group>"; };
+		FAFB878119FB4FA800A54A83 /* synth~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "synth~.pd"; sourceTree = "<group>"; };
+		FAFB878219FB4FA800A54A83 /* toint.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = toint.pd; sourceTree = "<group>"; };
+		FAFB878319FB4FA800A54A83 /* transistor~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "transistor~.pd"; sourceTree = "<group>"; };
+		FAFB878419FB4FA800A54A83 /* UZI.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UZI.pd; sourceTree = "<group>"; };
+		FAFB878519FB4FA800A54A83 /* view~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "view~.pd"; sourceTree = "<group>"; };
+		FAFB878619FB4FA800A54A83 /* voice~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "voice~.pd"; sourceTree = "<group>"; };
+		FAFB878719FB4FA800A54A83 /* volume~-help.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "volume~-help.pd"; sourceTree = "<group>"; };
+		FAFB878819FB4FA800A54A83 /* volume~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "volume~.pd"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +157,7 @@
 		BED4739D19FAF4F0006DD472 /* Hackathon2014 */ = {
 			isa = PBXGroup;
 			children = (
-				BED473D119FB466D006DD472 /* Pure-Data */,
+				FAFB876C19FB4FA800A54A83 /* Pure-Data */,
 				BED473C419FAFBBA006DD472 /* Controllers */,
 				BED473C619FAFBCD006DD472 /* Views */,
 				BED473A219FAF4F0006DD472 /* AppDelegate.h */,
@@ -161,6 +215,41 @@
 			);
 			name = Views;
 			sourceTree = "<group>";
+		};
+		FAFB876C19FB4FA800A54A83 /* Pure-Data */ = {
+			isa = PBXGroup;
+			children = (
+				FAFB876D19FB4FA800A54A83 /* _PD Interface.txt */,
+				FAFB876E19FB4FA800A54A83 /* adsr~.pd */,
+				FAFB876F19FB4FA800A54A83 /* chorus~.pd */,
+				FAFB877019FB4FA800A54A83 /* eq~.pd */,
+				FAFB877119FB4FA800A54A83 /* gain~.pd */,
+				FAFB877219FB4FA800A54A83 /* gate2.pd */,
+				FAFB877319FB4FA800A54A83 /* ggate.pd */,
+				FAFB877419FB4FA800A54A83 /* ggate~.pd */,
+				FAFB877519FB4FA800A54A83 /* gswitch.pd */,
+				FAFB877619FB4FA800A54A83 /* gswitch~.pd */,
+				FAFB877719FB4FA800A54A83 /* iterator.pd */,
+				FAFB877819FB4FA800A54A83 /* Main.pd */,
+				FAFB877919FB4FA800A54A83 /* multitremolo~.pd */,
+				FAFB877A19FB4FA800A54A83 /* normalize~.pd */,
+				FAFB877B19FB4FA800A54A83 /* noteflush.pd */,
+				FAFB877C19FB4FA800A54A83 /* number.pd */,
+				FAFB877D19FB4FA800A54A83 /* panner~.pd */,
+				FAFB877E19FB4FA800A54A83 /* piano.pd */,
+				FAFB877F19FB4FA800A54A83 /* remove_dc_offset~.pd */,
+				FAFB878019FB4FA800A54A83 /* ringmod~.pd */,
+				FAFB878119FB4FA800A54A83 /* synth~.pd */,
+				FAFB878219FB4FA800A54A83 /* toint.pd */,
+				FAFB878319FB4FA800A54A83 /* transistor~.pd */,
+				FAFB878419FB4FA800A54A83 /* UZI.pd */,
+				FAFB878519FB4FA800A54A83 /* view~.pd */,
+				FAFB878619FB4FA800A54A83 /* voice~.pd */,
+				FAFB878719FB4FA800A54A83 /* volume~-help.pd */,
+				FAFB878819FB4FA800A54A83 /* volume~.pd */,
+			);
+			path = "Pure-Data";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -244,10 +333,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BED473D219FB466D006DD472 /* Pure-Data in Resources */,
+				FAFB879819FB4FA800A54A83 /* number.pd in Resources */,
+				FAFB879419FB4FA800A54A83 /* Main.pd in Resources */,
+				FAFB879B19FB4FA800A54A83 /* remove_dc_offset~.pd in Resources */,
+				FAFB87A419FB4FA800A54A83 /* volume~.pd in Resources */,
+				FAFB879219FB4FA800A54A83 /* gswitch~.pd in Resources */,
+				FAFB879719FB4FA800A54A83 /* noteflush.pd in Resources */,
+				FAFB879319FB4FA800A54A83 /* iterator.pd in Resources */,
+				FAFB87A219FB4FA800A54A83 /* voice~.pd in Resources */,
+				FAFB878F19FB4FA800A54A83 /* ggate.pd in Resources */,
+				FAFB879D19FB4FA800A54A83 /* synth~.pd in Resources */,
+				FAFB879A19FB4FA800A54A83 /* piano.pd in Resources */,
+				FAFB878A19FB4FA800A54A83 /* adsr~.pd in Resources */,
 				BED473AA19FAF4F0006DD472 /* Main.storyboard in Resources */,
+				FAFB879F19FB4FA800A54A83 /* transistor~.pd in Resources */,
+				FAFB87A319FB4FA800A54A83 /* volume~-help.pd in Resources */,
+				FAFB879019FB4FA800A54A83 /* ggate~.pd in Resources */,
+				FAFB879C19FB4FA800A54A83 /* ringmod~.pd in Resources */,
+				FAFB878E19FB4FA800A54A83 /* gate2.pd in Resources */,
+				FAFB879919FB4FA800A54A83 /* panner~.pd in Resources */,
+				FAFB879619FB4FA800A54A83 /* normalize~.pd in Resources */,
+				FAFB879119FB4FA800A54A83 /* gswitch.pd in Resources */,
 				BED473AF19FAF4F0006DD472 /* LaunchScreen.xib in Resources */,
 				BED473AC19FAF4F0006DD472 /* Images.xcassets in Resources */,
+				FAFB878C19FB4FA800A54A83 /* eq~.pd in Resources */,
+				FAFB879E19FB4FA800A54A83 /* toint.pd in Resources */,
+				FAFB878B19FB4FA800A54A83 /* chorus~.pd in Resources */,
+				FAFB87A119FB4FA800A54A83 /* view~.pd in Resources */,
+				FAFB879519FB4FA800A54A83 /* multitremolo~.pd in Resources */,
+				FAFB878919FB4FA800A54A83 /* _PD Interface.txt in Resources */,
+				FAFB87A019FB4FA800A54A83 /* UZI.pd in Resources */,
+				FAFB878D19FB4FA800A54A83 /* gain~.pd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,8 +24,7 @@ MIDI:
 
 Create Note with Fixed Duration: 
 
-	[$0-duration] float (Time in Miliseconds)
-	[$0-makenote] float (Note Value)
+	[$0-makenote] list{ float float } (Note Value, Duration in ms)
 
 Manually Trigger / Turn off a note:
 
