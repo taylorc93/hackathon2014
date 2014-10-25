@@ -1,9 +1,9 @@
-Wavely - Pure Data Interface
+Pure Data Interface
 
-Main patch: Wavely.pd
+Main patch: Main.pd
 
 Master List of Receivers
-Last Updated 10/15/14
+Last Updated 10/24/14
 
 Formula for scaling slider values (if sliders go from .1 to 1):
 
@@ -24,9 +24,8 @@ MIDI:
 
 Create Note with Fixed Duration: 
 
-	[$0-makenote] list{ float float float } (Note Value, Duration)
+	[$0-makenote] list{ float float } (Note Value, Duration)
 
-	Note Value, Velocity should be integers from 0 to 127.
 	Duration is time in ms.
 
 Manually Trigger / Turn off a note:
@@ -142,8 +141,21 @@ TREMOLO:
 
 EQ: 
 
-	[$0-eq_on]   1 / 0 (On / Off)
-	[$0-eq_hp]	 list{ float float } ()
+	[$0-eq_on]  1 / 0 (On / Off)
+	[$0-eq_hp]	list{ float float } ( 1/0 (On/Off), Cutoff Freq (Hz))
+	[$0-eq_bp1]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp2]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp3]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp4]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp5]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp6]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp7]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+	[$0-eq_bp8]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
+
+	The EQ Plugin offers 8 Bandpass Filters, a Highpass, and a Lowpass.
+	Each plugin receives a list containing an on/off bit, the main frequency,
+	and (if applicable) the Q factor.  
+	The Q factor relates to the slope of the filter's attenuation.
 
 
 
