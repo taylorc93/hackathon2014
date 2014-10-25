@@ -15,6 +15,7 @@
 		BED473BB19FAF4F1006DD472 /* Hackathon2014Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473BA19FAF4F1006DD472 /* Hackathon2014Tests.m */; };
 		BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473C819FAFBE8006DD472 /* INTInstrumentNote.m */; };
 		BED473CF19FAFD40006DD472 /* INTInstrumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */; };
+		BED4740E19FB704F006DD472 /* INTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED4740D19FB704F006DD472 /* INTRootViewController.m */; };
 		E3BC1ACB1A88471588F2A91B /* libPods-Hackathon2014.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */; };
 		FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */ = {isa = PBXBuildFile; fileRef = FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */; };
 		FAFB878919FB4FA800A54A83 /* _PD Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = FAFB876D19FB4FA800A54A83 /* _PD Interface.txt */; };
@@ -76,6 +77,8 @@
 		BED473CD19FAFD40006DD472 /* INTInstrumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTInstrumentViewController.h; sourceTree = "<group>"; };
 		BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTInstrumentViewController.m; sourceTree = "<group>"; };
 		BED473D019FB3968006DD472 /* septagon_coordinates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = septagon_coordinates.h; sourceTree = "<group>"; };
+		BED4740C19FB704F006DD472 /* INTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTRootViewController.h; sourceTree = "<group>"; };
+		BED4740D19FB704F006DD472 /* INTRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTRootViewController.m; sourceTree = "<group>"; };
 		FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = septagon_coordinates.c; sourceTree = "<group>"; };
 		FAFB876D19FB4FA800A54A83 /* _PD Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "_PD Interface.txt"; sourceTree = "<group>"; };
 		FAFB876E19FB4FA800A54A83 /* adsr~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "adsr~.pd"; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 			children = (
 				BED473CD19FAFD40006DD472 /* INTInstrumentViewController.h */,
 				BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */,
+				BED4740C19FB704F006DD472 /* INTRootViewController.h */,
+				BED4740D19FB704F006DD472 /* INTRootViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BED4740E19FB704F006DD472 /* INTRootViewController.m in Sources */,
 				BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */,
 				BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */,
 				FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */,

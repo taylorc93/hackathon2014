@@ -4,10 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Instrument View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="INTInstrumentViewController" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewController id="BYZ-38-t0r" customClass="INTRootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,63 +18,83 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Note: C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84Y-jZ-9CA">
-                                <rect key="frame" x="558" y="717" width="150" height="21"/>
+                                <rect key="frame" x="18" y="640" width="150" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGi-es-BbX">
-                                <rect key="frame" x="716" y="689" width="46" height="30"/>
+                                <rect key="frame" x="179" y="618" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.60909090369999996" green="1" blue="0.46071520160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Up">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="incrementNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U7n-mc-6aB"/>
+                                    <action selector="incrementNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4n7-GT-25u"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b44-Sn-SLe">
-                                <rect key="frame" x="716" y="727" width="46" height="30"/>
+                                <rect key="frame" x="179" y="651" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.60909090369999996" green="1" blue="0.46071520160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Down">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="decrementNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="INH-GC-86M"/>
+                                    <action selector="decrementNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iaS-ET-pDx"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Octave: 5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeA-Zs-att">
-                                <rect key="frame" x="312" y="717" width="155" height="21"/>
+                                <rect key="frame" x="16" y="557" width="155" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fr7-U8-n30">
-                                <rect key="frame" x="258" y="689" width="46" height="30"/>
+                                <rect key="frame" x="179" y="537" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.60909090369999996" green="1" blue="0.46071520160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Up">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="incrementOctave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tC8-Is-VOR"/>
+                                    <action selector="incrementOctave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l5B-3e-lFj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drL-Ly-gQS">
-                                <rect key="frame" x="258" y="727" width="46" height="30"/>
+                                <rect key="frame" x="179" y="570" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.60909090369999996" green="1" blue="0.46071520160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Down">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="decrementOctave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KU7-bL-1b5"/>
+                                    <action selector="decrementOctave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hoj-Dp-Zwy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWg-u7-uRh">
-                                <rect key="frame" x="475" y="708" width="75" height="40"/>
+                                <rect key="frame" x="91" y="715" width="75" height="40"/>
                                 <color key="backgroundColor" red="0.60909090369999996" green="1" blue="0.46071520160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add Note">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -85,11 +106,29 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="addNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dnS-94-GJI"/>
+                                    <action selector="addNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mzE-rG-oDh"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0aK-Tn-HIE">
+                                <rect key="frame" x="256" y="0.0" width="768" height="768"/>
+                                <connections>
+                                    <segue destination="Kqt-T8-Uk0" kind="embed" id="zj6-7w-L3I"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3H-BI-uxT">
+                                <rect key="frame" x="70" y="12" width="116" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuY-9h-gcX">
+                                <rect key="frame" x="23" y="41" width="210" height="481"/>
+                                <connections>
+                                    <segue destination="JhC-MU-XfF" kind="embed" id="mkt-nx-Ye4"/>
+                                </connections>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
@@ -98,8 +137,46 @@
                         <outlet property="octaveLabel" destination="NeA-Zs-att" id="jEW-h8-3at"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-298" y="152"/>
+        </scene>
+        <!--Instrument View Controller-->
+        <scene sceneID="YIs-gh-cAv">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Kqt-T8-Uk0" customClass="INTInstrumentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FDE-xO-dYq"/>
+                        <viewControllerLayoutGuide type="bottom" id="sNY-SW-VAs"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QGh-Rv-A2R">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AzY-zK-SoK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="342" y="1242"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="a80-vU-jKJ">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="JhC-MU-XfF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YYA-Dl-xpu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lgn-Sj-Sqj"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vKU-fi-xjc">
+                        <rect key="frame" x="0.0" y="0.0" width="210" height="481"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WFN-OJ-bXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-435" y="1035.5"/>
         </scene>
     </scenes>
 </document>

@@ -32,13 +32,23 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.currentNote = 0;
     self.currentOctave = 5;
     self.currentScale = @"C";
+
+    DDLogVerbose(@"Instrument View finished loading");
+}
+
+- (void)viewWillLayoutSubviews
+{
+    float width = self.view.bounds.size.width;
+    float height = self.view.bounds.size.height;
+    DDLogVerbose(@"%f %f", width, height);
+
     
     NSArray *midiNums = [self getCurrentScale];
     NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
     self.notes = [[NSMutableArray alloc] init];
     for (int i = 0; i < 3; i++){
-        int **coords = septagon_coordinates(75 * (i + 1), 512, 384);
+        int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
         for (int j = 0; j < 7; j++){
             float x = coords[0][j];
             float y = coords[1][j];
@@ -47,9 +57,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                                     noteOctave:i + 4
                                                                          color:colors[i]];
             
-            DDLogVerbose(@"%d %d", note.midiNum, note.octave);
-            note.center = CGPointMake(x, y);
-            
+            note.center = CGPointMake(x, y);            
             note.layer.cornerRadius = note.frame.size.width / 2;
             note.layer.borderColor = [UIColor blackColor].CGColor;
             note.layer.borderWidth = 2;
@@ -68,15 +76,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                                                  action:@selector(playNote:)];
         [self.notes[i] addGestureRecognizer:tapRec];
     }
-
-    DDLogVerbose(@"Instrument View finished loading");
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)addNote:(id)sender
+- (void)addNote
 {
     INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 60.0, 60.0)
                                                                noteNum:self.currentNote
@@ -111,44 +117,40 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [PdBase sendList:data toReceiver:playnote];
 }
 
-- (IBAction)incrementNote:(id)sender
+- (void)incrementNote
 {
     if (self.currentNote < 11){
         self.currentNote++;
     } else{
         self.currentNote = 0;
     }
-    
-    NSString *labelText = [NSString stringWithFormat:@"Current Note: %@", [self getNoteName:self.currentNote]];
-    self.noteLabel.text = labelText;
 }
 
-- (IBAction)decrementNote:(id)sender
+- (void)decrementNote
 {
     if (self.currentNote > 0){
         self.currentNote--;
     } else {
         self.currentNote = 11;
     }
-    
-    NSString *labelText = [NSString stringWithFormat:@"Current Note: %@", [self getNoteName:self.currentNote]];
-    self.noteLabel.text = labelText;
 }
 
-- (IBAction)incrementOctave:(id)sender
+- (BOOL)incrementOctave
 {
     if (self.currentOctave < 8){
         self.currentOctave++;
-        self.octaveLabel.text = [NSString stringWithFormat:@"Current Octave: %d", self.currentOctave];
+        return YES;
     }
+    return NO;
 }
 
-- (IBAction)decrementOctave:(id)sender
+- (BOOL)decrementOctave
 {
     if (self.currentOctave > 1){
         self.currentOctave--;
-        self.octaveLabel.text = [NSString stringWithFormat:@"Current Octave: %d", self.currentOctave];
+        return YES;
     }
+    return NO;
 }
 
 - (NSArray *)getCurrentScale
@@ -179,39 +181,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         return @[@11,@1,@3,@4,@6,@8,@10];
     } else{
         return @[];
-    }
-}
-
-- (NSString *)getNoteName:(int)noteNum
-{
-    switch (noteNum) {
-        case 0:
-            return @"C";
-        case 1:
-            return @"C#";
-        case 2:
-            return @"D";
-        case 3:
-            return @"D#";
-        case 4:
-            return @"E";
-        case 5:
-            return @"F";
-        case 6:
-            return @"F#";
-        case 7:
-            return @"G";
-        case 8:
-            return @"G#";
-        case 9:
-            return @"A";
-        case 10:
-            return @"A#";
-        case 11:
-            return @"B";
-        default:
-            DDLogInfo(@"Incompatible Midi Num");
-            return @"";
     }
 }
 
