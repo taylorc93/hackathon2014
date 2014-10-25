@@ -18,6 +18,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [super viewDidLoad];
     
     self.chorusPlaying = NO;
+    self.tremeloPlaying = NO;
     self.instrumentVC = [self childViewControllers][0];
 }
 
@@ -89,13 +90,44 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (IBAction)toggleChorus:(id)sender
 {
-    DDLogVerbose(@"toggling");
     int dollarZero = self.instrumentVC.dollarZero;
     NSString *receiver = [NSString stringWithFormat:@"%d-chorus_on", dollarZero];
     if (self.chorusPlaying){
         [PdBase sendFloat:0 toReceiver:receiver];
+        self.chorusPlaying = NO;
     } else {
         [PdBase sendFloat:1 toReceiver:receiver];
+        self.chorusPlaying = YES;
+    }
+}
+
+- (IBAction)changeTremoloRate:(UISlider *)sender
+{
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-tremolo_rate", dollarZero];
+    
+    float value = sender.value;
+    [PdBase sendFloat:value toReceiver:receiver];}
+
+- (IBAction)changeTremoloDepth:(UISlider *)sender
+{
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-tremolo_depth", dollarZero];
+    
+    float value = sender.value;
+    [PdBase sendFloat:value toReceiver:receiver];
+}
+
+- (IBAction)toggleTremolo:(id)sender
+{
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-tremolo_on", dollarZero];
+    if (self.tremeloPlaying){
+        [PdBase sendFloat:0 toReceiver:receiver];
+        self.tremeloPlaying = NO;
+    } else {
+        [PdBase sendFloat:1 toReceiver:receiver];
+        self.tremeloPlaying = YES;
     }
 }
 
