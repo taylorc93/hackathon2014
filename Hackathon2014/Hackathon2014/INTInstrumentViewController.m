@@ -34,6 +34,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.dollarZero = [PdBase dollarZeroForFile:patch];
     self.currentNote = 0;
     self.currentOctave = 5;
+    self.currentNoteIndex = -1;
     self.currentScale = @"C";
     self.notes = [[NSMutableArray alloc] init];
     self.playingNotes = [[NSMutableArray alloc] init];
@@ -125,9 +126,20 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [self.notes addObject:note];
 }
 
+- (void)deleteNote
+{
+    if (self.currentNoteIndex != -1){
+        INTInstrumentNote * note = [self.notes objectAtIndex:self.currentNoteIndex];
+        [self.notes removeObjectAtIndex:self.currentNoteIndex];
+        [note removeFromSuperview];
+        self.currentNoteIndex = -1;
+    }
+}
+
 - (void)playNote:(INTInstrumentNote *)note
 {
     if (self.editFlag){
+        self.currentNoteIndex = [self.notes indexOfObject:note];
         self.currentNote = note.midiNum;
         self.currentOctave = note.octave;
         [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
@@ -154,6 +166,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)killNote:(INTInstrumentNote *)note
 {
     if (self.editFlag){
+        self.currentNoteIndex = [self.notes indexOfObject:note];
         self.currentNote = note.midiNum;
         self.currentOctave = note.octave;
         [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
@@ -214,7 +227,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     DDLogVerbose(@"Cancelled");
-    DDLogVerbose(@"%@", self.playingNotes);
     
     for (int i = 0; i < [self.playingNotes count]; i++){
         [self killNote:(INTInstrumentNote *)self.playingNotes[i]];
@@ -356,12 +368,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
 }
 
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-}
+//
+//#pragma mark - Navigation
+//
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    
+//}
 
 
 @end

@@ -19,11 +19,19 @@
     self.waveNum = 8;
 }
 
+- (IBAction)addNote:(id)sender
+{
+    [self.instrumentVC addNote];
+}
+
+- (IBAction)deleteNote:(id)sender
+{
+    [self.instrumentVC deleteNote];
+}
+
 - (IBAction)incrementOctave:(id)sender
 {
-    NSLog(@"OK");
     if([self.instrumentVC incrementOctave]){
-        NSLog(@"OK");
         NSString *octaveText = [NSString stringWithFormat:@"Octave: %d", self.instrumentVC.currentOctave];
         self.octaveLabel.text = octaveText;
     }

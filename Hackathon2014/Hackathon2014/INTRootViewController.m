@@ -23,11 +23,6 @@
     self.settingsVC.instrumentVC = self.instrumentVC;
 }
 
-- (IBAction)addNote:(id)sender
-{
-    [self.instrumentVC addNote];
-}
-
 - (IBAction)toggleEditMode:(id)sender
 {
     self.editFlag = 1;
