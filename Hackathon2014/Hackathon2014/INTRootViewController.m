@@ -18,20 +18,21 @@
     self.chorusPlaying = NO;
     self.tremeloPlaying = NO;
     self.waveNum = 8;
+    self.editFlag = 0;
     self.instrumentVC = [self childViewControllers][0];
     self.settingsVC = [self childViewControllers][1];
     self.settingsVC.instrumentVC = self.instrumentVC;
 }
 
-- (IBAction)toggleEditMode:(id)sender
+- (IBAction)toggleMode:(id)sender
 {
-    self.editFlag = 1;
-    [self.instrumentVC updateEditFlag:self.editFlag];
-}
-
-- (IBAction)togglePlayMode:(id)sender
-{
-    self.editFlag = 0;
+    if (self.editFlag){
+        self.editFlag = 0;
+        [self.modeButton setTitle:@"Edit" forState:UIControlStateNormal];
+    } else {
+        self.editFlag = 1;
+        [self.modeButton setTitle:@"Play" forState:UIControlStateNormal];
+    }
     [self.instrumentVC updateEditFlag:self.editFlag];
 }
 
@@ -59,9 +60,12 @@
     if (self.chorusPlaying){
         [PdBase sendFloat:0 toReceiver:receiver];
         self.chorusPlaying = NO;
+        [self.chorusButton setTitle:@"Turn On" forState:UIControlStateNormal];
+
     } else {
         [PdBase sendFloat:1 toReceiver:receiver];
         self.chorusPlaying = YES;
+        [self.chorusButton setTitle:@"Turn Off" forState:UIControlStateNormal];
     }
 }
 
@@ -89,9 +93,11 @@
     if (self.tremeloPlaying){
         [PdBase sendFloat:0 toReceiver:receiver];
         self.tremeloPlaying = NO;
+        [self.tremoloButton setTitle:@"Turn On" forState:UIControlStateNormal];
     } else {
         [PdBase sendFloat:1 toReceiver:receiver];
         self.tremeloPlaying = YES;
+        [self.tremoloButton setTitle:@"Turn Off" forState:UIControlStateNormal];
     }
 }
 

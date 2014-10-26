@@ -12,12 +12,12 @@
 
 @interface INTRootViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UILabel *noteLabel;
-@property (nonatomic, strong) IBOutlet UILabel *octaveLabel;
-@property (nonatomic, strong) IBOutlet UILabel *waveLabel;
-
 @property (nonatomic, strong) INTInstrumentViewController *instrumentVC;
 @property (nonatomic, strong) INTSettingsViewController *settingsVC;
+@property (nonatomic, strong) IBOutlet UIButton *modeButton;
+@property (nonatomic, strong) IBOutlet UIButton *chorusButton;
+@property (nonatomic, strong) IBOutlet UIButton *tremoloButton;
+
 @property int editFlag; //set to 1 when in edit mode
 @property BOOL chorusPlaying;
 @property BOOL tremeloPlaying;
