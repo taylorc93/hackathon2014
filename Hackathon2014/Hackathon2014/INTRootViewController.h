@@ -9,19 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "INTInstrumentViewController.h"
 #import "INTSettingsViewController.h"
+#import "INTEffectsViewController.h"
 
 @interface INTRootViewController : UIViewController
 
 @property (nonatomic, strong) INTInstrumentViewController *instrumentVC;
 @property (nonatomic, strong) INTSettingsViewController *settingsVC;
-@property (nonatomic, strong) IBOutlet UIButton *modeButton;
-@property (nonatomic, strong) IBOutlet UIButton *chorusButton;
-@property (nonatomic, strong) IBOutlet UIButton *tremoloButton;
+@property (nonatomic, strong) INTEffectsViewController * effectsVC;
 
+@property (nonatomic, strong) IBOutlet UIButton *modeButton;
 @property int editFlag; //set to 1 when in edit mode
-@property BOOL chorusPlaying;
-@property BOOL tremeloPlaying;
-@property int waveNum;
 
 - (void)setLabelsNeedUpdate;
 
