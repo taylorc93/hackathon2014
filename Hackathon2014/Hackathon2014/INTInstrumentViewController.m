@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Intrinsic Audio. All rights reserved.
 //
 
-#import "INTInstrumentViewController.h"
 #import "INTRootViewController.h"
+#import "INTInstrumentViewController.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "PdBase.h"
 #include "septagon_coordinates.h"
@@ -66,7 +66,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         for (int j = 0; j < 7; j++){
             float x = coords[0][j];
             float y = coords[1][j];
-            INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 70.0, 70.0)
+            INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 65.0, 65.0)
                                                                        noteNum:[midiNums[j] integerValue]
                                                                     noteOctave:i + 4
                                                                          color:colors[i]];
@@ -107,7 +107,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)addNote
 {
-    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 70.0, 70.0)
+    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 65.0, 65.0)
                                                                noteNum:self.currentNote
                                                             noteOctave:self.currentOctave
                                                                  color:[UIColor greenColor]];
@@ -211,6 +211,21 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
 }
 
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    DDLogVerbose(@"Cancelled");
+    DDLogVerbose(@"%@", self.playingNotes);
+    
+    for (int i = 0; i < [self.playingNotes count]; i++){
+        [self killNote:(INTInstrumentNote *)self.playingNotes[i]];
+    }
+    
+    int dollarZero = self.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-flush", dollarZero];
+    
+    [PdBase sendBangToReceiver:receiver];
+}
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     DDLogVerbose(@"ended");
@@ -258,6 +273,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         return YES;
     }
     return NO;
+}
+
+- (IBAction)toggleMode:(id)sender
+{
+    if (self.editFlag){
+        self.editFlag = 0;
+    }
 }
 
 - (NSArray *)getCurrentScale
@@ -334,14 +356,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+
 
 @end

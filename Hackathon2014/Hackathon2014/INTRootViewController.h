@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "INTInstrumentViewController.h"
+#import "INTSettingsViewController.h"
 
 @interface INTRootViewController : UIViewController
 
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *waveLabel;
 
 @property (nonatomic, strong) INTInstrumentViewController *instrumentVC;
+@property (nonatomic, strong) INTSettingsViewController *settingsVC;
 @property int editFlag; //set to 1 when in edit mode
 @property BOOL chorusPlaying;
 @property BOOL tremeloPlaying;

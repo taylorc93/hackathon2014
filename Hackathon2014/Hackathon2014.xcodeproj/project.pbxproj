@@ -16,6 +16,8 @@
 		BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473C819FAFBE8006DD472 /* INTInstrumentNote.m */; };
 		BED473CF19FAFD40006DD472 /* INTInstrumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */; };
 		BED4740E19FB704F006DD472 /* INTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED4740D19FB704F006DD472 /* INTRootViewController.m */; };
+		BED4741419FC743A006DD472 /* INTEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED4741319FC743A006DD472 /* INTEffectsViewController.m */; };
+		BED4741A19FD6A5D006DD472 /* INTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED4741919FD6A5D006DD472 /* INTSettingsViewController.m */; };
 		E3BC1ACB1A88471588F2A91B /* libPods-Hackathon2014.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */; };
 		FA4D11D419FBFD050054B30A /* _PD Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA4D11B619FBFD050054B30A /* _PD Interface.txt */; };
 		FA4D11D519FBFD050054B30A /* _Wave_Types.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4D11B719FBFD050054B30A /* _Wave_Types.png */; };
@@ -81,6 +83,10 @@
 		BED473D019FB3968006DD472 /* septagon_coordinates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = septagon_coordinates.h; sourceTree = "<group>"; };
 		BED4740C19FB704F006DD472 /* INTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTRootViewController.h; sourceTree = "<group>"; };
 		BED4740D19FB704F006DD472 /* INTRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTRootViewController.m; sourceTree = "<group>"; };
+		BED4741219FC743A006DD472 /* INTEffectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTEffectsViewController.h; sourceTree = "<group>"; };
+		BED4741319FC743A006DD472 /* INTEffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTEffectsViewController.m; sourceTree = "<group>"; };
+		BED4741819FD6A5D006DD472 /* INTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTSettingsViewController.h; sourceTree = "<group>"; };
+		BED4741919FD6A5D006DD472 /* INTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTSettingsViewController.m; sourceTree = "<group>"; };
 		FA4D11B619FBFD050054B30A /* _PD Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "_PD Interface.txt"; sourceTree = "<group>"; };
 		FA4D11B719FBFD050054B30A /* _Wave_Types.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _Wave_Types.png; sourceTree = "<group>"; };
 		FA4D11B819FBFD050054B30A /* adsr~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "adsr~.pd"; sourceTree = "<group>"; };
@@ -210,8 +216,12 @@
 			children = (
 				BED473CD19FAFD40006DD472 /* INTInstrumentViewController.h */,
 				BED473CE19FAFD40006DD472 /* INTInstrumentViewController.m */,
+				BED4741219FC743A006DD472 /* INTEffectsViewController.h */,
+				BED4741319FC743A006DD472 /* INTEffectsViewController.m */,
 				BED4740C19FB704F006DD472 /* INTRootViewController.h */,
 				BED4740D19FB704F006DD472 /* INTRootViewController.m */,
+				BED4741819FD6A5D006DD472 /* INTSettingsViewController.h */,
+				BED4741919FD6A5D006DD472 /* INTSettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -430,11 +440,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BED4740E19FB704F006DD472 /* INTRootViewController.m in Sources */,
+				BED4741A19FD6A5D006DD472 /* INTSettingsViewController.m in Sources */,
 				BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */,
 				BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */,
 				FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */,
 				BED473A119FAF4F0006DD472 /* main.m in Sources */,
 				BED473CF19FAFD40006DD472 /* INTInstrumentViewController.m in Sources */,
+				BED4741419FC743A006DD472 /* INTEffectsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
