@@ -100,28 +100,6 @@
     }
 }
 
-- (IBAction)incrementWave:(id)sender
-{
-    if (self.waveNum < 16){
-        self.waveNum++;
-    }
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"%d-wave", dollarZero];
-    [PdBase sendFloat:self.waveNum toReceiver:receiver];
-    self.waveLabel.text = [NSString stringWithFormat:@"Current Wave: %d", self.waveNum];
-}
-
-- (IBAction)decrementWave:(id)sender
-{
-    if (self.waveNum > 0){
-        self.waveNum--;
-    }
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"%d-wave", dollarZero];
-    [PdBase sendFloat:self.waveNum toReceiver:receiver];
-    self.waveLabel.text = [NSString stringWithFormat:@"Current Wave: %d", self.waveNum];
-}
-
 - (void)setLabelsNeedUpdate
 {
     [self.settingsVC updateLabels];

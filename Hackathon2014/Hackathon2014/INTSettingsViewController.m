@@ -8,8 +8,16 @@
 
 #import "INTSettingsViewController.h"
 #import "INTRootViewController.h"
+#import "PdBase.h"
 
 @implementation INTSettingsViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.waveNum = 8;
+}
 
 - (IBAction)incrementOctave:(id)sender
 {
@@ -44,6 +52,28 @@
     NSString *noteName = [self getNoteName:self.instrumentVC.currentNote];
     NSString *noteText = [NSString stringWithFormat:@"Note: %@", noteName];
     self.noteLabel.text = noteText;
+}
+
+- (IBAction)incrementWave:(id)sender
+{
+    if (self.waveNum < 16){
+        self.waveNum++;
+    }
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-wave", dollarZero];
+    [PdBase sendFloat:self.waveNum toReceiver:receiver];
+    self.waveLabel.text = [NSString stringWithFormat:@"Wave: %d", self.waveNum];
+}
+
+- (IBAction)decrementWave:(id)sender
+{
+    if (self.waveNum > 0){
+        self.waveNum--;
+    }
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-wave", dollarZero];
+    [PdBase sendFloat:self.waveNum toReceiver:receiver];
+    self.waveLabel.text = [NSString stringWithFormat:@"Wave: %d", self.waveNum];
 }
 
 - (void)updateLabels

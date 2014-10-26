@@ -16,6 +16,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *waveLabel;
 
 @property (nonatomic, weak) INTInstrumentViewController *instrumentVC;
+@property int waveNum;
 
 - (void)updateLabels;
 

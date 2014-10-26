@@ -19,7 +19,6 @@
 		BED4741419FC743A006DD472 /* INTEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED4741319FC743A006DD472 /* INTEffectsViewController.m */; };
 		BED4741A19FD6A5D006DD472 /* INTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED4741919FD6A5D006DD472 /* INTSettingsViewController.m */; };
 		E3BC1ACB1A88471588F2A91B /* libPods-Hackathon2014.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */; };
-		FA4D11D419FBFD050054B30A /* _PD Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA4D11B619FBFD050054B30A /* _PD Interface.txt */; };
 		FA4D11D519FBFD050054B30A /* _Wave_Types.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4D11B719FBFD050054B30A /* _Wave_Types.png */; };
 		FA4D11D619FBFD050054B30A /* adsr~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FA4D11B819FBFD050054B30A /* adsr~.pd */; };
 		FA4D11D719FBFD050054B30A /* backup.pd in Resources */ = {isa = PBXBuildFile; fileRef = FA4D11B919FBFD050054B30A /* backup.pd */; };
@@ -87,7 +86,6 @@
 		BED4741319FC743A006DD472 /* INTEffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTEffectsViewController.m; sourceTree = "<group>"; };
 		BED4741819FD6A5D006DD472 /* INTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTSettingsViewController.h; sourceTree = "<group>"; };
 		BED4741919FD6A5D006DD472 /* INTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTSettingsViewController.m; sourceTree = "<group>"; };
-		FA4D11B619FBFD050054B30A /* _PD Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "_PD Interface.txt"; sourceTree = "<group>"; };
 		FA4D11B719FBFD050054B30A /* _Wave_Types.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _Wave_Types.png; sourceTree = "<group>"; };
 		FA4D11B819FBFD050054B30A /* adsr~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "adsr~.pd"; sourceTree = "<group>"; };
 		FA4D11B919FBFD050054B30A /* backup.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = backup.pd; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 		FA4D11B519FBFD050054B30A /* Pure-Data */ = {
 			isa = PBXGroup;
 			children = (
-				FA4D11B619FBFD050054B30A /* _PD Interface.txt */,
 				FA4D11B719FBFD050054B30A /* _Wave_Types.png */,
 				FA4D11B819FBFD050054B30A /* adsr~.pd */,
 				FA4D11B919FBFD050054B30A /* backup.pd */,
@@ -388,7 +385,6 @@
 				FA4D11D819FBFD050054B30A /* chorus~.pd in Resources */,
 				FA4D11F019FBFD050054B30A /* volume~-help.pd in Resources */,
 				FA4D11E319FBFD050054B30A /* normalize~.pd in Resources */,
-				FA4D11D419FBFD050054B30A /* _PD Interface.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
