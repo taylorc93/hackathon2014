@@ -4,7 +4,7 @@
 #X obj 41 -66 inlet~;
 #X obj 45 160 outlet~;
 #X obj 251 -74 inlet;
-#X obj 251 -48 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 251 -48 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 93 22 +~ 1;
 #X obj 93 43 /~ 2;
