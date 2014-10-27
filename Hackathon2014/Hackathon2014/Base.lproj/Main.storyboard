@@ -452,9 +452,15 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1000" minValue="0.0" maxValue="2000" translatesAutoresizingMaskIntoConstraints="NO" id="hdF-3K-bMX">
                                 <rect key="frame" x="121" y="310" width="118" height="31"/>
+                                <connections>
+                                    <action selector="changeRingModRate:" destination="sJD-RU-kg8" eventType="valueChanged" id="YJJ-i7-cOZ"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hzh-ze-vNS">
                                 <rect key="frame" x="121" y="348" width="118" height="31"/>
+                                <connections>
+                                    <action selector="changeRingModDepth:" destination="sJD-RU-kg8" eventType="valueChanged" id="dka-Ci-msB"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ring Mod" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7k-CP-tRm">
                                 <rect key="frame" x="22" y="271" width="107" height="30"/>
@@ -474,6 +480,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleRingMod:" destination="sJD-RU-kg8" eventType="touchUpInside" id="cW0-iT-PjM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81g-0p-xZ9">
                                 <rect key="frame" x="137" y="43" width="100" height="30"/>
@@ -497,6 +506,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="chorusButton" destination="81g-0p-xZ9" id="tP8-H6-rpR"/>
+                        <outlet property="ringmodButton" destination="ELo-Av-RL9" id="ful-2k-Jc1"/>
                         <outlet property="tremoloButton" destination="38e-Ap-Ff7" id="GUz-fM-jdI"/>
                     </connections>
                 </viewController>

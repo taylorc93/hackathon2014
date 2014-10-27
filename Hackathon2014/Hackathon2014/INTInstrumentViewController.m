@@ -226,16 +226,16 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    DDLogVerbose(@"Cancelled");
-    
-    for (int i = 0; i < [self.playingNotes count]; i++){
-        [self killNote:(INTInstrumentNote *)self.playingNotes[i]];
-    }
-    
-    int dollarZero = self.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"%d-flush", dollarZero];
-    
-    [PdBase sendBangToReceiver:receiver];
+//    DDLogVerbose(@"Cancelled");
+//    
+//    for (int i = 0; i < [self.playingNotes count]; i++){
+//        [self killNote:(INTInstrumentNote *)self.playingNotes[i]];
+//    }
+//    
+//    int dollarZero = self.dollarZero;
+//    NSString *receiver = [NSString stringWithFormat:@"%d-flush", dollarZero];
+//    
+//    [PdBase sendBangToReceiver:receiver];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event

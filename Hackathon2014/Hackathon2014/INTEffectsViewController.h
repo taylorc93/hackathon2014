@@ -14,9 +14,11 @@
 
 @property (nonatomic, strong) IBOutlet UIButton *chorusButton;
 @property (nonatomic, strong) IBOutlet UIButton *tremoloButton;
+@property (nonatomic, strong) IBOutlet UIButton *ringmodButton;
 
 @property (nonatomic, strong) INTInstrumentViewController *instrumentVC;
 @property BOOL chorusPlaying;
 @property BOOL tremeloPlaying;
+@property BOOL ringmodPlaying;
 
 @end

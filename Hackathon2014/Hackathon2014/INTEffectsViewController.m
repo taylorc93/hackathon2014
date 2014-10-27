@@ -17,6 +17,7 @@
     
     self.chorusPlaying = NO;
     self.tremeloPlaying = NO;
+    self.ringmodPlaying = NO;
 }
 
 - (IBAction)changeChorusRate:(UISlider *)sender
@@ -82,6 +83,39 @@
         [PdBase sendFloat:1 toReceiver:receiver];
         self.tremeloPlaying = YES;
         [self.tremoloButton setTitle:@"Turn Off" forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)changeRingModRate:(UISlider *)sender
+{
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-ringmod_rate", dollarZero];
+    
+    float value = sender.value;
+    [PdBase sendFloat:value toReceiver:receiver];
+}
+
+- (IBAction)changeRingModDepth:(UISlider *)sender
+{
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-ringmod_depth", dollarZero];
+    
+    float value = sender.value;
+    [PdBase sendFloat:value toReceiver:receiver];
+}
+
+- (IBAction)toggleRingMod:(id)sender
+{
+    int dollarZero = self.instrumentVC.dollarZero;
+    NSString *receiver = [NSString stringWithFormat:@"%d-ringmod_on", dollarZero];
+    if (self.ringmodPlaying){
+        [PdBase sendFloat:0 toReceiver:receiver];
+        self.ringmodPlaying = NO;
+        [self.ringmodButton setTitle:@"Turn On" forState:UIControlStateNormal];
+    } else {
+        [PdBase sendFloat:1 toReceiver:receiver];
+        self.ringmodPlaying = YES;
+        [self.ringmodButton setTitle:@"Turn Off" forState:UIControlStateNormal];
     }
 }
 
