@@ -22,11 +22,16 @@
 @property int editFlag;
 
 - (void)updateEditFlag:(int)editFlag;
+
 - (BOOL)incrementOctave;
 - (BOOL)decrementOctave;
+
 - (void)incrementNote;
 - (void)decrementNote;
+
 - (void)addNote;
 - (void)deleteNote;
+
+- (void)reset;
 
 @end

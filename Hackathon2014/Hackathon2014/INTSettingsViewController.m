@@ -19,6 +19,11 @@
     self.waveNum = 8;
 }
 
+- (IBAction)resetPreset:(id)sender
+{
+    [self.instrumentVC reset];
+}
+
 - (IBAction)addNote:(id)sender
 {
     [self.instrumentVC addNote];

@@ -345,6 +345,25 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return NO;
 }
 
+- (void)reset
+{
+    for (INTInstrumentNote *note in self.notes){
+        [note removeFromSuperview];
+    }
+    
+    self.notes = nil;
+    self.notes = [[NSMutableArray alloc] init];
+    
+    self.playingNotes = nil;
+    self.playingNotes = [[NSMutableArray alloc] init];
+    
+    self.selectedNotes = nil;
+    self.selectedNotes = [[NSMutableArray alloc] init];
+    
+    [self initNotes];
+    
+}
+
 - (NSArray *)getCurrentScale
 {
     if([self.currentScale  isEqual: @"C"]){
