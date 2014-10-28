@@ -146,15 +146,17 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"Started");
+    DDLogDebug(@"%d", [event.allTouches count]);
     
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self.view];
-    CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
-
-    if (self.editFlag){
-        [self editNote:touchRect];
-    } else {
-        [self playNote:touchRect];
+    for (UITouch *touch in touches){
+        CGPoint location = [touch locationInView:self.view];
+        CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
+        
+        if (self.editFlag){
+            [self editNote:touchRect];
+        } else {
+            [self playNote:touchRect];
+        }
     }
 }
 
@@ -270,28 +272,23 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"Moved");
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self.view];
-    CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
-    
-    if (self.editFlag){
-        [self editNote:touchRect];
-    } else {
-        [self playNote:touchRect];
+    DDLogDebug(@"%d", [event.allTouches count]);
+
+    for (UITouch *touch in touches){
+        CGPoint location = [touch locationInView:self.view];
+        CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
+        
+        if (self.editFlag){
+            [self editNote:touchRect];
+        } else {
+            [self playNote:touchRect];
+        }
     }
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"Cancelled");
-
-    for (int i = 0; i < [self.playingNotes count]; i++){
-        INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
-        
-        if (!note.hold){
-            [self toggleNote:note];
-        }
-    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
