@@ -111,12 +111,17 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)deleteNote
 {
-    if (self.currentNoteIndex != -1){
-        INTInstrumentNote * note = [self.notes objectAtIndex:self.currentNoteIndex];
-        [self.notes removeObjectAtIndex:self.currentNoteIndex];
+    NSInteger count = self.selectedNotes.count;
+    
+    for (NSInteger i = count - 1; i >= 0; i--){
+
+        INTInstrumentNote * note = (INTInstrumentNote *)self.selectedNotes[i];
+        [self.selectedNotes removeObject:note];
+        [self.notes removeObject:note];
+        
         [note removeFromSuperview];
-        self.currentNoteIndex = -1;
     }
+
 }
 
 - (void)killNote:(INTInstrumentNote *)note
@@ -159,7 +164,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
         CGRect noteRect = note.frame;
         
-        if (CGRectIntersectsRect(location, noteRect)){
+        if (CGRectIntersectsRect(location, noteRect) && !note.wasToggled){
             [self selectNote:note];
         }
     }
@@ -168,6 +173,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)selectNote: (INTInstrumentNote *)note
 {
     if (note.selected){
+        DDLogVerbose(@"deselecting");
         note.selected = NO;
         [self.selectedNotes removeObject:note];
         [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
@@ -180,7 +186,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                          }
                          completion:^(BOOL finished){
                          }];
+        note.wasToggled = YES;
     } else{
+        DDLogVerbose(@"selecting");
         note.selected = YES;
         [self.selectedNotes addObject:note];
         
@@ -191,11 +199,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
          UIViewAnimationOptionAutoreverse |
          UIViewAnimationOptionAllowUserInteraction
                          animations:^{
-                             note.alpha = 0.0f;
+                             note.alpha = 0.3f;
                          }
                          completion:^(BOOL finished){
                          }];
+        note.wasToggled = YES;
     }
+    
+    DDLogDebug(@"%@", self.selectedNotes);
 }
 
 - (void)playNote:(CGRect)location
