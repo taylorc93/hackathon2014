@@ -281,11 +281,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             [self toggleNote:note];
         }
     }
-    
-//    for (int i = 0; i < [self.notes count]; i++){
-//        INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
-//        note.wasToggled = NO;
-//    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -342,13 +337,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return NO;
 }
 
-- (IBAction)toggleMode:(id)sender
-{
-    if (self.editFlag){
-        self.editFlag = 0;
-    }
-}
-
 - (NSArray *)getCurrentScale
 {
     if([self.currentScale  isEqual: @"C"]){
@@ -387,14 +375,39 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)panNote:(UIPanGestureRecognizer *)gestureRecognizer
 {
-    DDLogVerbose(@"Panning");
     if (!self.editFlag){
         NSUInteger numTouches = [gestureRecognizer numberOfTouches];
         
         if (numTouches > 0){
             CGPoint location = [gestureRecognizer locationOfTouch:0 inView:self.view];
             CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
-            [self playNote:touchRect];
+            
+            for (int i = 0; i < [self.playingNotes count]; i++){
+                INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
+                CGRect noteRect = note.frame;
+                
+                if (!CGRectIntersectsRect(touchRect, noteRect) && note.hold == NO){
+                    [self toggleNote:note];
+                }
+            }
+            
+            for (int i = 0; i < [self.notes count]; i++){
+                INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
+                CGRect noteRect = note.frame;
+                
+                if (CGRectIntersectsRect(touchRect, noteRect) && !note.wasToggled){
+                    [self toggleNote:note];
+                }
+            }
+        }
+        
+        if ([gestureRecognizer state] == UIGestureRecognizerStateEnded){
+            for (int i = 0; i < [self.playingNotes count]; i++){
+                INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
+                if (!note.hold){
+                    [self toggleNote:note];
+                }
+            }
         }
         return;
     }
