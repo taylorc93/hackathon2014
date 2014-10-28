@@ -20,7 +20,12 @@
 @property (nonatomic, strong) UIColor *color;
 @property int midiNum;
 @property int octave;
+
 @property BOOL playing;
+@property BOOL selected;
+@property BOOL hold;
+@property BOOL wasToggled; //Prevents a swipe from continuously toggling and untoggling
+
 @property (nonatomic, strong) NSString *noteName;
 
 @end

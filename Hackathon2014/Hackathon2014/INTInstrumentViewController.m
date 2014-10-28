@@ -38,6 +38,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.currentScale = @"C";
     self.notes = [[NSMutableArray alloc] init];
     self.playingNotes = [[NSMutableArray alloc] init];
+    self.selectedNotes = [[NSMutableArray alloc] init];
     
     DDLogVerbose(@"Instrument View finished loading");
 }
@@ -88,24 +89,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
 }
 
-- (void)initTrashBin
-{
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    float x = self.view.bounds.origin.x + self.view.bounds.size.width -  74.0;
-    float y = self.view.bounds.origin.y + self.view.bounds.size.height;
-
-    DDLogVerbose(@"%f %f", x, y);
-    
-    [path moveToPoint:CGPointMake(x, y)];
-    [path addLineToPoint:CGPointMake(x, y - 74.0)];
-    [path addLineToPoint:CGPointMake(x + 74.0, y - 74.0)];
-    [path addLineToPoint:CGPointMake(x + 74.0, y)];
-    [path addLineToPoint:CGPointMake(x, y)];
-
-    [path stroke];
-    [path closePath];
-}
-
 - (void)addNote
 {
     INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 65.0, 65.0)
@@ -136,33 +119,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
 }
 
-- (void)playNote:(INTInstrumentNote *)note
-{
-    if (self.editFlag){
-        self.currentNoteIndex = [self.notes indexOfObject:note];
-        self.currentNote = note.midiNum;
-        self.currentOctave = note.octave;
-        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
-    } else if (!note.playing){
-        NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
-                         [NSNumber numberWithInteger:50], nil];
-        
-        NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
-        [PdBase sendList:data toReceiver:playnote];
-        note.playing = YES;
-        
-        CABasicAnimation *theAnimation;
-        
-        theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        theAnimation.duration=0.3;
-        theAnimation.repeatCount=HUGE_VALF;
-        theAnimation.autoreverses=NO;
-        theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
-        theAnimation.toValue=[NSNumber numberWithFloat:0.3];
-        [note.layer addAnimation:theAnimation forKey:@"animateOpacity"];
-    }
-}
-
 - (void)killNote:(INTInstrumentNote *)note
 {
     if (self.editFlag){
@@ -185,31 +141,71 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"Started");
+    
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self.view];
-    
-    [self updateNotes:location];
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"Moved");
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self.view];
-    
-    [self updateNotes:location];
-}
-
-- (void)updateNotes:(CGPoint)location
-{
     CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
-    
+
+    if (self.editFlag){
+        [self editNote:touchRect];
+    } else {
+        [self playNote:touchRect];
+    }
+}
+
+- (void)editNote:(CGRect)location
+{
+    for (int i = 0; i < [self.notes count]; i++){
+        INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
+        CGRect noteRect = note.frame;
+        
+        if (CGRectIntersectsRect(location, noteRect)){
+            [self selectNote:note];
+        }
+    }
+}
+
+- (void)selectNote: (INTInstrumentNote *)note
+{
+    if (note.selected){
+        note.selected = NO;
+        [self.selectedNotes removeObject:note];
+        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
+
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             note.alpha = 1.0f;
+                         }
+                         completion:^(BOOL finished){
+                         }];
+    } else{
+        note.selected = YES;
+        [self.selectedNotes addObject:note];
+        
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut |
+         UIViewAnimationOptionRepeat |
+         UIViewAnimationOptionAutoreverse |
+         UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             note.alpha = 0.0f;
+                         }
+                         completion:^(BOOL finished){
+                         }];
+    }
+}
+
+- (void)playNote:(CGRect)location
+{
     for (int i = 0; i < [self.playingNotes count]; i++){
         INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
         CGRect noteRect = note.frame;
         
-        if (!CGRectIntersectsRect(touchRect, noteRect)){
-            [self killNote:note];
+        if (!CGRectIntersectsRect(location, noteRect) && note.hold == NO){
+            [self toggleNote:note];
         }
     }
     
@@ -217,38 +213,97 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
         CGRect noteRect = note.frame;
         
-        if (CGRectIntersectsRect(touchRect, noteRect)){
-            [self playNote:note];
-            [self.playingNotes addObject:note];
+        if (CGRectIntersectsRect(location, noteRect) && !note.wasToggled){
+            [self toggleNote:note];
         }
+    }
+}
+
+- (void)toggleNote:(INTInstrumentNote *)note
+{
+    if (note.playing){
+        note.playing = NO;
+        NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
+                         [NSNumber numberWithInteger:0], nil];
+        
+        NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
+        [PdBase sendList:data toReceiver:playnote];
+        [self.playingNotes removeObject:note];
+        [note.layer removeAllAnimations];
+        note.wasToggled = NO;
+
+    } else {
+        note.playing = YES;
+        NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
+                         [NSNumber numberWithInteger:50], nil];
+        
+        NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
+        [PdBase sendList:data toReceiver:playnote];
+        [self.playingNotes addObject:note];
+        
+        CABasicAnimation *theAnimation;
+        
+        theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        theAnimation.duration=0.3;
+        theAnimation.repeatCount=HUGE_VALF;
+        theAnimation.autoreverses=NO;
+        theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+        theAnimation.toValue=[NSNumber numberWithFloat:0.3];
+        [note.layer addAnimation:theAnimation forKey:@"animateOpacity"];
+        note.wasToggled = YES;
+
+    }
+    
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"Moved");
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self.view];
+    CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
+    
+    if (self.editFlag){
+        [self editNote:touchRect];
+    } else {
+        [self playNote:touchRect];
     }
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-//    DDLogVerbose(@"Cancelled");
-//    
-//    for (int i = 0; i < [self.playingNotes count]; i++){
-//        [self killNote:(INTInstrumentNote *)self.playingNotes[i]];
+    NSLog(@"Cancelled");
+
+    for (int i = 0; i < [self.playingNotes count]; i++){
+        INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
+        
+        if (!note.hold){
+            [self toggleNote:note];
+        }
+    }
+    
+//    for (int i = 0; i < [self.notes count]; i++){
+//        INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
+//        note.wasToggled = NO;
 //    }
-//    
-//    int dollarZero = self.dollarZero;
-//    NSString *receiver = [NSString stringWithFormat:@"%d-flush", dollarZero];
-//    
-//    [PdBase sendBangToReceiver:receiver];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     DDLogVerbose(@"ended");
+    
     for (int i = 0; i < [self.playingNotes count]; i++){
-        [self killNote:(INTInstrumentNote *)self.playingNotes[i]];
+        INTInstrumentNote *note = (INTInstrumentNote *)self.playingNotes[i];
+        
+        if (!note.hold){
+            [self toggleNote:note];
+        }
     }
-    
-    int dollarZero = self.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"%d-flush", dollarZero];
-    
-    [PdBase sendBangToReceiver:receiver];
+ 
+    for (int i = 0; i < [self.notes count]; i++){
+        INTInstrumentNote *note = (INTInstrumentNote *)self.notes[i];
+        note.wasToggled = NO;
+    }
 }
 
 - (void)incrementNote
@@ -330,35 +385,21 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.editFlag = editFlag;
 }
 
-/**
- Scale and rotation transforms are applied relative to the layer's anchor point this method moves a gesture recognizer's view's anchor point between the user's fingers.
- */
-- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        INTInstrumentNote *note = (INTInstrumentNote *)gestureRecognizer.view;
-        CGPoint locationInView = [gestureRecognizer locationInView:note];
-        CGPoint locationInSuperview = [gestureRecognizer locationInView:note.superview];
-        
-        note.layer.anchorPoint = CGPointMake(locationInView.x / note.bounds.size.width, locationInView.y / note.bounds.size.height);
-        note.center = locationInSuperview;
-    }
-}
-
-
 - (void)panNote:(UIPanGestureRecognizer *)gestureRecognizer
 {
-    if (self.editFlag != 1){
+    DDLogVerbose(@"Panning");
+    if (!self.editFlag){
         NSUInteger numTouches = [gestureRecognizer numberOfTouches];
+        
         if (numTouches > 0){
-            [self updateNotes:[gestureRecognizer locationOfTouch:0 inView:self.view]];
+            CGPoint location = [gestureRecognizer locationOfTouch:0 inView:self.view];
+            CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
+            [self playNote:touchRect];
         }
         return;
     }
 
     INTInstrumentNote *note = (INTInstrumentNote *)[gestureRecognizer view];
-    
-    [self adjustAnchorPointForGestureRecognizer:gestureRecognizer];
     
     if ([gestureRecognizer state] == UIGestureRecognizerStateBegan || [gestureRecognizer state] == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gestureRecognizer translationInView:[note superview]];

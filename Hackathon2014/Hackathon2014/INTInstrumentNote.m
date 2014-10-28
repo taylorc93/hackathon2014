@@ -28,6 +28,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         self.octave = octave;
         self.backgroundColor = color;
         self.playing = NO;
+        self.selected = NO;
+        self.hold = NO;
+        self.wasToggled = NO;
         
         [self getNoteName];
         

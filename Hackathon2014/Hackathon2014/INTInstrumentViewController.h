@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSString *currentScale;
 @property (nonatomic, strong) NSMutableArray *notes;
+@property (nonatomic, strong) NSMutableArray *selectedNotes;
 
 @property int dollarZero;
 @property int currentNote;
