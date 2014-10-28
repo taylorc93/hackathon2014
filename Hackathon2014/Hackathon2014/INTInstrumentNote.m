@@ -32,6 +32,10 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         self.hold = NO;
         self.wasToggled = NO;
         
+        self.layer.cornerRadius = self.frame.size.width / 2;
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.layer.borderWidth = 2;
+        
         [self getNoteName];
         
         UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 4 + 10, height / 4, width / 2, height / 2)];
