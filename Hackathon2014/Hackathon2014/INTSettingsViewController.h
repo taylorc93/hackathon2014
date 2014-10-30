@@ -14,6 +14,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *noteLabel;
 @property (nonatomic, strong) IBOutlet UILabel *octaveLabel;
 @property (nonatomic, strong) IBOutlet UILabel *waveLabel;
+@property (nonatomic, strong) IBOutlet UISwitch *noteHold;
 
 @property (nonatomic, weak) INTInstrumentViewController *instrumentVC;
 @property int waveNum;

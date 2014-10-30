@@ -16,9 +16,10 @@
 @property (nonatomic, strong) NSMutableArray *selectedNotes;
 
 @property int dollarZero;
-@property int currentNote;
+@property (nonatomic, weak) INTInstrumentNote *currentNote;
+
+@property int currentMidiNote;
 @property int currentOctave;
-@property int currentNoteIndex;
 @property int editFlag;
 
 - (void)updateEditFlag:(int)editFlag;

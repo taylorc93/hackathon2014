@@ -17,9 +17,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 @interface INTInstrumentViewController ()
 
 @property (nonatomic, strong) NSMutableArray *playingNotes;
-@property BOOL initializing;
 @property (nonatomic, strong) UITouch *previousTouch;
 @property BOOL touchStartedOnNote;
+@property BOOL initializing;
 
 @end
 
@@ -35,17 +35,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
     
     self.dollarZero = [PdBase dollarZeroForFile:patch];
-    self.currentNote = 0;
+    self.currentNote = nil;
     self.currentOctave = 5;
-    self.currentNoteIndex = -1;
     self.currentScale = @"C";
     self.notes = [[NSMutableArray alloc] init];
     self.playingNotes = [[NSMutableArray alloc] init];
     self.selectedNotes = [[NSMutableArray alloc] init];
     self.initializing = YES;
     self.touchStartedOnNote = NO;
-    
-    DDLogVerbose(@"Instrument View finished loading");
 }
 
 // Cannot do this in viewWillLoad as bounds are not set properly at that time
@@ -84,7 +81,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         }
     }
     self.initializing = NO;
-
 }
 
 - (void)addNote
@@ -142,7 +138,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             return note;
         }
     }
-    
     return nil;
 }
 
@@ -230,11 +225,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     [self.playingNotes removeObject:note];
     [note.layer removeAllAnimations];
-    
-    DDLogVerbose(@"Killed: %@", note);
-
 }
-
 
 - (void)selectNote:(INTInstrumentNote *)note
 {
@@ -257,6 +248,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         animation.fromValue=[NSNumber numberWithFloat:1.0];
         animation.toValue=[NSNumber numberWithFloat:0.6];
         [note.layer addAnimation:animation forKey:@"animateSelection"];
+        
+        self.currentNote = note;
+        self.currentMidiNote = note.midiNum;
+        self.currentOctave = note.octave;
+        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
     }
     note.touched = YES;
 }
@@ -271,14 +267,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                        forNotes:self.notes];
     
     CGRect noteRect = tappedNote.frame;
-    DDLogVerbose(@"%@", NSStringFromCGRect(noteRect));
     
     if (tappedNote){
         if (self.editFlag){
             [self selectNote:tappedNote];
             self.touchStartedOnNote = YES;
         } else {
-            DDLogVerbose(@"playing");
             [self playNote: tappedNote];
         }
     }
@@ -303,16 +297,18 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             [self dragNote:tappedNote touch:touch];
         }
     } else {
-        NSArray *notesToKill = [self getNonintersectsForTouch:touch
-                                                      inEvent:event
-                                                     forNotes:self.playingNotes];
         if (tappedNote && !tappedNote.touched){
             [self playNote: tappedNote];
         }
+        NSArray *notesToKill = [self getNonintersectsForTouch:touch
+                                                      inEvent:event
+                                                     forNotes:self.playingNotes];
         
         for (int i = 0; i < [notesToKill count]; i++){
             INTInstrumentNote *note = (INTInstrumentNote *)[notesToKill objectAtIndex:i];
-            [self killNote:note];
+            if (!note.hold){
+                [self killNote:note];
+            }
             note.touched = NO;
         }
     }
@@ -330,7 +326,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                     inEvent:event
                                                    forNotes:self.notes];
     if (tappedNote && !tappedNote.hold){
-        if (!self.editFlag){
+        if (!self.editFlag && !tappedNote.hold){
             [self killNote: tappedNote];
         }
         tappedNote.touched = NO;
@@ -339,7 +335,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     for (int i = 0; i < [notesToToggle count]; i++){
         INTInstrumentNote *note = (INTInstrumentNote *)[notesToToggle objectAtIndex:i];
 
-        if (!self.editFlag){
+        if (!self.editFlag && !note.hold){
             [self killNote:note];
         }
         note.touched = NO;
@@ -351,19 +347,19 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)incrementNote
 {
-    if (self.currentNote < 11){
-        self.currentNote++;
+    if (self.currentMidiNote < 11){
+        self.currentMidiNote++;
     } else{
-        self.currentNote = 0;
+        self.currentMidiNote = 0;
     }
 }
 
 - (void)decrementNote
 {
-    if (self.currentNote > 0){
-        self.currentNote--;
+    if (self.currentMidiNote > 0){
+        self.currentMidiNote--;
     } else {
-        self.currentNote = 11;
+        self.currentMidiNote = 11;
     }
 }
 
