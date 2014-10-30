@@ -24,13 +24,15 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         
     if (self){
         self.color = color;
+        self.backgroundColor = color;
+
         self.midiNum = midiNum;
         self.octave = octave;
-        self.backgroundColor = color;
+        
         self.playing = NO;
         self.selected = NO;
         self.hold = NO;
-        self.wasToggled = NO;
+        self.touched = NO;
         
         self.layer.cornerRadius = self.frame.size.width / 2;
         self.layer.borderColor = [UIColor blackColor].CGColor;
@@ -39,6 +41,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         [self getNoteName];
         
         UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 4 + 10, height / 4, width / 2, height / 2)];
+//        noteLabel.textAlignment = NSTextAlignmentCenter;
+//        noteLabel.center = self.center;
         noteLabel.text = self.noteName;
         [self addSubview:noteLabel];
     }
