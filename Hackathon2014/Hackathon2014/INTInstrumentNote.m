@@ -23,6 +23,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     float height = frame.size.height;
         
     if (self){
+        
+        DDLogVerbose(@"%d", midiNum);
         self.color = color;
         self.backgroundColor = color;
 

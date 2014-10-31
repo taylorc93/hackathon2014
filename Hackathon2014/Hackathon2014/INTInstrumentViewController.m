@@ -36,6 +36,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     self.dollarZero = [PdBase dollarZeroForFile:patch];
     self.currentNote = nil;
+    self.currentMidiNote = 0;
     self.currentOctave = 5;
     self.currentScale = @"C";
     self.notes = [[NSMutableArray alloc] init];
@@ -85,8 +86,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)addNote
 {
+    DDLogVerbose(@"note: %d octave: %d", self.currentNote, self.currentOctave);
     INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 65.0, 65.0)
-                                                               noteNum:self.currentNote
+                                                               noteNum:self.currentMidiNote
                                                             noteOctave:self.currentOctave
                                                                  color:[UIColor greenColor]];
     note.center = CGPointMake(10.0, 350.0);
@@ -119,8 +121,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     CGPoint currTouchPoint = [touch locationInView:self.view];
     
     DDLogVerbose(@"%@ %@", NSStringFromCGPoint(prevTouchPoint), NSStringFromCGPoint(currTouchPoint));
-    
-    [note setCenter:currTouchPoint];
+    [UIView animateWithDuration:0.1 animations:^{
+        [note setCenter:currTouchPoint];
+    }];
 }
 
 - (INTInstrumentNote *)getIntersectsForTouch:(UITouch *)touch
@@ -251,6 +254,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         
         self.currentNote = note;
         self.currentMidiNote = note.midiNum;
+        
         self.currentOctave = note.octave;
         [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
     }
@@ -433,7 +437,18 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)updateEditFlag:(int)editFlag
 {
+    if (self.editFlag){
+        for (INTInstrumentNote *note in self.selectedNotes){
+            [note.layer removeAllAnimations];
+            note.selected = NO;
+        }
+        self.selectedNotes = nil;
+    } else {
+        self.selectedNotes = [[NSMutableArray alloc] init];
+    }
+    
     self.editFlag = editFlag;
+
 }
 
 //
