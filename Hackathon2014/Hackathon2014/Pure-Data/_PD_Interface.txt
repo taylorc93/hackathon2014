@@ -173,6 +173,18 @@ EQ:
 	The Q factor relates to the slope of the filter's attenuation.
 
 
+DELAY:
+
+	[$0-delay_on]       1 / 0 (On / Off)
+	[$0-delay_time]     float (Time in ms)
+	[$0-delay_feedback] float (From 0 - 1, Number of delay taps)
+
+	This is a traditional delay unit like the classic delay guitar pedals.
+	It will shift the pitch if the delay time is changed while it is still
+	playing.
+
+	Feedback goes from 0 to 1: 0 = No Repetitions, 1 = Infinite Repetitions
+
 
 
 

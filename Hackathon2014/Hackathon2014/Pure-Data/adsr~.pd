@@ -6,9 +6,9 @@
 #X obj 244 28 inlet;
 #X text 245 9 Decay;
 #X obj 302 28 inlet;
-#X obj 381 27 inlet;
+#X obj 399 27 inlet;
 #X text 305 8 Sustain;
-#X text 382 8 Release;
+#X text 400 8 Release;
 #X obj 12 65 sel 0;
 #X obj 12 112 s \$0-off;
 #X obj 39 87 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -29,8 +29,10 @@
 #X obj 199 51 t f f;
 #X obj 12 87 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 431 25 inlet;
-#X text 434 8 Note Off;
+#X obj 449 25 inlet;
+#X text 452 8 Note Off;
+#X obj 373 163 b;
+#X obj 328 205 pack 0 50;
 #X connect 0 0 10 0;
 #X connect 0 0 24 0;
 #X connect 2 0 26 0;
@@ -57,4 +59,6 @@
 #X connect 26 0 14 1;
 #X connect 26 1 15 1;
 #X connect 27 0 11 0;
-#X connect 28 0 27 0;
+#X connect 28 0 30 0;
+#X connect 30 0 31 0;
+#X connect 31 0 13 0;
