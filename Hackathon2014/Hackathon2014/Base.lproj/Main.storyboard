@@ -352,11 +352,24 @@
                                     <action selector="resetPreset:" destination="Iqg-ar-amo" eventType="touchUpInside" id="V08-B8-5Qx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hold" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8Q-39-dev">
+                                <rect key="frame" x="11" y="245" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1Tc-5o-EDu">
+                                <rect key="frame" x="53" y="240" width="51" height="31"/>
+                                <connections>
+                                    <action selector="holdNote:" destination="Iqg-ar-amo" eventType="valueChanged" id="Eg4-rX-q3i"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="noteHold" destination="1Tc-5o-EDu" id="HpZ-vP-ml9"/>
                         <outlet property="noteLabel" destination="VFS-Bt-B49" id="tYQ-xX-NvI"/>
                         <outlet property="octaveLabel" destination="Fyy-h4-c9N" id="NBH-9x-19J"/>
                         <outlet property="waveLabel" destination="kJW-9S-d2m" id="tnU-e3-3up"/>

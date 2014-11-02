@@ -24,7 +24,7 @@
 @property BOOL playing;
 @property BOOL selected;
 @property BOOL hold;
-@property BOOL wasToggled; //Prevents a swipe from continuously toggling and untoggling
+@property BOOL touched; //Prevents a swipe from continuously toggling and untoggling
 
 @property (nonatomic, strong) NSString *noteName;
 

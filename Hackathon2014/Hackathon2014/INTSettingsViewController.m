@@ -89,14 +89,21 @@
     self.waveLabel.text = [NSString stringWithFormat:@"Wave: %d", self.waveNum];
 }
 
+- (IBAction)holdNote:(id)sender
+{
+    self.instrumentVC.currentNote.hold = !self.instrumentVC.currentNote.hold;
+}
+
 - (void)updateLabels
 {
-    NSString *noteName = [self getNoteName:self.instrumentVC.currentNote];
+    NSString *noteName = [self getNoteName:self.instrumentVC.currentMidiNote];
     NSString *noteText = [NSString stringWithFormat:@"Note: %@", noteName];
     self.noteLabel.text = noteText;
     
     NSString *octaveText = [NSString stringWithFormat:@"Octave: %d", self.instrumentVC.currentOctave];
     self.octaveLabel.text = octaveText;
+    
+    [self.noteHold setOn:self.instrumentVC.currentNote.hold];
 }
 
 - (NSString *)getNoteName:(int)noteNum
