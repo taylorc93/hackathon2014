@@ -16,18 +16,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (instancetype)initWithFrame:(CGRect)frame
                       noteNum:(int)midiNum
                    noteOctave:(int)octave
-                        color:(UIColor *)color
 {
     self = [super initWithFrame:frame];
     float width = frame.size.width;
     float height = frame.size.height;
         
     if (self){
-        
-        DDLogVerbose(@"%d", midiNum);
-        self.color = color;
-        self.backgroundColor = color;
-
         self.midiNum = midiNum;
         self.octave = octave;
         
@@ -41,6 +35,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         self.layer.borderWidth = 2;
         
         [self getNoteName];
+        [self setBackgroundColor];
         
         UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 4 + 10, height / 4, width / 2, height / 2)];
 //        noteLabel.textAlignment = NSTextAlignmentCenter;
@@ -100,6 +95,40 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             DDLogInfo(@"Incompatible Midi Num");
             break;
     }
+}
+
+- (void)setBackgroundColor
+{
+    DDLogVerbose(@"%d", self.octave);
+    switch (self.octave) {
+        case 1:
+            self.color = [UIColor colorWithRed:209.0 / 255.0 green:25.0 / 255.0 blue:25.0 / 255.0 alpha:1.0];
+            break;
+        case 2:
+            self.color = [UIColor colorWithRed:214.0 / 255.0 green:51.0 / 255.0 blue:51.0 / 255.0 alpha:1.0];
+            break;
+        case 3:
+            self.color = [UIColor colorWithRed:219.0 / 255.0 green:77.0 / 255.0 blue:77.0 / 255.0 alpha:1.0];
+            break;
+        case 4:
+            self.color = [UIColor colorWithRed:224.0 / 255.0 green:102.0 / 255.0 blue:102.0 / 255.0 alpha:1.0];
+            break;
+        case 5:
+            self.color = [UIColor colorWithRed:230.0 / 255.0 green:128.0 / 255.0 blue:128.0 / 255.0 alpha:1.0];
+            break;
+        case 6:
+            self.color = [UIColor colorWithRed:235.0 / 255.0 green:153.0 / 255.0 blue:153.0 / 255.0 alpha:1.0];
+            break;
+        case 7:
+            self.color = [UIColor colorWithRed:240.0 / 255.0 green:178.0 / 255.0 blue:178.0 / 255.0 alpha:1.0];
+            break;
+        default:
+            DDLogError(@"Octave %d not in correct bounds 1-7", self.octave);
+            break;
+    }
+    DDLogVerbose(@"color: %@", self.color);
+    self.backgroundColor = self.color;
+    DDLogVerbose(@"%@", self.backgroundColor);
 }
 
 /*

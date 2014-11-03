@@ -12,8 +12,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
                       noteNum:(int)midiNum
-                   noteOctave:(int)octave
-                        color:(UIColor *)color;
+                   noteOctave:(int)octave;
 
 - (int)getScaledMidiNum;
 

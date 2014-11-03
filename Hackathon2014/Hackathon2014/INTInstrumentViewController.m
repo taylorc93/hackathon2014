@@ -73,8 +73,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             float y = coords[1][j];
             INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 65.0, 65.0)
                                                                        noteNum:[midiNums[j] integerValue]
-                                                                    noteOctave:i + 4
-                                                                         color:colors[i]];
+                                                                    noteOctave:i + 4];
             note.center = CGPointMake(x, y);
             
             [self.view addSubview:note];
@@ -86,15 +85,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)addNote
 {
-    DDLogVerbose(@"note: %d octave: %d", self.currentNote, self.currentOctave);
-    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(10.0, 300.0, 65.0, 65.0)
+    DDLogVerbose(@"note: %d octave: %d", self.currentMidiNote, self.currentOctave);
+    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(50.0, 325.0, 65.0, 65.0)
                                                                noteNum:self.currentMidiNote
-                                                            noteOctave:self.currentOctave
-                                                                 color:[UIColor greenColor]];
-    note.center = CGPointMake(10.0, 350.0);
-    note.layer.cornerRadius = note.frame.size.width / 2;
-    note.layer.borderColor = [UIColor blackColor].CGColor;
-    note.layer.borderWidth = 2;
+                                                            noteOctave:self.currentOctave];
+    note.center = CGPointMake(50.0, 325.0);
     
     [self.view addSubview:note];
     [self.notes addObject:note];
@@ -144,6 +139,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return nil;
 }
 
+// Gets all notes that do not intersect with the given touch.
+// Takes into account other touches on the screen and does NOT
+// return a note if it is being held by another touch
 - (NSArray *)getNonintersectsForTouch:(UITouch *)touch
                               inEvent:(UIEvent *)event
                              forNotes:(NSMutableArray *)notes
@@ -329,7 +327,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSArray *notesToToggle = [self getNonintersectsForTouch:touch
                                                     inEvent:event
                                                    forNotes:self.notes];
-    if (tappedNote && !tappedNote.hold){
+    if (tappedNote){
         if (!self.editFlag && !tappedNote.hold){
             [self killNote: tappedNote];
         }
@@ -369,7 +367,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (BOOL)incrementOctave
 {
-    if (self.currentOctave < 8){
+    if (self.currentOctave < 7){
         self.currentOctave++;
         return YES;
     }
