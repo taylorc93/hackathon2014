@@ -1,0 +1,7 @@
+#N canvas 441 529 450 300 10;
+#X obj 88 110 pencileq~;
+#X obj 88 63 noise~;
+#X obj 88 185 output~;
+#X connect 0 0 2 0;
+#X connect 0 0 2 1;
+#X connect 1 0 0 0;
