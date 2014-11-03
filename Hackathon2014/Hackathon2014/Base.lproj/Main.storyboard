@@ -391,7 +391,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="256" height="421"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IzF-iG-DdW">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="IzF-iG-DdW">
                                 <rect key="frame" x="113" y="81" width="118" height="31"/>
                                 <connections>
                                     <action selector="changeChorusRate:" destination="sJD-RU-kg8" eventType="valueChanged" id="6Kn-w3-XUD"/>
@@ -409,7 +409,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cW9-hL-EKD">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="cW9-hL-EKD">
                                 <rect key="frame" x="113" y="119" width="118" height="31"/>
                                 <connections>
                                     <action selector="changeChorusDepth:" destination="sJD-RU-kg8" eventType="valueChanged" id="fTk-5O-zD4"/>
@@ -427,7 +427,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="nsp-qt-2t9">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="nsp-qt-2t9">
                                 <rect key="frame" x="118" y="195" width="118" height="31"/>
                                 <connections>
                                     <action selector="changeTremoloRate:" destination="sJD-RU-kg8" eventType="valueChanged" id="FoR-y1-JDv"/>

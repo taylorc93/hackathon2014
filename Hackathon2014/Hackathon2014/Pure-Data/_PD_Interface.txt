@@ -15,8 +15,6 @@ Functionality: [receiver name] message to send (comment/restriction)
 Example: [$0-chorus_on] 1 / 0 (on / off)
 Meaning: Turn the chorus module on or off by sending a 1 or 0 to $0-chorus_on
 
-list{ float float float } specifies a list to be sent to the receiver
-
 TEST:
 
 	[$0-test] bang (Plays Middle C)
@@ -45,6 +43,19 @@ Manually Trigger / Turn off a note:
 	A velocity value != 0 triggers note on.
 	A velocity value == 0 triggers note off.
 
+Pitch Bend:
+
+	[$0-pitchbend]       float (0 - 127, MIDI Protocol)
+	[$0-pitchbend_range] float (Range is in MIDI notes)
+
+	The pitchbend with shift the pitch in real time, up or down.
+	It uses the standard MIDI protocol where 64 = center (no shift).
+	Shifting up from there increases the pitch, and below decreases.
+
+	The range is in terms of midi notes - a range of 1 will shift it
+	+/- 1 semitone at pitchbend values of 127/0, respectively.
+
+
 Turn off All Notes Immediately:
 
 	[$0-flush] bang
@@ -58,7 +69,7 @@ Turn off All Notes Immediately:
 
 AUDIO:
 
-
+	Effects are chained in the order written here.
 
 MASTER CONTROLS:
 
@@ -102,26 +113,12 @@ AUDIO EFFECTS:
 
 
 
-GAIN:
+PRE-GAIN:
 
-	[$0-gain_on]     1 / 0 (On / Off)
-	[$0-gain_amount] float (Value from 0 - 10)
+	[$0-pregain_on]     1 / 0 (On / Off)
+	[$0-pregain_amount] float (Value from 0 - 10)
 
-	This module adds additional gain to the output. 
-	Useful for quiet waveforms. 
-
-CHORUS:
-	
-	[$0-chorus_on]    1 / 0 (On / Off)
-	[$0-chorus_rate]  float (Flutter speed in Hz)
-	[$0-chorus_depth] float (Value from 0 - 1, depth of detuning)
-	[$0-chorus_mix]   float (Value from 0 - 100)
-
-	3-voice Chorus module.
-	The mix is the balance between the original and processed signals.
-	50% => equal amounts of both, 100% => processed signal only.
-
-	At high values you can create Frequency Modulation.
+	Adds gain to the effects chain input. 
 
 RING MODULATOR:
 
@@ -134,23 +131,6 @@ RING MODULATOR:
 	the tremolo plugin on a sine wave setting.
 
 	At high values you can create Amplitude Modulation.
-
-TREMOLO:
-
-	[$0-tremolo_on]    1 / 0 (On / Off)
-	[$0-tremolo_rate]  float (Speed in Hz)
-	[$0-tremolo_depth] float (Value from 0 - 1, Maximum amplitude reduction)
-	[$0-tremolo_shape] float (Value from 0 - 3, see below)
-
-	The Tremolo plugin multiplies the amplitude of the input signal with
-	a waveform set by $0-tremolo_shape.  Also creates Amplitude Modulation 
-	with high rate values. 
-
-	Shapes:
-			0 - Sine
-			1 - Sawtooth (/)
-			2 - Sawtooth (\)
-			3 - Square
 
 EQ: 
 
@@ -172,7 +152,6 @@ EQ:
 
 	The Q factor relates to the slope of the filter's attenuation.
 
-
 DELAY:
 
 	[$0-delay_on]       1 / 0 (On / Off)
@@ -185,12 +164,43 @@ DELAY:
 
 	Feedback goes from 0 to 1: 0 = No Repetitions, 1 = Infinite Repetitions
 
+CHORUS:
+	
+	[$0-chorus_on]    1 / 0 (On / Off)
+	[$0-chorus_rate]  float (Flutter speed in Hz)
+	[$0-chorus_depth] float (Value from 0 - 1, depth of detuning)
+	[$0-chorus_mix]   float (Value from 0 - 100)
 
+	3-voice Chorus module.
+	The mix is the balance between the original and processed signals.
+	50% => equal amounts of both, 100% => processed signal only.
 
+	At high values you can create Frequency Modulation.
 
+TREMOLO:
 
+	[$0-tremolo_on]    1 / 0 (On / Off)
+	[$0-tremolo_rate]  float (Speed in Hz)
+	[$0-tremolo_depth] float (Value from 0 - 1, Maximum amplitude reduction)
+	[$0-tremolo_shape] float (Value from 0 - 3, see below)
 
+	The Tremolo plugin multiplies the amplitude of the input signal with
+	a waveform set by $0-tremolo_shape.  Also creates Amplitude Modulation 
+	with high rate values. 
 
+	Shapes:
+			0 - Sine
+			1 - Sawtooth (/)
+			2 - Sawtooth (\)
+			3 - Square
+
+GAIN:
+
+	[$0-gain_on]     1 / 0 (On / Off)
+	[$0-gain_amount] float (Value from 0 - 10)
+
+	Adds gain to the output. 
+	Useful for quiet sounds.
 
 
 

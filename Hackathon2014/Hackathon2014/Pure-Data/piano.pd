@@ -33,90 +33,103 @@
 10 -138095 -1 -1 0 1;
 #X text 581 77 Velocity;
 #X obj 558 107 hsl 100 30 30 1500 0 0 \$0-duration empty empty -2 -8
-0 10 -125184 -1 -1 0 1;
+0 10 -125184 -1 -1 500 1;
 #X text 582 114 Duration;
 #X obj 624 15 bng 40 250 50 0 \$0-flush empty empty 17 7 0 10 -228856
 -75776 -1;
 #X text 628 26 Flush;
-#N canvas 592 336 1062 255 controller 1;
-#X obj 7 9 r \$0-C;
-#X obj 7 41 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#N canvas 371 384 997 278 controller 0;
+#X obj -1 13 r \$0-C;
+#X obj -1 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 50 41 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 42 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 50 9 r \$0-Csharp;
-#X obj 124 41 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 42 13 r \$0-Csharp;
+#X obj 116 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 167 41 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 159 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 124 9 r \$0-D;
-#X obj 167 9 r \$0-Dsharp;
-#X obj 240 42 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 116 13 r \$0-D;
+#X obj 159 13 r \$0-Dsharp;
+#X obj 232 72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 283 42 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 275 72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 326 43 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 318 73 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 398 44 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 390 74 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 240 10 r \$0-E;
-#X obj 283 10 r \$0-F;
-#X obj 326 11 r \$0-Fsharp;
-#X obj 398 12 r \$0-G;
-#X obj 440 44 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 232 14 r \$0-E;
+#X obj 275 14 r \$0-F;
+#X obj 318 15 r \$0-Fsharp;
+#X obj 390 16 r \$0-G;
+#X obj 432 74 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 483 44 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 475 74 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 526 45 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 518 75 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 598 46 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 590 76 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 483 12 r \$0-A;
-#X obj 526 13 r \$0-Asharp;
-#X obj 598 14 r \$0-B;
-#X msg 7 66 0;
-#X msg 51 64 1;
-#X msg 123 65 2;
-#X msg 167 65 3;
-#X msg 239 65 4;
-#X msg 286 65 5;
-#X msg 326 65 6;
-#X msg 400 64 7;
-#X msg 443 66 8;
-#X msg 492 66 9;
-#X msg 531 69 10;
-#X msg 599 65 11;
-#X obj -126 158 iterator;
-#X obj -285 96 loadbang;
-#X msg -257 140 4;
-#X obj -285 118 t b b;
-#X msg -222 138 0;
-#X msg -195 138 9;
-#X obj -110 117 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 475 16 r \$0-A;
+#X obj 518 17 r \$0-Asharp;
+#X obj 590 18 r \$0-B;
+#X msg -1 96 0;
+#X msg 43 94 1;
+#X msg 115 95 2;
+#X msg 159 95 3;
+#X msg 231 95 4;
+#X msg 278 95 5;
+#X msg 318 95 6;
+#X msg 392 94 7;
+#X msg 435 96 8;
+#X msg 484 96 9;
+#X msg 523 99 10;
+#X msg 591 95 11;
+#X obj -134 188 iterator;
+#X obj -196 117 loadbang;
+#X msg -265 170 4;
+#X obj -196 139 t b b;
+#X msg -230 168 0;
+#X msg -203 168 9;
+#X obj -89 167 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj -154 117 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj -134 131 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj -162 91 r \$0-octave-down;
-#X obj -93 112 r \$0-octave-up;
-#X obj -126 187 * 12;
-#X obj 230 126 +;
-#X obj 230 149 makenote;
-#X obj 636 117 r \$0-duration;
-#X obj 631 64 r \$0-velocity;
-#X obj 230 170 pack 0 0;
-#X obj 230 224 outlet;
-#X obj 230 197 noteflush;
-#X obj 306 163 r \$0-flush;
-#X obj 305 189 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj -134 102 r \$0-octave-down;
+#X obj -89 126 r \$0-octave-up;
+#X obj -134 212 * 12;
+#X obj 222 156 +;
+#X obj 222 179 makenote;
+#X obj 628 147 r \$0-duration;
+#X obj 623 94 r \$0-velocity;
+#X obj 222 200 pack 0 0;
+#X obj 222 254 outlet;
+#X obj 222 227 noteflush;
+#X obj 298 193 r \$0-flush;
+#X obj 297 219 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X floatatom 630 88 5 0 0 0 - - -;
-#X floatatom 637 139 5 0 0 0 - - -;
-#X obj 440 12 r \$0-Gsharp;
-#X obj 50 200 unpack 1 1;
-#X floatatom 40 228 5 0 0 0 - - -;
-#X floatatom 100 224 5 0 0 0 - - -;
-#X msg 47 126 80;
-#X msg 85 126 400;
+#X floatatom 622 118 5 0 0 0 - - -;
+#X floatatom 629 169 5 0 0 0 - - -;
+#X obj 432 16 r \$0-Gsharp;
+#X msg 39 156 80;
+#X msg 77 156 400;
+#X obj -118 13 key;
+#X floatatom -118 40 5 0 0 0 - - -;
+#X obj -1 44 sel 97;
+#X obj 42 44 sel 119;
+#X obj 116 44 sel 115;
+#X obj 159 44 sel 101;
+#X obj 232 45 sel 100;
+#X obj 275 45 sel 102;
+#X obj 318 45 sel 116;
+#X obj 389 46 sel 103;
+#X obj 432 46 sel 121;
+#X obj 475 46 sel 104;
+#X obj 518 46 sel 117;
+#X obj 590 46 sel 106;
+#X obj -134 78 sel 44;
+#X obj -89 78 sel 46;
 #X connect 0 0 1 0;
 #X connect 1 0 23 0;
 #X connect 2 0 24 0;
@@ -159,8 +172,8 @@
 #X connect 38 1 37 0;
 #X connect 38 1 39 0;
 #X connect 38 1 40 0;
-#X connect 38 1 61 0;
-#X connect 38 1 62 0;
+#X connect 38 1 58 0;
+#X connect 38 1 59 0;
 #X connect 39 0 35 3;
 #X connect 40 0 35 4;
 #X connect 41 0 35 5;
@@ -177,14 +190,40 @@
 #X connect 49 0 55 0;
 #X connect 50 0 52 0;
 #X connect 52 0 51 0;
-#X connect 52 0 58 0;
 #X connect 53 0 54 0;
 #X connect 54 0 52 1;
 #X connect 57 0 16 0;
-#X connect 58 0 59 0;
-#X connect 58 1 60 0;
-#X connect 61 0 47 1;
-#X connect 62 0 47 2;
+#X connect 58 0 47 1;
+#X connect 59 0 47 2;
+#X connect 60 0 61 0;
+#X connect 60 0 62 0;
+#X connect 60 0 74 0;
+#X connect 62 0 1 0;
+#X connect 62 1 63 0;
+#X connect 63 0 2 0;
+#X connect 63 1 64 0;
+#X connect 64 0 4 0;
+#X connect 64 1 65 0;
+#X connect 65 0 5 0;
+#X connect 65 1 66 0;
+#X connect 66 0 8 0;
+#X connect 66 1 67 0;
+#X connect 67 0 9 0;
+#X connect 67 1 68 0;
+#X connect 68 0 10 0;
+#X connect 68 1 69 0;
+#X connect 69 0 11 0;
+#X connect 69 1 70 0;
+#X connect 70 0 16 0;
+#X connect 70 1 71 0;
+#X connect 71 0 17 0;
+#X connect 71 1 72 0;
+#X connect 72 0 18 0;
+#X connect 72 1 73 0;
+#X connect 73 0 19 0;
+#X connect 74 0 42 0;
+#X connect 74 1 75 0;
+#X connect 75 0 41 0;
 #X restore 530 15 pd controller;
 #X obj 530 37 outlet;
 #X connect 22 0 23 0;
