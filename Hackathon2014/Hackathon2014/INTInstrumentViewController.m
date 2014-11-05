@@ -267,7 +267,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     CGPoint noteCenter = note.center;
     CGPoint touchPoint = [touch locationInView:self.view];
     
-    float yDiff = self.initialTouchY - touchPoint.y;
+    DDLogVerbose(@"inital: %f touch: %f", self.initialTouchY, touchPoint.y);
+    
+    float yDiff = (self.initialTouchY - touchPoint.y) / 4;
     float pitchBend = yDiff + 64;
     
     if (pitchBend > 127.0){
@@ -328,20 +330,19 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     } else {
         if (tappedNote && !self.touchStartedOnNote && !tappedNote.touched){
             [self playNote: tappedNote];
+            NSArray *notesToKill = [self getNonintersectsForTouch:touch
+                                                          inEvent:event
+                                                         forNotes:self.playingNotes];
+            
+            for (int i = 0; i < [notesToKill count]; i++){
+                INTInstrumentNote *note = (INTInstrumentNote *)[notesToKill objectAtIndex:i];
+                if (!note.hold){
+                    [self killNote:note];
+                }
+                note.touched = NO;
+            }
         } else if (self.touchStartedOnNote){
             [self bendNote:tappedNote touch:touch];
-        }
-        
-        NSArray *notesToKill = [self getNonintersectsForTouch:touch
-                                                      inEvent:event
-                                                     forNotes:self.playingNotes];
-        
-        for (int i = 0; i < [notesToKill count]; i++){
-            INTInstrumentNote *note = (INTInstrumentNote *)[notesToKill objectAtIndex:i];
-            if (!note.hold){
-                [self killNote:note];
-            }
-            note.touched = NO;
         }
     }
 }
