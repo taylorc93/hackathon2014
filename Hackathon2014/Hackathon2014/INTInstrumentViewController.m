@@ -20,6 +20,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 @property (nonatomic, strong) UITouch *previousTouch;
 @property BOOL touchStartedOnNote;
 @property BOOL initializing;
+@property float initialTouchX;
+@property float initialTouchY;
 
 @end
 
@@ -259,6 +261,27 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     note.touched = YES;
 }
 
+- (void)bendNote:(INTInstrumentNote*)note
+       touch:(UITouch *)touch
+{
+    CGPoint noteCenter = note.center;
+    CGPoint touchPoint = [touch locationInView:self.view];
+    
+    float yDiff = self.initialTouchY - touchPoint.y;
+    float pitchBend = yDiff + 64;
+    
+    if (pitchBend > 127.0){
+        pitchBend = 127.0;
+    } else if (pitchBend < 0.0){
+        pitchBend = 0.0;
+    }
+    
+    NSString *receiver = [NSString stringWithFormat:@"%d-pitchbend", self.dollarZero];
+    [PdBase sendFloat:pitchBend toReceiver:receiver];
+    
+    DDLogVerbose(@"%f", pitchBend);
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     DDLogVerbose(@"Started");
@@ -273,10 +296,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     if (tappedNote){
         if (self.editFlag){
             [self selectNote:tappedNote];
-            self.touchStartedOnNote = YES;
         } else {
             [self playNote: tappedNote];
         }
+        self.touchStartedOnNote = YES;
+        
+        CGPoint touchLocation = [touch locationInView:self.view];
+        self.initialTouchX = touchLocation.x;
+        self.initialTouchY = touchLocation.y;
     }
     
     self.previousTouch = touch;
@@ -299,9 +326,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             [self dragNote:tappedNote touch:touch];
         }
     } else {
-        if (tappedNote && !tappedNote.touched){
+        if (tappedNote && !self.touchStartedOnNote && !tappedNote.touched){
             [self playNote: tappedNote];
+        } else if (self.touchStartedOnNote){
+            [self bendNote:tappedNote touch:touch];
         }
+        
         NSArray *notesToKill = [self getNonintersectsForTouch:touch
                                                       inEvent:event
                                                      forNotes:self.playingNotes];
@@ -342,6 +372,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         }
         note.touched = NO;
     }
+    NSString *receiver = [NSString stringWithFormat:@"%d-pitchbend", self.dollarZero];
+    [PdBase sendFloat:64.0 toReceiver:receiver];
     
     self.touchStartedOnNote = NO;
     self.previousTouch = nil;
@@ -399,7 +431,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.selectedNotes = [[NSMutableArray alloc] init];
     
     [self initNotes];
-    
 }
 
 - (NSArray *)getCurrentScale

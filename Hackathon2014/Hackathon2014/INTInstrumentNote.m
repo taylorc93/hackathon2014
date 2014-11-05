@@ -99,36 +99,33 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)setBackgroundColor
 {
-    DDLogVerbose(@"%d", self.octave);
     switch (self.octave) {
         case 1:
-            self.color = [UIColor colorWithRed:209.0 / 255.0 green:25.0 / 255.0 blue:25.0 / 255.0 alpha:1.0];
+            self.color = [UIColor colorWithRed:34.0 / 255.0 green:68.0 / 255.0 blue:85.0 / 255.0 alpha:0.1];
             break;
         case 2:
-            self.color = [UIColor colorWithRed:214.0 / 255.0 green:51.0 / 255.0 blue:51.0 / 255.0 alpha:1.0];
+            self.color = [UIColor colorWithRed:214.0 / 255.0 green:51.0 / 255.0 blue:51.0 / 255.0 alpha:0.2];
             break;
         case 3:
-            self.color = [UIColor colorWithRed:219.0 / 255.0 green:77.0 / 255.0 blue:77.0 / 255.0 alpha:1.0];
+            self.color = [UIColor colorWithRed:219.0 / 255.0 green:77.0 / 255.0 blue:77.0 / 255.0 alpha:0.4];
             break;
         case 4:
-            self.color = [UIColor colorWithRed:224.0 / 255.0 green:102.0 / 255.0 blue:102.0 / 255.0 alpha:1.0];
+            self.color = [UIColor colorWithRed:78.0 / 255.0 green:118.0 / 255.0 blue:134.0 / 255.0 alpha:1.0];
             break;
         case 5:
-            self.color = [UIColor colorWithRed:230.0 / 255.0 green:128.0 / 255.0 blue:128.0 / 255.0 alpha:1.0];
+            self.color = [UIColor colorWithRed:85.0 / 255.0 green:170.0 / 255.0 blue:170.0 / 255.0 alpha:1.0];
             break;
         case 6:
-            self.color = [UIColor colorWithRed:235.0 / 255.0 green:153.0 / 255.0 blue:153.0 / 255.0 alpha:1.0];
+            self.color = [UIColor colorWithRed:169.0 / 255.0 green:204.0 / 255.0 blue:127.0 / 255.0 alpha:1.0];
             break;
         case 7:
-            self.color = [UIColor colorWithRed:240.0 / 255.0 green:178.0 / 255.0 blue:178.0 / 255.0 alpha:1.0];
+            self.color = [UIColor colorWithRed:25.0 / 255.0 green:209.0 / 255.0 blue:255.0 / 255.0 alpha:1.0];
             break;
         default:
             DDLogError(@"Octave %d not in correct bounds 1-7", self.octave);
             break;
     }
-    DDLogVerbose(@"color: %@", self.color);
     self.backgroundColor = self.color;
-    DDLogVerbose(@"%@", self.backgroundColor);
 }
 
 /*
