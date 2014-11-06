@@ -1,13 +1,22 @@
 Pure Data Interface
 
-Main patch: Main.pd
-
 Master List of Receivers
 Last Updated 10/24/14
+
+
+Interface Patch:
+
+	Main.pd - All notes go through main synth with global settings
+
+	Note.pd - Single synth unit with its own settings for each note. 
+				Currently each has own [dac~] objects, no "master" settings.
+
 
 Formula for scaling slider values (if sliders go from .1 to 1):
 
 	max_value * abs(log(abs(value - 1.1)) / log(scale_factor))
+
+
 
 Documentation Format:
 Functionality: [receiver name] message to send (comment/restriction)
@@ -15,11 +24,14 @@ Functionality: [receiver name] message to send (comment/restriction)
 Example: [$0-chorus_on] 1 / 0 (on / off)
 Meaning: Turn the chorus module on or off by sending a 1 or 0 to $0-chorus_on
 
+
+
 TEST:
 
 	[$0-test] bang (Plays Middle C)
 
 	Plays a brief test tone.
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -111,7 +123,7 @@ ADSR:
 
 AUDIO EFFECTS:
 
-
+All effects are currently global to all notes.  This will be changed soon.
 
 PRE-GAIN:
 
@@ -132,10 +144,10 @@ RING MODULATOR:
 
 	At high values you can create Amplitude Modulation.
 
-EQ: 
+EQ:  
 
 	[$0-eq_on]	1 / 0 (On / Off)
-	[$0-eq_hp]	list{ float float } ( 1/0 (On/Off), Cutoff Freq (Hz))
+	[$0-eq_hp]	list{ float float }       ( 1/0 (On/Off), Cutoff Freq (Hz))
 	[$0-eq_bp1]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
 	[$0-eq_bp2]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
 	[$0-eq_bp3]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
@@ -144,13 +156,15 @@ EQ:
 	[$0-eq_bp6]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
 	[$0-eq_bp7]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
 	[$0-eq_bp8]	list{ float float float } ( 1/0 (On/Off), Center Freq (Hz), Q)
-	[$0-eq_lp]	list{ float float } ( 1/0 (On/Off), Cutoff Freq (Hz))
+	[$0-eq_lp]	list{ float float }       ( 1/0 (On/Off), Cutoff Freq (Hz))
 
 	The EQ Plugin offers 8 Bandpass Filters, a Highpass, and a Lowpass.
 	Each plugin receives a list containing an on/off bit, the main frequency,
 	and (if applicable) the Q factor.  
 
 	The Q factor relates to the slope of the filter's attenuation.
+
+	THE EQ DESIGN NEEDS TO BE CHANGED, DON'T USE IT UNTIL THIS HAS BEEN REMOVED
 
 DELAY:
 
@@ -186,13 +200,22 @@ TREMOLO:
 
 	The Tremolo plugin multiplies the amplitude of the input signal with
 	a waveform set by $0-tremolo_shape.  Also creates Amplitude Modulation 
-	with high rate values. 
+	with large rates. 
 
 	Shapes:
 			0 - Sine
 			1 - Sawtooth (/)
 			2 - Sawtooth (\)
 			3 - Square
+
+VIBRATO:
+
+	[$0-vibrato_on]    1 / 0 (On / Off)
+	[$0-vibrato_rate]  float (Speed in Hz)
+	[$0-vibrato_depth] float (Pitch detune, Hz)
+
+	A basic vibrato effect, currently only with sine wave.  Creates Frequency
+	Modulation with large rates.
 
 GAIN:
 

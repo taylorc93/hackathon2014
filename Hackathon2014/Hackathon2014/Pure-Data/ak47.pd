@@ -6,6 +6,7 @@
 -1 -1;
 #X obj -144 -5 int;
 #X floatatom -110 -15 5 0 0 0 - - -;
+#X text -160 -75 Note: Max value allowed is 10999;
 #N canvas 556 332 176 252 UZI_to10999 0;
 #X obj 47 80 int;
 #X obj 38 52 t b f;
@@ -2514,10 +2515,9 @@
 #X connect 10 0 9 0;
 #X connect 11 0 10 0;
 #X restore -144 16 pd UZI_to10999;
-#X text -160 -75 Note: Max value allowed is 10999;
 #X connect 0 0 3 0;
 #X connect 1 0 4 1;
 #X connect 1 0 5 0;
 #X connect 3 0 4 0;
-#X connect 4 0 6 0;
-#X connect 6 0 2 0;
+#X connect 4 0 7 0;
+#X connect 7 0 2 0;

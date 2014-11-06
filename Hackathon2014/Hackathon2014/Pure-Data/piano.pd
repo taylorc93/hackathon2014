@@ -1,4 +1,4 @@
-#N canvas 511 66 681 151 10;
+#N canvas 511 66 696 164 10;
 #X obj 84 72 bng 66 250 50 0 \$0-C empty empty 17 7 0 10 -262144 -162280
 -1;
 #X obj 150 72 bng 66 250 50 0 \$0-D empty empty 17 7 0 10 -262144 -162280
@@ -33,12 +33,13 @@
 10 -138095 -1 -1 0 1;
 #X text 581 77 Velocity;
 #X obj 558 107 hsl 100 30 30 1500 0 0 \$0-duration empty empty -2 -8
-0 10 -125184 -1 -1 500 1;
+0 10 -125184 -1 -1 0 1;
 #X text 582 114 Duration;
-#X obj 624 15 bng 40 250 50 0 \$0-flush empty empty 17 7 0 10 -228856
+#X obj 609 15 bng 40 250 50 0 \$0-flush empty empty 17 7 0 10 -228856
 -75776 -1;
-#X text 628 26 Flush;
-#N canvas 371 384 997 278 controller 0;
+#X text 613 26 Flush;
+#X obj 260 39 outlet;
+#N canvas 368 475 997 278 guts 0;
 #X obj -1 13 r \$0-C;
 #X obj -1 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -114,8 +115,7 @@
 #X obj 432 16 r \$0-Gsharp;
 #X msg 39 156 80;
 #X msg 77 156 400;
-#X obj -118 13 key;
-#X floatatom -118 40 5 0 0 0 - - -;
+#X floatatom -109 50 5 0 0 0 - - -;
 #X obj -1 44 sel 97;
 #X obj 42 44 sel 119;
 #X obj 116 44 sel 115;
@@ -130,6 +130,9 @@
 #X obj 590 46 sel 106;
 #X obj -134 78 sel 44;
 #X obj -89 78 sel 46;
+#X obj -124 4 key;
+#X obj -97 4 r \$0-keyboard;
+#X obj -124 27 ggate;
 #X connect 0 0 1 0;
 #X connect 1 0 23 0;
 #X connect 2 0 24 0;
@@ -195,36 +198,41 @@
 #X connect 57 0 16 0;
 #X connect 58 0 47 1;
 #X connect 59 0 47 2;
-#X connect 60 0 61 0;
-#X connect 60 0 62 0;
-#X connect 60 0 74 0;
-#X connect 62 0 1 0;
+#X connect 61 0 1 0;
+#X connect 61 1 62 0;
+#X connect 62 0 2 0;
 #X connect 62 1 63 0;
-#X connect 63 0 2 0;
+#X connect 63 0 4 0;
 #X connect 63 1 64 0;
-#X connect 64 0 4 0;
+#X connect 64 0 5 0;
 #X connect 64 1 65 0;
-#X connect 65 0 5 0;
+#X connect 65 0 8 0;
 #X connect 65 1 66 0;
-#X connect 66 0 8 0;
+#X connect 66 0 9 0;
 #X connect 66 1 67 0;
-#X connect 67 0 9 0;
+#X connect 67 0 10 0;
 #X connect 67 1 68 0;
-#X connect 68 0 10 0;
+#X connect 68 0 11 0;
 #X connect 68 1 69 0;
-#X connect 69 0 11 0;
+#X connect 69 0 16 0;
 #X connect 69 1 70 0;
-#X connect 70 0 16 0;
+#X connect 70 0 17 0;
 #X connect 70 1 71 0;
-#X connect 71 0 17 0;
+#X connect 71 0 18 0;
 #X connect 71 1 72 0;
-#X connect 72 0 18 0;
-#X connect 72 1 73 0;
-#X connect 73 0 19 0;
-#X connect 74 0 42 0;
-#X connect 74 1 75 0;
-#X connect 75 0 41 0;
-#X restore 530 15 pd controller;
-#X obj 530 37 outlet;
-#X connect 22 0 23 0;
+#X connect 72 0 19 0;
+#X connect 73 0 42 0;
+#X connect 73 1 74 0;
+#X connect 74 0 41 0;
+#X connect 75 0 77 0;
+#X connect 76 0 77 1;
+#X connect 77 0 60 0;
+#X connect 77 0 61 0;
+#X connect 77 0 73 0;
+#X restore 260 17 pd guts;
+#X obj 555 15 tgl 40 0 \$0-keyboard empty empty 17 7 0 10 -228265 -1
+-1 0 1;
+#X text 561 18 Keys;
+#X text 556 32 On/Off;
+#X connect 23 0 22 0;
 #X coords 0 -1 1 1 675 144 2 0 0;
