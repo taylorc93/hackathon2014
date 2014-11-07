@@ -1,4 +1,4 @@
-#N canvas 236 135 1223 662 10;
+#N canvas 1029 244 1223 662 10;
 #X obj 354 487 tgl 15 0 empty \$0-panner_on Panner_off/on 17 7 0 10
 -262144 -1 -1 1 1;
 #X floatatom 344 467 5 0 0 1 Panner_depth #0-panner_depth -;
@@ -9,8 +9,8 @@
 -166441 -1 -1 8890 1;
 #X obj 483 518 hsl 128 15 0 100 0 0 empty \$0-pan Pan 73 8 1 10 -91543
 -203890 -262074 6350 1;
-#N canvas 175 73 1428 829 audio_effects~ 0;
-#X obj -21 795 outlet~;
+#N canvas 871 57 1431 864 audio_effects~ 1;
+#X obj -21 843 outlet~;
 #X obj -21 13 inlet~;
 #X obj 6 115 tgl 15 0 empty empty Gain_off/on 17 7 0 10 -262144 -1
 -1 0 1;
@@ -127,7 +127,7 @@ to 22000;
 #X obj -21 701 multitremolo~;
 #X obj -21 134 gain~;
 #X obj -21 646 chorus~;
-#X obj -21 239 ringmod~;
+#X obj -21 202 ringmod~;
 #X obj 339 88 f \$0;
 #X obj 339 58 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -147,17 +147,26 @@ center;
 #X obj -21 404 eq~ --------------------------;
 #X obj -8 41 r \$0-pregain_amount;
 #X obj 6 61 r \$0-pregain_on;
-#X obj 503 687 tgl 15 0 empty empty Gain_off/on 17 7 0 10 -262144 -1
+#X obj 692 737 tgl 15 0 empty empty Gain_off/on 17 7 0 10 -262144 -1
 -1 0 1;
-#X floatatom 489 666 5 0 0 1 Gain_amount - -;
-#X obj -21 750 gain~;
-#X obj 489 613 r \$0-gain_amount;
-#X obj 503 633 r \$0-gain_on;
+#X floatatom 678 716 5 0 0 1 Gain_amount - -;
+#X obj -21 816 gain~;
+#X obj 678 663 r \$0-gain_amount;
+#X obj 692 683 r \$0-gain_on;
 #X text 887 245 frequency to 530 Hz \, sets Q to 0.5;
+#X obj -21 756 vibrato~;
+#X obj 538 688 tgl 15 0 empty empty Vibrato_off/on 17 7 0 10 -262144
+-1 -1 1 1;
+#X floatatom 515 668 5 0 0 1 Vibrato_Depth - -;
+#X floatatom 504 649 5 0 0 1 Vibrato_rate - -;
+#X obj 504 562 r \$0-vibrato_rate;
+#X obj 515 583 r \$0-vibrato_depth;
+#X obj 538 607 r \$0-vibrato_on;
 #X msg 339 111 \; \$1-chorus_rate 0.3 \; \$1-chorus_depth 0.7 \; \$1-chorus_mix
 50 \; \$1-tremolo_shape 1 \; \$1-tremolo_depth 1 \; \$1-tremolo_rate
 8 \; \$1-ringmod_depth 1 \; \$1-ringmod_rate 60 \; \$1-delay_time 700
-\; \$1-delay_feedback 0.4 \;;
+\; \$1-delay_feedback 0.4 \; \$1-vibrato_rate 1 \; \$1-vibrato_depth
+0.5 \;;
 #X connect 1 0 98 0;
 #X connect 2 0 98 2;
 #X connect 3 0 98 1;
@@ -267,11 +276,11 @@ center;
 #X connect 89 0 114 9;
 #X connect 90 0 114 10;
 #X connect 91 0 114 1;
-#X connect 97 0 119 0;
+#X connect 97 0 123 0;
 #X connect 98 0 100 0;
 #X connect 99 0 97 0;
 #X connect 100 0 114 0;
-#X connect 101 0 123 0;
+#X connect 101 0 130 0;
 #X connect 102 0 101 0;
 #X connect 103 0 102 0;
 #X connect 105 0 8 0;
@@ -291,6 +300,13 @@ center;
 #X connect 119 0 0 0;
 #X connect 120 0 118 0;
 #X connect 121 0 117 0;
+#X connect 123 0 119 0;
+#X connect 124 0 123 3;
+#X connect 125 0 123 2;
+#X connect 126 0 123 1;
+#X connect 127 0 126 0;
+#X connect 128 0 125 0;
+#X connect 129 0 124 0;
 #X restore 315 368 pd audio_effects~;
 #X obj 315 533 volume~;
 #X obj 337 318 pack 50 100 0.6 250;
@@ -9421,13 +9437,13 @@ options (0-16) that can be found in the _Wave_Types.png image in the
 Pure-Data folder. See _PD_Interface.txt for more info.;
 #X obj 315 420 normalize~;
 #X obj -466 199 piano;
+#X msg 585 360 64;
+#X obj 315 343 synth~;
+#X obj 513 360 delay 300;
 #X msg -150 408 \; pd dsp 1 \; \$1-pitchbend 64 \; \$1-pitchbend_range
 2 \; \$1-pan 50 \; \$1-volume 0.7 \; \$1-panner_on 1 \; \$1-panner_rate
-1.8 \; \$1-panner_depth 0.36 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain
-0.7 \; \$1-release 300 \; \$1-wave 5 \;;
-#X obj 315 343 synth^~;
-#X obj 255 397 lop~;
-#X floatatom 275 361 5 0 0 0 - - -;
+1.3 \; \$1-panner_depth 0.26 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain
+0.7 \; \$1-release 3000 \; \$1-wave 5 \;;
 #X connect 0 0 3 4;
 #X connect 1 0 3 3;
 #X connect 2 0 3 2;
@@ -9437,7 +9453,7 @@ Pure-Data folder. See _PD_Interface.txt for more info.;
 #X connect 5 0 8 3;
 #X connect 5 0 8 1;
 #X connect 6 0 8 2;
-#X connect 7 0 56 0;
+#X connect 7 0 4 0;
 #X connect 8 0 32 0;
 #X connect 8 1 32 1;
 #X connect 9 0 55 2;
@@ -9457,13 +9473,14 @@ Pure-Data folder. See _PD_Interface.txt for more info.;
 #X connect 20 0 14 0;
 #X connect 21 0 15 0;
 #X connect 22 0 16 0;
+#X connect 22 0 56 1;
 #X connect 23 0 17 0;
 #X connect 24 0 30 0;
 #X connect 25 0 30 0;
 #X connect 28 0 29 0;
 #X connect 29 0 30 1;
 #X connect 30 0 55 0;
-#X connect 31 0 54 0;
+#X connect 31 0 57 0;
 #X connect 33 0 34 0;
 #X connect 34 0 35 0;
 #X connect 34 1 35 2;
@@ -9485,6 +9502,7 @@ Pure-Data folder. See _PD_Interface.txt for more info.;
 #X connect 52 0 3 0;
 #X connect 52 0 3 1;
 #X connect 53 0 55 0;
+#X connect 54 0 47 0;
 #X connect 55 0 7 0;
-#X connect 56 0 4 0;
-#X connect 57 0 56 1;
+#X connect 55 1 56 0;
+#X connect 56 0 54 0;

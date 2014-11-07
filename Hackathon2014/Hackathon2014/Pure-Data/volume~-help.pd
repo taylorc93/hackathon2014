@@ -6,21 +6,21 @@
 #X obj 4 244 cnv 3 660 3 empty \$0-pddp.cnv.inlets inlets 15 12 0 13
 -228856 -1 0;
 #N canvas 468 603 388 245 META 0;
-#X text 10 5 Created by Chris Penny - 5/14/2014;
 #X text 11 23 LICENSE SIBSD;
-#X text 12 133 OUTLET_0 float;
-#X text 11 43 DESCRIPTION gain - Allows easy stereo gain/panning controls
-;
 #X text 11 63 INLET_0 signal;
 #X text 11 77 INLET_1 float;
 #X text 11 90 INLET_2 float;
 #X text 11 102 INLET_3 float;
 #X text 11 116 INLET_4 signal;
-#X text 12 146 OUTLET_1 float;
 #X text 12 162 LIBRARY IntrinsicAudio;
 #X text 12 180 AUTHOR Chris Penny;
 #X text 13 197 RELEASE_DATE 2014;
 #X text 13 217 HELP_PATCH_AUTHORS Chris Penny;
+#X text 10 5 Created by Chris Penny;
+#X text 11 43 DESCRIPTION volume - Easy stereo gain/panning controls
+;
+#X text 12 133 OUTLET_0 signal;
+#X text 12 146 OUTLET_1 signal;
 #X restore 617 498 pd META;
 #X obj 4 372 cnv 3 660 3 empty empty outlet 15 12 0 13 -228856 -1 0
 ;
@@ -28,72 +28,17 @@
 0;
 #X obj 73 264 cnv 17 3 20 empty empty 0 5 9 0 16 -228856 -162280 0
 ;
-#X obj 410 4 pddp/dsp;
-#X obj 622 -6 gain~;
+#X obj 333 -2 pddp/dsp;
 #X text 10 9 Allows easy gain/panning controls for stereo audio;
-#X floatatom 139 161 5 0 1 1 Left_Gain - -;
-#X floatatom 74 163 5 0 1 0 Right_Gain - -;
-#X obj 101 222 dac~;
-#X floatatom 137 133 5 0 100 1 Pan_%_(0-100) - -;
-#X floatatom 78 137 5 0 1 0 Stereo_Gain - -;
-#X obj 119 105 osc~;
-#X msg 129 80 0;
-#X obj 99 56 loadbang;
-#X floatatom 310 161 5 0 100 1 Pan_%_(0-100) - -;
-#X obj 288 109 osc~;
-#X msg 296 81 0;
-#X obj 294 56 loadbang;
-#X text 268 30 Panning Tremolo:;
-#X obj 370 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#N canvas 720 126 128 172 panner 0;
-#X obj 55 6 inlet;
-#X obj 11 65 snapshot~;
-#X obj 10 33 osc~ 1;
-#X obj 11 86 * 50;
-#X obj 11 106 + 50;
-#X obj 55 33 metro 50;
-#X obj 11 133 outlet;
-#X obj 13 6 inlet;
-#X connect 0 0 2 0;
-#X connect 1 0 3 0;
-#X connect 2 0 1 0;
-#X connect 3 0 4 0;
-#X connect 4 0 6 0;
-#X connect 5 0 1 0;
-#X connect 7 0 5 0;
-#X restore 327 121 pd panner;
-#X floatatom 254 109 5 0 0 0 - - -;
-#X floatatom 82 106 5 0 0 0 - - -;
-#X msg 266 81 350;
-#X floatatom 351 99 5 0 0 1 Panning_Rate - -;
-#X floatatom 518 161 5 0 100 1 Gain_(0-1) - -;
-#X obj 505 120 osc~;
-#X msg 514 82 0;
-#X obj 514 54 loadbang;
-#X obj 583 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X floatatom 471 120 5 0 0 0 - - -;
-#X msg 484 82 350;
-#X floatatom 568 96 5 0 0 1 Pulse_Rate - -;
-#X text 491 30 Volume Tremolo;
-#N canvas 880 34 128 172 pulsate 0;
-#X obj 55 6 inlet;
-#X obj 11 65 snapshot~;
-#X obj 11 133 outlet;
-#X obj 13 6 inlet;
-#X obj 70 33 metro 20;
-#X obj 10 33 phasor~ 1;
-#X connect 0 0 5 0;
-#X connect 1 0 2 0;
-#X connect 3 0 4 0;
-#X connect 4 0 1 0;
-#X connect 5 0 1 0;
-#X restore 543 119 pd pulsate;
-#X text 75 31 Gain Utility:;
-#X msg 99 80 350;
-#X obj 277 220 dac~;
-#X obj 489 220 dac~;
+#X floatatom 205 154 5 0 1 1 Left_Gain - -;
+#X floatatom 104 150 5 0 1 0 Right_Gain - -;
+#X obj 138 215 dac~;
+#X floatatom 205 124 5 0 100 1 Pan_%_(0-100) - -;
+#X floatatom 104 121 5 0 1 0 Stereo_Gain - -;
+#X obj 156 98 osc~;
+#X msg 170 48 0;
+#X floatatom 102 82 5 0 0 0 Frequency - -;
+#X msg 140 48 350;
 #X text 103 263 SIGNAL - Left Input Signal;
 #X obj 73 284 cnv 17 3 20 empty empty 1 5 9 0 16 -228856 -162280 0
 ;
@@ -103,7 +48,6 @@
 ;
 #X obj 73 344 cnv 17 3 20 empty empty 4 5 9 0 16 -228856 -162280 0
 ;
-#X text 103 303 FLOAT - Pan % (0-100) 50 = (0.5 \, 0.5);
 #X text 103 342 SIGNAL - Right Input Signal;
 #X obj 74 397 cnv 17 3 20 empty empty 0 5 9 0 16 -228856 -162280 0
 ;
@@ -114,67 +58,57 @@
 #X text 77 469 None;
 #X text 103 283 FLOAT - Left Gain (0-1);
 #X text 103 323 FLOAT - Right Gain (0-1);
-#X text 593 11 Chris Penny;
-#X obj 83 82 cnv 15 13 13 empty \$0-pddp.cnv.header ON 2 8 0 10 -135143
+#X text 588 11 Chris Penny;
+#X obj 124 50 cnv 15 13 13 empty \$0-pddp.cnv.header ON 2 8 0 10 -135143
 -1 0;
-#X obj 156 82 cnv 15 19 13 empty \$0-pddp.cnv.header OFF 2 8 0 10 -259868
+#X obj 197 50 cnv 15 19 13 empty \$0-pddp.cnv.header OFF 2 8 0 10 -259868
 -1 0;
-#X obj 249 82 cnv 15 13 13 empty \$0-pddp.cnv.header ON 2 8 0 10 -135143
--1 0;
-#X obj 322 82 cnv 15 19 13 empty \$0-pddp.cnv.header OFF 2 8 0 10 -259868
--1 0;
-#X obj 467 83 cnv 15 13 13 empty \$0-pddp.cnv.header ON 2 8 0 10 -135143
--1 0;
-#X obj 540 83 cnv 15 19 13 empty \$0-pddp.cnv.header OFF 2 8 0 10 -259868
--1 0;
-#X obj 481 342 dac~;
-#X floatatom 516 299 5 0 100 1 Pan_%_(0-100) - -;
-#X floatatom 442 299 5 0 1 0 Stereo_Gain - -;
-#X text 468 272 Simple Interface:;
-#X obj 98 195 volume~;
-#X obj 275 192 volume~;
-#X obj 487 193 volume~;
-#X obj 478 315 volume~;
-#X connect 10 0 68 3;
-#X connect 11 0 68 1;
-#X connect 13 0 68 2;
-#X connect 14 0 11 0;
-#X connect 14 0 10 0;
-#X connect 15 0 68 0;
-#X connect 15 0 68 4;
-#X connect 16 0 15 0;
-#X connect 17 0 40 0;
-#X connect 18 0 69 2;
-#X connect 19 0 69 0;
-#X connect 19 0 69 4;
-#X connect 20 0 19 0;
-#X connect 21 0 20 0;
-#X connect 23 0 24 0;
-#X connect 24 0 18 0;
-#X connect 25 0 19 0;
-#X connect 26 0 15 0;
-#X connect 27 0 19 0;
-#X connect 28 0 24 1;
-#X connect 29 0 70 1;
-#X connect 29 0 70 3;
-#X connect 30 0 70 0;
-#X connect 30 0 70 4;
-#X connect 31 0 30 0;
-#X connect 32 0 31 0;
-#X connect 33 0 38 0;
-#X connect 34 0 30 0;
-#X connect 35 0 30 0;
-#X connect 36 0 38 1;
-#X connect 38 0 29 0;
-#X connect 40 0 15 0;
-#X connect 65 0 71 2;
-#X connect 66 0 71 1;
-#X connect 66 0 71 3;
-#X connect 68 0 12 0;
-#X connect 68 1 12 1;
-#X connect 69 0 41 0;
-#X connect 69 1 41 1;
-#X connect 70 0 42 0;
-#X connect 70 1 42 1;
-#X connect 71 0 64 0;
-#X connect 71 1 64 1;
+#X obj 445 209 dac~;
+#X floatatom 494 166 5 0 100 1 Pan_%_(0-100) - -;
+#X floatatom 406 166 5 0 1 0 Stereo_Gain - -;
+#X text 420 139 Simple Interface:;
+#X obj 135 188 volume~;
+#X obj 442 182 volume~;
+#X text 332 93 Volume Controls at Left-middle & right-middle inlets.
+;
+#X text 331 78 Pan control (0 - 100% \, 50% = center) in center inlet.
+;
+#X text 331 64 Signal input at Left & Right inlets.;
+#X text 309 45 Stereo Volume Controls:;
+#X text 304 256 This patch uses non-signal controls \, so tremolo or
+panner;
+#X text 103 303 FLOAT - Pan % (0-100) 50 = center;
+#X text 305 269 effects are limited to non-signal frequencies. For
+more;
+#X text 306 283 accurate tremolo or panner effects \, use the proper
+plugins:;
+#X obj 397 318 multitremolo~;
+#X obj 536 317 panner~;
+#X text 104 497 See also:;
+#X obj 168 498 multitremolo~;
+#X obj 259 498 panner~;
+#X obj 316 498 gain~;
+#X obj 361 498 adsr~;
+#X obj 406 498 remove_dc_offset~;
+#X obj 522 498 normalize~;
+#X text 404 -1 Intrinsic Audio PD Framework;
+#X obj 599 -6 volume~;
+#X obj 205 97 loadfloat 50;
+#X connect 9 0 38 3;
+#X connect 10 0 38 1;
+#X connect 12 0 38 2;
+#X connect 13 0 10 0;
+#X connect 13 0 9 0;
+#X connect 14 0 38 0;
+#X connect 14 0 38 4;
+#X connect 15 0 14 0;
+#X connect 16 0 14 0;
+#X connect 17 0 14 0;
+#X connect 35 0 39 2;
+#X connect 36 0 39 1;
+#X connect 36 0 39 3;
+#X connect 38 0 11 0;
+#X connect 38 1 11 1;
+#X connect 39 0 34 0;
+#X connect 39 1 34 1;
+#X connect 59 0 12 0;

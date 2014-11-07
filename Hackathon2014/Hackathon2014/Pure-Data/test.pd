@@ -2,6 +2,9 @@
 #X obj 88 110 pencileq~;
 #X obj 88 63 noise~;
 #X obj 88 185 output~;
+#X floatatom 243 130 5 0 0 0 - - -;
+#X obj 244 80 loadfloat 80;
 #X connect 0 0 2 0;
 #X connect 0 0 2 1;
 #X connect 1 0 0 0;
+#X connect 4 0 3 0;
