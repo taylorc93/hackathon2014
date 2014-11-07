@@ -9275,7 +9275,7 @@ Pure-Data folder. See _PD_Interface.txt for more info.;
 1.8 \; \$1-panner_depth 0.36 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain
 0.7 \; \$1-release 300 \; \$1-wave 5 \;;
 #X obj 315 343 synth^~;
-#N canvas 328 534 450 300 testdynamic 1;
+#N canvas 328 534 450 300 testdynamic 0;
 #X restore 60 449 pd testdynamic;
 #X obj 525 360 delay 300;
 #X msg 585 360 64;
@@ -9302,6 +9302,7 @@ Pure-Data folder. See _PD_Interface.txt for more info.;
 #X connect 14 0 11 0;
 #X connect 15 0 12 0;
 #X connect 16 0 13 0;
+#X connect 16 0 57 1;
 #X connect 17 0 55 3;
 #X connect 18 0 31 0;
 #X connect 19 0 10 0;
