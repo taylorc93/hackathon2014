@@ -30,7 +30,7 @@
 #X obj 604 157 s \$0-pitch_bend;
 #X obj 18 54 r \$0-pitch_bend;
 #X obj 77 76 t b f;
-#X obj 345 295 outlet;
+#X obj 264 291 outlet;
 #X connect 1 0 0 0;
 #X connect 2 0 17 0;
 #X connect 3 0 4 0;
