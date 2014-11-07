@@ -22,7 +22,7 @@
     if ([_audioController configureAmbientWithSampleRate:44100
                                           numberChannels:2
                                            mixingEnabled:YES] != PdAudioOK) {
-        NSLog(@"failed to initialize audio components");
+        NSLog(@"failed to initialize PD audio components");
     }
 
     PdDispatcher *dispatcher = [[PdDispatcher alloc] init];

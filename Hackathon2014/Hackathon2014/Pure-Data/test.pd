@@ -1,10 +1,6 @@
-#N canvas 441 529 450 300 10;
-#X obj 88 110 pencileq~;
-#X obj 88 63 noise~;
-#X obj 88 185 output~;
-#X floatatom 243 130 5 0 0 0 - - -;
-#X obj 244 80 loadfloat 80;
-#X connect 0 0 2 0;
-#X connect 0 0 2 1;
+#N canvas 0 22 500 500 16;
+#X obj 10 10 Note;
+#X obj 107 32 r 1-on;
+#X obj 106 134 send~ poop;
+#X connect 0 1 2 0;
 #X connect 1 0 0 0;
-#X connect 4 0 3 0;

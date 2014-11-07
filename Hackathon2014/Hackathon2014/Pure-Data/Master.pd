@@ -1,0 +1,5 @@
+#N canvas 250 252 608 484 10;
+#X obj 74 219 view~;
+#X floatatom 78 255 5 0 0 0 - - -;
+#X obj 79 148 dynamic_synth~;
+#X connect 2 0 0 0;
