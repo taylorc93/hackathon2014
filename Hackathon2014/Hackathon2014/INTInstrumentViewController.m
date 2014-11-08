@@ -68,16 +68,21 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSArray *midiNums = [self getCurrentScale];
     NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
+    int channelId = 1;
     for (int i = 0; i < 3; i++){
         int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
         for (int j = 0; j < 7; j++){
             float x = coords[0][j];
             float y = coords[1][j];
+            
+            
             INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 65.0, 65.0)
                                                                        noteNum:[midiNums[j] integerValue]
-                                                                    noteOctave:i + 4];
+                                                                    noteOctave:i + 4
+                                                                     channelId:channelId];
             note.center = CGPointMake(x, y);
             
+            channelId++;
             [self.view addSubview:note];
             [self.notes addObject:note];
         }
@@ -87,14 +92,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)addNote
 {
-    DDLogVerbose(@"note: %d octave: %d", self.currentMidiNote, self.currentOctave);
-    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(50.0, 325.0, 65.0, 65.0)
-                                                               noteNum:self.currentMidiNote
-                                                            noteOctave:self.currentOctave];
-    note.center = CGPointMake(50.0, 325.0);
-    
-    [self.view addSubview:note];
-    [self.notes addObject:note];
+//    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(50.0, 325.0, 65.0, 65.0)
+//                                                               noteNum:self.currentMidiNote
+//                                                            noteOctave:self.currentOctave];
+//    note.center = CGPointMake(50.0, 325.0);
+//    
+//    [self.view addSubview:note];
+//    [self.notes addObject:note];
 }
 
 - (void)deleteNote
@@ -191,18 +195,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
     if (note.playing){
         note.playing = NO;
-        NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
-                         [NSNumber numberWithInteger:0], nil];
-        [PdBase sendList:data toReceiver:playnote];
+        
+        [note stop];
         
         [self.playingNotes removeObject:note];
         [note.layer removeAllAnimations];
     } else {
         note.playing = YES;
-        NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
-                         [NSNumber numberWithInteger:50], nil];
-        
-        [PdBase sendList:data toReceiver:playnote];
+        [note play];
         [self.playingNotes addObject:note];
         
         CABasicAnimation *animation;
@@ -277,6 +277,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     } else if (pitchBend < 0.0){
         pitchBend = 0.0;
     }
+    
+    [note bendPitch:pitchBend];
     
     NSString *receiver = [NSString stringWithFormat:@"%d-pitchbend", self.dollarZero];
     [PdBase sendFloat:pitchBend toReceiver:receiver];

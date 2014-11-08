@@ -8,6 +8,56 @@
 
 /* Begin PBXBuildFile section */
 		BEBACA7D1A0D7ECF00F612EB /* INTSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBACA7C1A0D7ECF00F612EB /* INTSlider.m */; };
+		BEBACA801A0DA66100F612EB /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBACA7F1A0DA66100F612EB /* NoteManager.swift */; };
+		BEBACAB31A0DAA4500F612EB /* _PD_Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA821A0DAA4500F612EB /* _PD_Interface.txt */; };
+		BEBACAB41A0DAA4500F612EB /* _Wave_Types.png in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA831A0DAA4500F612EB /* _Wave_Types.png */; };
+		BEBACAB51A0DAA4500F612EB /* adsr~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA841A0DAA4500F612EB /* adsr~.pd */; };
+		BEBACAB61A0DAA4500F612EB /* ak47.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA851A0DAA4500F612EB /* ak47.pd */; };
+		BEBACAB71A0DAA4500F612EB /* backup.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA861A0DAA4500F612EB /* backup.pd */; };
+		BEBACAB81A0DAA4500F612EB /* blank~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA871A0DAA4500F612EB /* blank~.pd */; };
+		BEBACAB91A0DAA4500F612EB /* channel.txt in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA881A0DAA4500F612EB /* channel.txt */; };
+		BEBACABA1A0DAA4500F612EB /* chorus~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA891A0DAA4500F612EB /* chorus~.pd */; };
+		BEBACABB1A0DAA4500F612EB /* dynamo~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA8A1A0DAA4500F612EB /* dynamo~.pd */; };
+		BEBACABC1A0DAA4500F612EB /* eq~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA8B1A0DAA4500F612EB /* eq~.pd */; };
+		BEBACABD1A0DAA4500F612EB /* gain~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA8C1A0DAA4500F612EB /* gain~.pd */; };
+		BEBACABE1A0DAA4500F612EB /* gate2.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA8D1A0DAA4500F612EB /* gate2.pd */; };
+		BEBACABF1A0DAA4500F612EB /* ggate.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA8E1A0DAA4500F612EB /* ggate.pd */; };
+		BEBACAC01A0DAA4500F612EB /* ggate~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA8F1A0DAA4500F612EB /* ggate~.pd */; };
+		BEBACAC11A0DAA4500F612EB /* gswitch.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA901A0DAA4500F612EB /* gswitch.pd */; };
+		BEBACAC21A0DAA4500F612EB /* gswitch~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA911A0DAA4500F612EB /* gswitch~.pd */; };
+		BEBACAC31A0DAA4500F612EB /* iterator.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA921A0DAA4500F612EB /* iterator.pd */; };
+		BEBACAC41A0DAA4500F612EB /* loadfloat.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA931A0DAA4500F612EB /* loadfloat.pd */; };
+		BEBACAC51A0DAA4500F612EB /* Main.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA941A0DAA4500F612EB /* Main.pd */; };
+		BEBACAC61A0DAA4500F612EB /* Master.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA951A0DAA4500F612EB /* Master.pd */; };
+		BEBACAC71A0DAA4500F612EB /* master~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA961A0DAA4500F612EB /* master~.pd */; };
+		BEBACAC81A0DAA4500F612EB /* minigun-help.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA971A0DAA4500F612EB /* minigun-help.pd */; };
+		BEBACAC91A0DAA4500F612EB /* minigun.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA981A0DAA4500F612EB /* minigun.pd */; };
+		BEBACACA1A0DAA4500F612EB /* multidelay~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA991A0DAA4500F612EB /* multidelay~.pd */; };
+		BEBACACB1A0DAA4500F612EB /* multifilter~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA9A1A0DAA4500F612EB /* multifilter~.pd */; };
+		BEBACACC1A0DAA4500F612EB /* multitremolo~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA9B1A0DAA4500F612EB /* multitremolo~.pd */; };
+		BEBACACD1A0DAA4500F612EB /* normalize~-help.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA9C1A0DAA4500F612EB /* normalize~-help.pd */; };
+		BEBACACE1A0DAA4500F612EB /* normalize~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA9D1A0DAA4500F612EB /* normalize~.pd */; };
+		BEBACACF1A0DAA4500F612EB /* Note.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA9E1A0DAA4500F612EB /* Note.pd */; };
+		BEBACAD01A0DAA4500F612EB /* noteflush.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACA9F1A0DAA4500F612EB /* noteflush.pd */; };
+		BEBACAD11A0DAA4500F612EB /* number.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA01A0DAA4500F612EB /* number.pd */; };
+		BEBACAD21A0DAA4500F612EB /* once.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA11A0DAA4500F612EB /* once.pd */; };
+		BEBACAD31A0DAA4500F612EB /* panner~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA21A0DAA4500F612EB /* panner~.pd */; };
+		BEBACAD41A0DAA4500F612EB /* pencileq~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA31A0DAA4500F612EB /* pencileq~.pd */; };
+		BEBACAD51A0DAA4500F612EB /* piano.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA41A0DAA4500F612EB /* piano.pd */; };
+		BEBACAD61A0DAA4500F612EB /* remove_dc_offset~-help.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA51A0DAA4500F612EB /* remove_dc_offset~-help.pd */; };
+		BEBACAD71A0DAA4500F612EB /* remove_dc_offset~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA61A0DAA4500F612EB /* remove_dc_offset~.pd */; };
+		BEBACAD81A0DAA4500F612EB /* ringmod~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA71A0DAA4500F612EB /* ringmod~.pd */; };
+		BEBACAD91A0DAA4500F612EB /* synth^~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA81A0DAA4500F612EB /* synth^~.pd */; };
+		BEBACADA1A0DAA4500F612EB /* synth~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAA91A0DAA4500F612EB /* synth~.pd */; };
+		BEBACADB1A0DAA4500F612EB /* test.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAAA1A0DAA4500F612EB /* test.pd */; };
+		BEBACADC1A0DAA4500F612EB /* testdp~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAAB1A0DAA4500F612EB /* testdp~.pd */; };
+		BEBACADD1A0DAA4500F612EB /* toint.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAAC1A0DAA4500F612EB /* toint.pd */; };
+		BEBACADE1A0DAA4500F612EB /* transistor~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAAD1A0DAA4500F612EB /* transistor~.pd */; };
+		BEBACADF1A0DAA4500F612EB /* vibrato~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAAE1A0DAA4500F612EB /* vibrato~.pd */; };
+		BEBACAE01A0DAA4500F612EB /* view~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAAF1A0DAA4500F612EB /* view~.pd */; };
+		BEBACAE11A0DAA4500F612EB /* voice~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAB01A0DAA4500F612EB /* voice~.pd */; };
+		BEBACAE21A0DAA4500F612EB /* volume~-help.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAB11A0DAA4500F612EB /* volume~-help.pd */; };
+		BEBACAE31A0DAA4500F612EB /* volume~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BEBACAB21A0DAA4500F612EB /* volume~.pd */; };
 		BED473A119FAF4F0006DD472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473A019FAF4F0006DD472 /* main.m */; };
 		BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473A319FAF4F0006DD472 /* AppDelegate.m */; };
 		BED473AA19FAF4F0006DD472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED473A819FAF4F0006DD472 /* Main.storyboard */; };
@@ -87,6 +137,57 @@
 		BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hackathon2014.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBACA7B1A0D7ECF00F612EB /* INTSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTSlider.h; sourceTree = "<group>"; };
 		BEBACA7C1A0D7ECF00F612EB /* INTSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTSlider.m; sourceTree = "<group>"; };
+		BEBACA7E1A0DA66000F612EB /* Hackathon2014-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hackathon2014-Bridging-Header.h"; sourceTree = "<group>"; };
+		BEBACA7F1A0DA66100F612EB /* NoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteManager.swift; sourceTree = "<group>"; };
+		BEBACA821A0DAA4500F612EB /* _PD_Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _PD_Interface.txt; sourceTree = "<group>"; };
+		BEBACA831A0DAA4500F612EB /* _Wave_Types.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _Wave_Types.png; sourceTree = "<group>"; };
+		BEBACA841A0DAA4500F612EB /* adsr~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "adsr~.pd"; sourceTree = "<group>"; };
+		BEBACA851A0DAA4500F612EB /* ak47.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ak47.pd; sourceTree = "<group>"; };
+		BEBACA861A0DAA4500F612EB /* backup.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = backup.pd; sourceTree = "<group>"; };
+		BEBACA871A0DAA4500F612EB /* blank~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "blank~.pd"; sourceTree = "<group>"; };
+		BEBACA881A0DAA4500F612EB /* channel.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = channel.txt; sourceTree = "<group>"; };
+		BEBACA891A0DAA4500F612EB /* chorus~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "chorus~.pd"; sourceTree = "<group>"; };
+		BEBACA8A1A0DAA4500F612EB /* dynamo~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dynamo~.pd"; sourceTree = "<group>"; };
+		BEBACA8B1A0DAA4500F612EB /* eq~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "eq~.pd"; sourceTree = "<group>"; };
+		BEBACA8C1A0DAA4500F612EB /* gain~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gain~.pd"; sourceTree = "<group>"; };
+		BEBACA8D1A0DAA4500F612EB /* gate2.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gate2.pd; sourceTree = "<group>"; };
+		BEBACA8E1A0DAA4500F612EB /* ggate.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ggate.pd; sourceTree = "<group>"; };
+		BEBACA8F1A0DAA4500F612EB /* ggate~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ggate~.pd"; sourceTree = "<group>"; };
+		BEBACA901A0DAA4500F612EB /* gswitch.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gswitch.pd; sourceTree = "<group>"; };
+		BEBACA911A0DAA4500F612EB /* gswitch~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gswitch~.pd"; sourceTree = "<group>"; };
+		BEBACA921A0DAA4500F612EB /* iterator.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iterator.pd; sourceTree = "<group>"; };
+		BEBACA931A0DAA4500F612EB /* loadfloat.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = loadfloat.pd; sourceTree = "<group>"; };
+		BEBACA941A0DAA4500F612EB /* Main.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Main.pd; sourceTree = "<group>"; };
+		BEBACA951A0DAA4500F612EB /* Master.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Master.pd; sourceTree = "<group>"; };
+		BEBACA961A0DAA4500F612EB /* master~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "master~.pd"; sourceTree = "<group>"; };
+		BEBACA971A0DAA4500F612EB /* minigun-help.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "minigun-help.pd"; sourceTree = "<group>"; };
+		BEBACA981A0DAA4500F612EB /* minigun.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = minigun.pd; sourceTree = "<group>"; };
+		BEBACA991A0DAA4500F612EB /* multidelay~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "multidelay~.pd"; sourceTree = "<group>"; };
+		BEBACA9A1A0DAA4500F612EB /* multifilter~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "multifilter~.pd"; sourceTree = "<group>"; };
+		BEBACA9B1A0DAA4500F612EB /* multitremolo~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "multitremolo~.pd"; sourceTree = "<group>"; };
+		BEBACA9C1A0DAA4500F612EB /* normalize~-help.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "normalize~-help.pd"; sourceTree = "<group>"; };
+		BEBACA9D1A0DAA4500F612EB /* normalize~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "normalize~.pd"; sourceTree = "<group>"; };
+		BEBACA9E1A0DAA4500F612EB /* Note.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Note.pd; sourceTree = "<group>"; };
+		BEBACA9F1A0DAA4500F612EB /* noteflush.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = noteflush.pd; sourceTree = "<group>"; };
+		BEBACAA01A0DAA4500F612EB /* number.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = number.pd; sourceTree = "<group>"; };
+		BEBACAA11A0DAA4500F612EB /* once.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = once.pd; sourceTree = "<group>"; };
+		BEBACAA21A0DAA4500F612EB /* panner~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "panner~.pd"; sourceTree = "<group>"; };
+		BEBACAA31A0DAA4500F612EB /* pencileq~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pencileq~.pd"; sourceTree = "<group>"; };
+		BEBACAA41A0DAA4500F612EB /* piano.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = piano.pd; sourceTree = "<group>"; };
+		BEBACAA51A0DAA4500F612EB /* remove_dc_offset~-help.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "remove_dc_offset~-help.pd"; sourceTree = "<group>"; };
+		BEBACAA61A0DAA4500F612EB /* remove_dc_offset~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "remove_dc_offset~.pd"; sourceTree = "<group>"; };
+		BEBACAA71A0DAA4500F612EB /* ringmod~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ringmod~.pd"; sourceTree = "<group>"; };
+		BEBACAA81A0DAA4500F612EB /* synth^~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "synth^~.pd"; sourceTree = "<group>"; };
+		BEBACAA91A0DAA4500F612EB /* synth~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "synth~.pd"; sourceTree = "<group>"; };
+		BEBACAAA1A0DAA4500F612EB /* test.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.pd; sourceTree = "<group>"; };
+		BEBACAAB1A0DAA4500F612EB /* testdp~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "testdp~.pd"; sourceTree = "<group>"; };
+		BEBACAAC1A0DAA4500F612EB /* toint.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = toint.pd; sourceTree = "<group>"; };
+		BEBACAAD1A0DAA4500F612EB /* transistor~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "transistor~.pd"; sourceTree = "<group>"; };
+		BEBACAAE1A0DAA4500F612EB /* vibrato~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "vibrato~.pd"; sourceTree = "<group>"; };
+		BEBACAAF1A0DAA4500F612EB /* view~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "view~.pd"; sourceTree = "<group>"; };
+		BEBACAB01A0DAA4500F612EB /* voice~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "voice~.pd"; sourceTree = "<group>"; };
+		BEBACAB11A0DAA4500F612EB /* volume~-help.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "volume~-help.pd"; sourceTree = "<group>"; };
+		BEBACAB21A0DAA4500F612EB /* volume~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "volume~.pd"; sourceTree = "<group>"; };
 		BED4739B19FAF4F0006DD472 /* Hackathon2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackathon2014.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED4739F19FAF4F0006DD472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BED473A019FAF4F0006DD472 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -188,6 +289,62 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BEBACA811A0DAA4500F612EB /* Pure-Data */ = {
+			isa = PBXGroup;
+			children = (
+				BEBACA821A0DAA4500F612EB /* _PD_Interface.txt */,
+				BEBACA831A0DAA4500F612EB /* _Wave_Types.png */,
+				BEBACA841A0DAA4500F612EB /* adsr~.pd */,
+				BEBACA851A0DAA4500F612EB /* ak47.pd */,
+				BEBACA861A0DAA4500F612EB /* backup.pd */,
+				BEBACA871A0DAA4500F612EB /* blank~.pd */,
+				BEBACA881A0DAA4500F612EB /* channel.txt */,
+				BEBACA891A0DAA4500F612EB /* chorus~.pd */,
+				BEBACA8A1A0DAA4500F612EB /* dynamo~.pd */,
+				BEBACA8B1A0DAA4500F612EB /* eq~.pd */,
+				BEBACA8C1A0DAA4500F612EB /* gain~.pd */,
+				BEBACA8D1A0DAA4500F612EB /* gate2.pd */,
+				BEBACA8E1A0DAA4500F612EB /* ggate.pd */,
+				BEBACA8F1A0DAA4500F612EB /* ggate~.pd */,
+				BEBACA901A0DAA4500F612EB /* gswitch.pd */,
+				BEBACA911A0DAA4500F612EB /* gswitch~.pd */,
+				BEBACA921A0DAA4500F612EB /* iterator.pd */,
+				BEBACA931A0DAA4500F612EB /* loadfloat.pd */,
+				BEBACA941A0DAA4500F612EB /* Main.pd */,
+				BEBACA951A0DAA4500F612EB /* Master.pd */,
+				BEBACA961A0DAA4500F612EB /* master~.pd */,
+				BEBACA971A0DAA4500F612EB /* minigun-help.pd */,
+				BEBACA981A0DAA4500F612EB /* minigun.pd */,
+				BEBACA991A0DAA4500F612EB /* multidelay~.pd */,
+				BEBACA9A1A0DAA4500F612EB /* multifilter~.pd */,
+				BEBACA9B1A0DAA4500F612EB /* multitremolo~.pd */,
+				BEBACA9C1A0DAA4500F612EB /* normalize~-help.pd */,
+				BEBACA9D1A0DAA4500F612EB /* normalize~.pd */,
+				BEBACA9E1A0DAA4500F612EB /* Note.pd */,
+				BEBACA9F1A0DAA4500F612EB /* noteflush.pd */,
+				BEBACAA01A0DAA4500F612EB /* number.pd */,
+				BEBACAA11A0DAA4500F612EB /* once.pd */,
+				BEBACAA21A0DAA4500F612EB /* panner~.pd */,
+				BEBACAA31A0DAA4500F612EB /* pencileq~.pd */,
+				BEBACAA41A0DAA4500F612EB /* piano.pd */,
+				BEBACAA51A0DAA4500F612EB /* remove_dc_offset~-help.pd */,
+				BEBACAA61A0DAA4500F612EB /* remove_dc_offset~.pd */,
+				BEBACAA71A0DAA4500F612EB /* ringmod~.pd */,
+				BEBACAA81A0DAA4500F612EB /* synth^~.pd */,
+				BEBACAA91A0DAA4500F612EB /* synth~.pd */,
+				BEBACAAA1A0DAA4500F612EB /* test.pd */,
+				BEBACAAB1A0DAA4500F612EB /* testdp~.pd */,
+				BEBACAAC1A0DAA4500F612EB /* toint.pd */,
+				BEBACAAD1A0DAA4500F612EB /* transistor~.pd */,
+				BEBACAAE1A0DAA4500F612EB /* vibrato~.pd */,
+				BEBACAAF1A0DAA4500F612EB /* view~.pd */,
+				BEBACAB01A0DAA4500F612EB /* voice~.pd */,
+				BEBACAB11A0DAA4500F612EB /* volume~-help.pd */,
+				BEBACAB21A0DAA4500F612EB /* volume~.pd */,
+			);
+			path = "Pure-Data";
+			sourceTree = "<group>";
+		};
 		BED4739219FAF4F0006DD472 = {
 			isa = PBXGroup;
 			children = (
@@ -212,16 +369,19 @@
 		BED4739D19FAF4F0006DD472 /* Hackathon2014 */ = {
 			isa = PBXGroup;
 			children = (
+				BEBACA811A0DAA4500F612EB /* Pure-Data */,
 				BED473C419FAFBBA006DD472 /* Controllers */,
 				BED473C619FAFBCD006DD472 /* Views */,
 				BED473A219FAF4F0006DD472 /* AppDelegate.h */,
 				BED473A319FAF4F0006DD472 /* AppDelegate.m */,
+				BEBACA7F1A0DA66100F612EB /* NoteManager.swift */,
 				BED473A819FAF4F0006DD472 /* Main.storyboard */,
 				BED473AB19FAF4F0006DD472 /* Images.xcassets */,
 				BED473AD19FAF4F0006DD472 /* LaunchScreen.xib */,
 				BED4739E19FAF4F0006DD472 /* Supporting Files */,
 				FAC3908019FB28AA00B589C4 /* septagon_coordinates.c */,
 				BED473D019FB3968006DD472 /* septagon_coordinates.h */,
+				BEBACA7E1A0DA66000F612EB /* Hackathon2014-Bridging-Header.h */,
 			);
 			path = Hackathon2014;
 			sourceTree = "<group>";
@@ -526,6 +686,7 @@
 				BED4741A19FD6A5D006DD472 /* INTSettingsViewController.m in Sources */,
 				BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */,
 				BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */,
+				BEBACA801A0DA66100F612EB /* NoteManager.swift in Sources */,
 				FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */,
 				BED473A119FAF4F0006DD472 /* main.m in Sources */,
 				BED473CF19FAFD40006DD472 /* INTInstrumentViewController.m in Sources */,
@@ -654,10 +815,13 @@
 			baseConfigurationReference = 6D27106291E14436A730D648 /* Pods-Hackathon2014.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Hackathon2014/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Hackathon2014/Hackathon2014-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -667,10 +831,12 @@
 			baseConfigurationReference = 6D27106291E14436A730D648 /* Pods-Hackathon2014.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Hackathon2014/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Hackathon2014/Hackathon2014-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

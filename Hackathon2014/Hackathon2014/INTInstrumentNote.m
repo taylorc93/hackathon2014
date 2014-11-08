@@ -7,6 +7,7 @@
 //
 
 #import "INTInstrumentNote.h"
+#import "PdBase.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -16,6 +17,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (instancetype)initWithFrame:(CGRect)frame
                       noteNum:(int)midiNum
                    noteOctave:(int)octave
+                    channelId:(int)channelId;
 {
     self = [super initWithFrame:frame];
     float width = frame.size.width;
@@ -29,6 +31,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         self.selected = NO;
         self.hold = NO;
         self.touched = NO;
+        self.channelId = channelId;
         
         self.layer.cornerRadius = self.frame.size.width / 2;
         self.layer.borderColor = [UIColor blackColor].CGColor;
@@ -126,6 +129,29 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             break;
     }
     self.backgroundColor = self.color;
+}
+
+- (void)play
+{
+    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
+                     @"note", [self getScaledMidiNum], 50, nil];
+    
+    [PdBase sendList:data toReceiver:@"control"];
+}
+
+- (void)bendPitch:(float)bendNum
+{
+    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
+                      @"pitchbend", [NSNumber numberWithInt:bendNum], nil];
+    [PdBase sendList:data toReceiver:@"control"];
+}
+
+- (void)stop
+{
+    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
+                     @"note", [self getScaledMidiNum], 0, nil];
+    
+    [PdBase sendList:data toReceiver:@"control"];
 }
 
 /*
