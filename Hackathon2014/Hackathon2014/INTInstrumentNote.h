@@ -12,9 +12,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
                       noteNum:(int)midiNum
-                   noteOctave:(int)octave;
+                   noteOctave:(int)octave
+                    channelId:(int)channelId;
 
 - (int)getScaledMidiNum;
+- (void)play;
+- (void)stop;
+- (void)bendPitch:(float)bendNum;
 
 @property (nonatomic, strong) UIColor *color;
 @property int midiNum;
@@ -24,6 +28,8 @@
 @property BOOL selected;
 @property BOOL hold;
 @property BOOL touched; //Prevents a swipe from continuously toggling and untoggling
+
+@property int channelId;
 
 @property (nonatomic, strong) NSString *noteName;
 
