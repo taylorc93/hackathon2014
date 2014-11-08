@@ -67,6 +67,4 @@
     currentWidth = newWidth;
 }
 
-- (void)
-
 @end
