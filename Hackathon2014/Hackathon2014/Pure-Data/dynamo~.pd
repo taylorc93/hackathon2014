@@ -1,4 +1,4 @@
-#N canvas 973 22 508 224 10;
+#N canvas 883 22 508 224 10;
 #X obj 50 168 outlet~;
 #X obj 125 167 outlet~;
 #N canvas 981 273 647 443 INIT 0;
@@ -58,14 +58,14 @@ obj 10 100 pd sandbox \, obj 10 0 inlet \, obj 80 0 inlet \, obj 150
 #X connect 20 0 0 0;
 #X connect 20 0 24 0;
 #X connect 21 0 14 0;
-#X restore 273 68 pd INIT;
-#N canvas 891 22 464 123 dynamic_pd 1;
+#X restore 272 33 pd INIT;
+#N canvas 1044 22 464 123 dynamic_pd 0;
 #X obj 15 91 outlet~;
 #X obj 90 92 outlet~;
-#N canvas 1063 241 450 300 controller 0;
+#N canvas 743 320 450 300 controller 0;
 #X obj 10 200 outlet~;
 #X obj 67 200 outlet~;
-#N canvas 891 22 450 300 sandbox 1;
+#N canvas 743 320 450 300 sandbox 0;
 #X obj 0 200 outlet~;
 #X obj 67 200 outlet~;
 #X restore 10 100 pd sandbox;
@@ -89,10 +89,10 @@ obj 10 100 pd sandbox \, obj 10 0 inlet \, obj 80 0 inlet \, obj 150
 #X connect 5 0 6 0;
 #X connect 5 0 6 0;
 #X restore 50 145 pd dynamic_pd;
-#X obj 273 42 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 272 7 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 310 -17 loadbang;
-#N canvas 544 203 759 841 add_channel 0;
+#N canvas 622 208 759 841 add_channel 0;
 #X obj 194 423 s pd-sandbox;
 #X obj 196 110 iterator;
 #X obj 239 84 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
