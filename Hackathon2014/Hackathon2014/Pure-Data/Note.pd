@@ -9093,7 +9093,7 @@
 300 \; \$1-wave 9 \;;
 #X msg -411 70 60 5;
 #X msg -398 89 60 0;
-#N canvas 248 119 830 833 effects_rack 0;
+#N canvas 248 119 830 833 effects_rack 1;
 #X obj 8 810 outlet~;
 #X obj 8 28 inlet~;
 #X obj 35 130 tgl 15 0 empty empty Gain_off/on 17 7 0 10 -262144 -1
@@ -9105,7 +9105,7 @@
 #X floatatom 204 579 5 0 0 1 Chorus_depth - -;
 #X floatatom 194 559 5 0 0 1 Chorus_rate - -;
 #X obj 373 674 tgl 15 0 empty empty Tremolo_off/on 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X floatatom 361 655 5 0 0 1 Tremolo_Shape_(0-3) - -;
 #X floatatom 350 636 5 0 0 1 Tremolo_Depth - -;
 #X floatatom 339 617 5 0 0 1 Tremolo_rate - -;
@@ -9230,7 +9230,7 @@
 #X connect 59 0 4 0;
 #X connect 60 0 61 0;
 #X restore -348 244 pd effects_rack;
-#N canvas 477 583 1376 432 routers 0;
+#N canvas 726 22 1376 432 routers 1;
 #X obj 290 -19 inlet;
 #X obj -418 83 s \$0-note;
 #X obj -354 82 s \$0-wave;
