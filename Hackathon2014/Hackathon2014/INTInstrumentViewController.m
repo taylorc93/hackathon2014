@@ -8,9 +8,8 @@
 
 #import "INTRootViewController.h"
 #import "INTInstrumentViewController.h"
-#import <CocoaLumberjack/CocoaLumberjack.h>
-#import "PdBase.h"
 #include "septagon_coordinates.h"
+#import "PdDispatcher.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
@@ -22,6 +21,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 @property BOOL initializing;
 @property float initialTouchX;
 @property float initialTouchY;
+@property int initializedPDNotes;
 
 @end
 
@@ -36,6 +36,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         DDLogError(@"Couldn't open patch");
     }
     
+    self.initializedPDNotes = 0;
     self.dollarZero = [PdBase dollarZeroForFile:patch];
     self.currentNote = nil;
     self.currentMidiNote = 0;
@@ -46,15 +47,19 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.selectedNotes = [[NSMutableArray alloc] init];
     self.initializing = YES;
     self.touchStartedOnNote = NO;
-    self.numChannels = 1;
+    self.numChannels = 0;
+    
+    PdDispatcher *dispatcher = [[PdDispatcher alloc] init];
+    [PdBase setDelegate:dispatcher];
+    [dispatcher addListener:self forSource:@"config-ready"];
 }
 
 // Cannot do this in viewWillLoad as bounds are not set properly at that time
 - (void)viewWillLayoutSubviews
 {
-//    if ([self.notes count] == 0 && self.initializing){
-//        [self initNotes];
-//    }
+    if ([self.notes count] == 0 && self.initializing){
+        [self initNotes];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,37 +76,43 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     float width = self.view.bounds.size.width;
     float height = self.view.bounds.size.height;
     
+    [self createPdNote];
+    
     NSArray *midiNums = [self getCurrentScale];
-    NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
-    //int channelId = 1;
-    
-    //[PdBase sendBangToReceiver:@"reset"];
     for (int i = 0; i < 1; i++){
         int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
-        //int **coords = septagon_coordinates((_numChannels/8 - 1) * (int)height / 8, (int)width / 2, (int)height / 2);
-    
+        
         for (int j = 0; j < 1; j++){
-            [PdBase sendMessage:[NSString stringWithFormat:@"About to initialize: %d", _numChannels] withArguments:nil toReceiver:[NSString stringWithFormat:@"pdprint"]];
-            float x = coords[0][_numChannels-1];
-            float y = coords[1][_numChannels-1];
+            float x = coords[0][j];
+            float y = coords[1][j];
             
-            [PdBase sendBangToReceiver:@"add_note"];
-            INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 65.0, 65.0)
-                                                                       noteNum:[midiNums[_numChannels-1] integerValue]
-                                                                    noteOctave: _numChannels - 1 + 4
-                                                                     channelId:_numChannels];
-            note.center = CGPointMake(x, y);
-            
-            //channelId++;
+            [self initNoteWithFrame:CGRectMake(x, y, 65.0, 65.0)
+                            midiNum:midiNums[j]
+                             octave:i + 4
+                          channelId:_numChannels
+                                  x:x
+                                  y:y];
             _numChannels++;
-            [self.view addSubview:note];
-            [self.notes addObject:note];
-            [NSThread sleepForTimeInterval:0.020];
-            DDLogVerbose(@"finished initializing: %d", _numChannels);
         }
     }
     self.initializing = NO;
+}
+
+- (void)initNoteWithFrame:(CGRect)frame
+                  midiNum:(int)midiNum
+                   octave:(int)octave
+                channelId:(int)channelId
+                        x:(float)x
+                        y:(float)y
+{
+    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 65.0, 65.0)
+                                                               noteNum:midiNum
+                                                            noteOctave:octave
+                                                             channelId:channelId];
+    note.center = CGPointMake(x, y);
+    [self.view addSubview:note];
+    [self.notes addObject:note];
 }
 
 - (void)addNote
@@ -494,7 +505,22 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
     
     self.editFlag = editFlag;
+}
 
+- (void)receiveBangFromSource:(NSString *)source
+{
+    if ([source  isEqual: @"config-ready"]){
+        DDLogVerbose(@"Received PD Message, adding new note");
+        self.initializedPDNotes++;
+        if (self.initializedPDNotes < 21){
+            [PdBase sendBangToReceiver:@"add_note"];
+        }
+    }
+}
+
+- (void)createPdNote
+{
+    [PdBase sendBangToReceiver:@"add_note"];
 }
 
 //

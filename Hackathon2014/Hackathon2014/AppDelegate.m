@@ -24,9 +24,6 @@
                                            mixingEnabled:YES] != PdAudioOK) {
         NSLog(@"failed to initialize PD audio components");
     }
-
-    PdDispatcher *dispatcher = [[PdDispatcher alloc] init];
-    [PdBase setDelegate:dispatcher];
     
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
+#import "PdBase.h"
 #import "INTInstrumentNote.h"
 
-@interface INTInstrumentViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface INTInstrumentViewController : UIViewController <PdListener>
 
 @property (nonatomic, strong) NSString *currentScale;
 @property (nonatomic, strong) NSMutableArray *notes;
@@ -23,6 +26,8 @@
 @property int editFlag;
 @property int numChannels;
 
+- (void)receiveBangFromSource:(NSString *)source;
+
 - (void)updateEditFlag:(int)editFlag;
 
 - (BOOL)incrementOctave;
@@ -35,5 +40,7 @@
 - (void)deleteNote;
 
 - (void)reset;
+
+- (NSDictionary *)userInfo;
 
 @end
