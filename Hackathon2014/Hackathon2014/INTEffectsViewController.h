@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "INTSlider.h"
 #import "INTInstrumentViewController.h"
 
 @interface INTEffectsViewController : UIViewController
@@ -15,6 +16,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *chorusButton;
 @property (nonatomic, strong) IBOutlet UIButton *tremoloButton;
 @property (nonatomic, strong) IBOutlet UIButton *ringmodButton;
+@property (nonatomic, strong) IBOutletCollection(INTSlider) NSArray *sliders;
 
 @property (nonatomic, strong) INTInstrumentViewController *instrumentVC;
 @property BOOL chorusPlaying;

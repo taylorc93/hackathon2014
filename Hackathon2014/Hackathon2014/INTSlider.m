@@ -7,6 +7,7 @@
 //
 
 #import "INTSlider.h"
+#import "PdBase.h"
 
 @implementation INTSlider{
     float currentWidth;
@@ -18,8 +19,9 @@
     if (self){
 
         CGRect fillerFrame = CGRectMake(0.0, 0.0, self.frame.size.width / 2, self.frame.size.height);
+        self.backgroundColor = [UIColor colorWithRed:78.0 / 255.0 green:118.0 / 255.0 blue:134.0 / 255.0 alpha:1.0];
         self.filler = [[UIView alloc] initWithFrame:fillerFrame];
-        self.filler.backgroundColor = [UIColor redColor];
+        self.filler.backgroundColor = [UIColor colorWithRed:169.0 / 255.0 green:204.0 / 255.0 blue:127.0 / 255.0 alpha:1.0];
         
         self.filler.layer.cornerRadius = self.frame.size.height / 2;
         self.layer.cornerRadius = self.frame.size.height / 2;
@@ -34,7 +36,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInView:self];
     
-    [self updateDimensions:touchLocation];
+    [self updateFill:touchLocation];
     [self updateValue:touchLocation];
 }
 
@@ -43,7 +45,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInView:self];
     
-    [self updateDimensions:touchLocation];
+    [self updateFill:touchLocation];
     [self updateValue:touchLocation];
 }
 
@@ -51,9 +53,11 @@
 {
     float scaleFactor = currentWidth / self.frame.size.width;
     self.value = scaleFactor * self.maxValue;
+    
+//    [PdBase sendFloat:self.value toReceiver:self.receiver];
 }
 
-- (void)updateDimensions:(CGPoint)touchLocation
+- (void)updateFill:(CGPoint)touchLocation
 {
     float newWidth = touchLocation.x - self.filler.frame.origin.x;
     
