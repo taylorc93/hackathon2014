@@ -46,7 +46,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.selectedNotes = [[NSMutableArray alloc] init];
     self.initializing = YES;
     self.touchStartedOnNote = NO;
-    self.numChannels = 0;
+    self.numChannels = 1;
 }
 
 // Cannot do this in viewWillLoad as bounds are not set properly at that time
@@ -75,15 +75,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
     //int channelId = 1;
-
-    _numChannels++;
     
     //[PdBase sendBangToReceiver:@"reset"];
-    //for (int i = 0; i < 1; i++){
-        //int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
-        int **coords = septagon_coordinates((_numChannels/8 - 1) * (int)height / 8, (int)width / 2, (int)height / 2);
+    for (int i = 0; i < 1; i++){
+        int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
+        //int **coords = septagon_coordinates((_numChannels/8 - 1) * (int)height / 8, (int)width / 2, (int)height / 2);
     
-        //for (int j = 0; j < 2; j++){
+        for (int j = 0; j < 2; j++){
             [PdBase sendMessage:[NSString stringWithFormat:@"About to initialize: %d", _numChannels] withArguments:nil toReceiver:[NSString stringWithFormat:@"pdprint"]];
             float x = coords[0][_numChannels-1];
             float y = coords[1][_numChannels-1];
@@ -96,12 +94,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             note.center = CGPointMake(x, y);
             
             //channelId++;
+            _numChannels++;
             [self.view addSubview:note];
             [self.notes addObject:note];
-//            [NSThread sleepForTimeInterval:3.000];
+            [NSThread sleepForTimeInterval:0.020];
             DDLogVerbose(@"finished initializing: %d", _numChannels);
-        //}
-    //}
+        }
+    }
     self.initializing = NO;
 }
 
