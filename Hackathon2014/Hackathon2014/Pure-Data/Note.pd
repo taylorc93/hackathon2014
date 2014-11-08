@@ -9102,6 +9102,7 @@ pitchbend_range;
 #X msg 130 223 \; pd dsp 1 \; \$1-pitchbend 64 \; \$1-pitchbend_range
 2 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain 0.7 \; \$1-release
 300 \; \$1-wave 9 \;;
+#X obj -327 19 print NOTE_INPUT;
 #X connect 0 0 26 2;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
@@ -9145,3 +9146,4 @@ pitchbend_range;
 #X connect 38 7 36 0;
 #X connect 38 9 37 0;
 #X connect 39 0 38 0;
+#X connect 39 0 41 0;
