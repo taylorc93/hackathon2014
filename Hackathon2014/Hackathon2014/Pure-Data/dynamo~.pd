@@ -62,10 +62,10 @@ obj 10 100 pd sandbox \, obj 10 0 inlet \, obj 80 0 inlet \, obj 150
 #N canvas 1234 272 464 123 dynamic_pd 1;
 #X obj 15 91 outlet~;
 #X obj 90 92 outlet~;
-#N canvas 1231 423 450 300 controller 1;
+#N canvas 1231 423 450 300 controller 0;
 #X obj 10 200 outlet~;
 #X obj 67 200 outlet~;
-#N canvas 1252 713 450 300 sandbox 1;
+#N canvas 1234 272 450 300 sandbox 1;
 #X obj 0 200 outlet~;
 #X obj 67 200 outlet~;
 #X restore 10 100 pd sandbox;
@@ -412,6 +412,7 @@ Note \, obj 0 100 outlet~ \, obj 70 50 print DYN-CH\$1 \, connect 0
 #X obj 257 165 print PDPRINT;
 #X obj 68 8 once;
 #X connect 2 0 26 1;
+#X connect 2 0 22 0;
 #X connect 3 0 0 0;
 #X connect 3 1 1 0;
 #X connect 4 0 2 0;
