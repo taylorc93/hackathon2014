@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BEBACA7D1A0D7ECF00F612EB /* INTSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBACA7C1A0D7ECF00F612EB /* INTSlider.m */; };
 		BED473A119FAF4F0006DD472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473A019FAF4F0006DD472 /* main.m */; };
 		BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473A319FAF4F0006DD472 /* AppDelegate.m */; };
 		BED473AA19FAF4F0006DD472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED473A819FAF4F0006DD472 /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 /* Begin PBXFileReference section */
 		6D27106291E14436A730D648 /* Pods-Hackathon2014.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackathon2014.xcconfig"; path = "Pods/Pods-Hackathon2014.xcconfig"; sourceTree = "<group>"; };
 		BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hackathon2014.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEBACA7B1A0D7ECF00F612EB /* INTSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTSlider.h; sourceTree = "<group>"; };
+		BEBACA7C1A0D7ECF00F612EB /* INTSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTSlider.m; sourceTree = "<group>"; };
 		BED4739B19FAF4F0006DD472 /* Hackathon2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackathon2014.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED4739F19FAF4F0006DD472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BED473A019FAF4F0006DD472 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 			children = (
 				BED473C719FAFBE8006DD472 /* INTInstrumentNote.h */,
 				BED473C819FAFBE8006DD472 /* INTInstrumentNote.m */,
+				BEBACA7B1A0D7ECF00F612EB /* INTSlider.h */,
+				BEBACA7C1A0D7ECF00F612EB /* INTSlider.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BED4740E19FB704F006DD472 /* INTRootViewController.m in Sources */,
+				BEBACA7D1A0D7ECF00F612EB /* INTSlider.m in Sources */,
 				BED4741A19FD6A5D006DD472 /* INTSettingsViewController.m in Sources */,
 				BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */,
 				BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */,
