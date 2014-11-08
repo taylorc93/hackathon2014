@@ -81,7 +81,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
         //int **coords = septagon_coordinates((_numChannels/8 - 1) * (int)height / 8, (int)width / 2, (int)height / 2);
     
-        for (int j = 0; j < 2; j++){
+        for (int j = 0; j < 1; j++){
             [PdBase sendMessage:[NSString stringWithFormat:@"About to initialize: %d", _numChannels] withArguments:nil toReceiver:[NSString stringWithFormat:@"pdprint"]];
             float x = coords[0][_numChannels-1];
             float y = coords[1][_numChannels-1];
