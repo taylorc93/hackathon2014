@@ -5,16 +5,153 @@ Last Updated 11/8/14
 
 Main Patch: Master.pd
 
+Interface is divided into two distinct sections: Master patch & 
+		Dynamic subpatches (Notes).
+
 MASTER:
 
-	[add_note] bang
+From PD:
+	[config-ready] bang
+	[num_channels] float
+
+TO Main Patch:
+
 	[reset]    bang
-	[]
+	[add_note] bang
+	[change_active_control] float (Change Channel that the "control" 
+									receiver sends to)
+	[control] message/list (Message to send to Note instance)
+	[get_num_channels] bang (Sends # of channels in PD to [num_channels])
 
+	Master Effects:
 
-NOTE:
+	[pregain_on]     1 / 0
+	[pregain_amount] float 
+	[ringmod_on] 	 1 / 0
+	[ringmod_rate]   float
+	[ringmod_depth]  float (0-1)
+	[filter_on]      1 / 0
+	[filter_freq]    float (0-22050)
+	[filter_q]       float (0-5ish)
+	[delay_on]       1 / 0
+	[delay_time] 	 float (Time in ms)
+	[delay_feedback] float (0-1)
+	[chorus_on] 	 1 / 0
+	[chorus_rate] 	 float
+	[chorus_depth] 	 float (0-1 usually, >1 gives cool effects)
+	[chorus_mix]  	 float (0-100)
+	[tremolo_on] 	 1 / 0
+	[tremolo_rate]   float
+	[tremolo_depth]  float (0-1)
+	[tremolo_shape]  float (0-3)
+	[vibrato_on] 	 1 / 0 (Vibrato is still a little buggy sometimes)
+	[vibrato_rate]   float
+	[vibrato_depth]  float (0-1)
+	[gain_on] 		 1 / 0
+	[gain_amount]    float
+	[panner_on] 	 1 / 0
+	[panner_rate] 	 float 
+	[panner_depth] 	 float (0-1)
+	[volume] 		 float (1-0)
+	[pan] 			 float (0-100)
 
+To Individual Note (Dynamically Created):
 
+	All messages to notes are of the format:
+
+		method message
+
+	Effects methods are always prepended with "fx".
+
+	Example:
+
+		note 60 5
+		note 60 0
+		pitchbend_range 24
+		pitchbend 20
+		fx gain_on 1
+		fx gain_amount .8
+
+		wave 7
+		fx tremolo_on 1
+
+	Meaning: 
+
+		Turn note 60 on and off. Set the pitchbend range to 2 octaves,
+		and set the pitchbend value to 20 (shifting it down by 64 - 20 
+		semitones). Set gain controls on and set gain value to 0.8
+
+		Set waveform to 7, turn tremolo on.
+
+		Vibrato is in both amplitude and pitch, and both these aspects
+		are important for a good instrument.  To use pitch vibrato, send
+		pitchbend messages to the note.  To use volume vibrato, turn the
+		gain unit on initially using "fx gain_on 1" and change it's value 
+		using "fx gain_amount #" where the amount goes from 0 - 1.
+
+	Send notes to different channels by using different receivers:
+
+		[control#] where # is the channel number.
+
+	Example:
+
+		[control3] release 400
+		[control3] fx delay_time 1000
+		[control3] fx delay_feedback .8
+		[control3] flush
+
+	Meaning:
+
+		Set following settings for Channel 3:
+
+			400 ms release time
+			1 second delay time
+			delay coefficient of 0.8
+			Flush all Notes in channel 3.
+
+		Note that there have to be at least three channels created through
+		[add_note] for this message to have any meaning.
+
+	Notes currently have the exact same effects as the master, in terms of
+	both the names and the designs.  All the effects documented in master 
+	will work individually for each note through the list & receiver 
+	interface as defined above.
+
+	All Note Methods:
+
+		note
+		wave
+		attack
+		decay
+		sustain
+		release
+		flush
+		pitchbend
+		pitchbend_range
+		fx pregain_on
+		fx pregain_amount
+		fx ringmod_on
+		fx ringmod_rate
+		fx ringmod_depth
+		fx filter_on
+		fx filter_freq
+		fx filter_q
+		fx delay_on
+		fx delay_time
+		fx delay_feedback
+		fx chorus_on
+		fx chorus_rate
+		fx chorus_depth
+		fx chorus_mix
+		fx tremolo_on
+		fx tremolo_rate
+		fx tremolo_depth
+		fx tremolo_shape
+		fx vibrato_on
+		fx vibrato_rate
+		fx vibrato_depth
+		fx gain_on
+		fx gain_amount
 
 
 
