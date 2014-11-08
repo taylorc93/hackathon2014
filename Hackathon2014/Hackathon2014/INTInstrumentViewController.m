@@ -30,7 +30,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    void *patch = [PdBase openFile:@"Main.pd"
+    void *patch = [PdBase openFile:@"Master.pd"
                               path: [[NSBundle mainBundle] resourcePath]];
     if (!patch){
         DDLogError(@"Couldn't open patch");
@@ -75,7 +75,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             float x = coords[0][j];
             float y = coords[1][j];
             
-            
+            [PdBase sendBangToReceiver:@"add_note"];
             INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 65.0, 65.0)
                                                                        noteNum:[midiNums[j] integerValue]
                                                                     noteOctave:i + 4
@@ -85,6 +85,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             channelId++;
             [self.view addSubview:note];
             [self.notes addObject:note];
+//            [NSThread sleepForTimeInterval:0.010];
         }
     }
     self.initializing = NO;

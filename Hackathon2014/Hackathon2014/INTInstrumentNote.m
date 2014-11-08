@@ -133,25 +133,32 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)play
 {
-    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
-                     @"note", [self getScaledMidiNum], 50, nil];
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    [data addObject:[NSNumber numberWithInt:self.channelId]];
+    [data addObject:@"note"];
+    [data addObject:[NSNumber numberWithInt:[self getScaledMidiNum]]];
+    [data addObject:[NSNumber numberWithInt:50]];
+    
+    NSLog(@"%@", data);
+//    data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
+//                     @"note", [self getScaledMidiNum], 50, nil];
     
     [PdBase sendList:data toReceiver:@"control"];
 }
 
 - (void)bendPitch:(float)bendNum
 {
-    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
-                      @"pitchbend", [NSNumber numberWithInt:bendNum], nil];
-    [PdBase sendList:data toReceiver:@"control"];
+//    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
+//                      @"pitchbend", [NSNumber numberWithInt:bendNum], nil];
+//    [PdBase sendList:data toReceiver:@"control"];
 }
 
 - (void)stop
 {
-    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
-                     @"note", [self getScaledMidiNum], 0, nil];
-    
-    [PdBase sendList:data toReceiver:@"control"];
+//    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
+//                     @"note", [self getScaledMidiNum], 0, nil];
+//    
+//    [PdBase sendList:data toReceiver:@"control"];
 }
 
 /*
