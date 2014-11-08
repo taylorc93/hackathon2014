@@ -1,4 +1,4 @@
-#N canvas 164 153 688 153 10;
+#N canvas 917 22 688 153 10;
 #X obj -72 71 outlet~;
 #X obj 3 70 outlet~;
 #N canvas 359 230 578 388 INIT 0;
@@ -44,19 +44,19 @@ obj 10 40 pd sandbox \, obj 10 0 inlet \, obj 150 40 r config \, obj
 #X connect 16 0 0 0;
 #X connect 17 0 1 0;
 #X restore 437 70 pd INIT;
-#N canvas 1395 22 464 123 dynamic_pd 1;
+#N canvas 1395 22 464 123 dynamic_pd 0;
 #X obj 14 80 outlet~;
 #X obj 89 81 outlet~;
 #N canvas 58 602 1855 265 controller 0;
 #X obj 10 200 outlet~;
 #X obj 67 200 outlet~;
-#N canvas 89 649 450 300 sandbox 0;
+#N canvas 278 176 450 300 sandbox 0;
 #X obj 0 200 outlet~;
 #X obj 67 200 outlet~;
 #X obj 0 0 inlet;
 #X obj 50 0 print LAYER-4-;
 #X obj 0 100 route 1;
-#N canvas 89 649 450 300 ch1 0;
+#N canvas 278 176 450 300 ch1 1;
 #X obj 0 0 r control;
 #X obj 0 50 Note;
 #X obj 0 100 outlet~;
@@ -105,7 +105,7 @@ obj 10 40 pd sandbox \, obj 10 0 inlet \, obj 150 40 r config \, obj
 #X obj 437 49 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 523 -31 loadbang;
-#N canvas 1149 238 678 833 add_channel 1;
+#N canvas 1149 238 678 833 add_channel 0;
 #X obj 194 423 s pd-sandbox;
 #X obj 196 110 iterator;
 #X obj 239 84 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -282,7 +282,7 @@ connect \$6 0 \$7 0 \, connect 5 0 \$8 0 \, connect \$8 0 \$9 0;
 #X connect 79 0 35 3;
 #X connect 80 0 35 4;
 #X restore 312 70 pd add_channel;
-#N canvas 553 386 496 539 configure_channel 1;
+#N canvas 553 386 496 539 configure_channel 0;
 #X obj 199 511 s pd-sandbox;
 #X obj 199 383 - 1;
 #X obj 225 383 - 1;
@@ -330,14 +330,14 @@ connect \$6 0 \$7 0 \, connect 5 0 \$8 0 \, connect \$8 0 \$9 0;
 #X obj 250 427 + 6;
 #X obj 276 427 + 7;
 #X obj 300 427 + 8;
-#X msg 6 48 \$1 clear \, \$1 obj 0 0 r control \, \$1 obj 0 50 Note
-\, \$1 obj 0 100 outlet~ \, \$1 obj 200 0 print LAYER-5-DYNAMIC_\$1
-\, \$1 connect 0 0 1 0 \, \$1 connect 1 0 2 0 \, \$1 connect 0 0 3
-0 \, \$1 loadbang;
 #X msg 199 473 connect \$2 0 \$3 0;
+#X msg 6 49 \$1 clear \, \$1 obj 0 0 r control \, \$1 obj 0 25 route
+\$1 \, \$1 obj 0 50 Note \, \$1 obj 0 100 outlet~ \, \$1 obj 200 0
+print LAYER-5-DYNAMIC_\$1 \, \$1 connect 0 0 1 0 \, \$1 connect 1 0
+2 0 \, \$1 connect 2 0 3 0 \, \$1 connect 0 0 4 0;
 #X connect 1 0 8 0;
 #X connect 2 0 9 0;
-#X connect 3 0 46 0;
+#X connect 3 0 45 0;
 #X connect 4 0 1 0;
 #X connect 4 1 2 0;
 #X connect 4 2 5 0;
@@ -351,7 +351,7 @@ connect \$6 0 \$7 0 \, connect 5 0 \$8 0 \, connect \$8 0 \$9 0;
 #X connect 10 0 42 0;
 #X connect 11 0 43 0;
 #X connect 12 0 44 0;
-#X connect 14 0 45 0;
+#X connect 14 0 46 0;
 #X connect 15 0 26 0;
 #X connect 16 0 19 0;
 #X connect 16 0 27 1;
@@ -390,8 +390,8 @@ connect \$6 0 \$7 0 \, connect 5 0 \$8 0 \, connect \$8 0 \$9 0;
 #X connect 42 0 3 2;
 #X connect 43 0 3 3;
 #X connect 44 0 3 4;
-#X connect 45 0 28 0;
-#X connect 46 0 0 0;
+#X connect 45 0 0 0;
+#X connect 46 0 28 0;
 #X restore 175 70 pd configure_channel;
 #N canvas 600 612 450 300 scratchpad 0;
 #X obj 22 75 pack 0 0;
