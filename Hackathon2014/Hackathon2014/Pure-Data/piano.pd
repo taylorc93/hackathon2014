@@ -1,4 +1,4 @@
-#N canvas 511 66 696 164 10;
+#N canvas 986 699 696 164 10;
 #X obj 84 72 bng 66 250 50 0 \$0-C empty empty 17 7 0 10 -262144 -162280
 -1;
 #X obj 150 72 bng 66 250 50 0 \$0-D empty empty 17 7 0 10 -262144 -162280
@@ -39,7 +39,7 @@
 -75776 -1;
 #X text 613 26 Flush;
 #X obj 260 39 outlet;
-#N canvas 368 475 997 278 guts 0;
+#N canvas 880 22 997 278 guts 0;
 #X obj -1 13 r \$0-C;
 #X obj -1 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
