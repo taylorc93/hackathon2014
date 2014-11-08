@@ -30,9 +30,9 @@
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLO-uZ-N63">
                                 <rect key="frame" x="78" y="720" width="100" height="40"/>
-                                <color key="backgroundColor" red="1" green="0.84394587070000004" blue="0.12990001449999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Edit">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -120,7 +120,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaV-vv-scb">
                                 <rect key="frame" x="53" y="37" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.42352941179999998" green="0.43529411759999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41852953005657384" green="0.38193353310020711" blue="0.99471695696721307" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Down">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -137,7 +137,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hol-zY-olT">
                                 <rect key="frame" x="163" y="37" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.55294117647058827" green="0.78431372549019607" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039215686274" green="0.75686274509803919" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Up">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,7 +154,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwI-6N-3Xd">
                                 <rect key="frame" x="53" y="85" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.42352941179999998" green="0.43529411759999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41852953005657384" green="0.38193353310020711" blue="0.99471695696721307" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Down">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -171,7 +171,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXt-du-nwC">
                                 <rect key="frame" x="165" y="85" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7843137255" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Up">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -188,7 +188,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9t3-dE-QJs">
                                 <rect key="frame" x="53" y="133" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.42352941179999998" green="0.43529411759999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41852953005657384" green="0.38193353310020711" blue="0.99471695696721307" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Down">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -205,7 +205,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7v-J0-qa8">
                                 <rect key="frame" x="165" y="133" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7843137255" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Up">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -222,7 +222,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9TE-YS-z3j">
                                 <rect key="frame" x="211" y="37" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7843137255" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="All">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -236,7 +236,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVo-zS-VTM">
                                 <rect key="frame" x="211" y="85" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7843137255" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="All">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -250,7 +250,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDZ-qx-Wz5">
                                 <rect key="frame" x="211" y="133" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7843137255" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="All">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -264,7 +264,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZO4-9P-lht">
                                 <rect key="frame" x="5" y="133" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.42352941179999998" green="0.43529411759999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41852953005657384" green="0.38193353310020711" blue="0.99471695696721307" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="All">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -278,7 +278,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SB9-1e-fOQ">
                                 <rect key="frame" x="5" y="85" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.42352941179999998" green="0.43529411759999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41852953005657384" green="0.38193353310020711" blue="0.99471695696721307" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="All">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -292,7 +292,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oau-Op-sGz">
                                 <rect key="frame" x="5" y="37" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.42352941179999998" green="0.43529411759999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41852953005657384" green="0.38193353310020711" blue="0.99471695696721307" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="All">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,7 +306,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEP-Vc-Q2P">
                                 <rect key="frame" x="180" y="183" width="60" height="40"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7843137255" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -322,7 +322,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ssg-uf-mUG">
                                 <rect key="frame" x="16" y="183" width="60" height="40"/>
-                                <color key="backgroundColor" red="0.42352941179999998" green="0.43529411759999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41852953005657384" green="0.38193353310020711" blue="0.99471695696721307" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Delete">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -338,7 +338,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcU-Pe-joR">
                                 <rect key="frame" x="98" y="304" width="60" height="40"/>
-                                <color key="backgroundColor" red="0.87442680029999997" green="0.00738915884" blue="0.060177184850000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Reset">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -429,7 +429,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38e-Ap-Ff7">
                                 <rect key="frame" x="137" y="122" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7843137255" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Turn On">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -463,7 +463,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELo-Av-RL9">
                                 <rect key="frame" x="137" y="236" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7843137255" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Turn On">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -479,7 +479,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81g-0p-xZ9">
                                 <rect key="frame" x="137" y="8" width="100" height="30"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.7843137255" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Turn On">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -495,27 +495,27 @@
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OdW-XI-T0L" customClass="INTSlider">
                                 <rect key="frame" x="90" y="50" width="150" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZs-Gv-YLx" customClass="INTSlider">
                                 <rect key="frame" x="90" y="87" width="150" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSA-hN-Ajm" customClass="INTSlider">
                                 <rect key="frame" x="90" y="164" width="150" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7W0-Yw-bd9" customClass="INTSlider">
                                 <rect key="frame" x="90" y="202" width="150" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6J-Im-tC5" customClass="INTSlider">
                                 <rect key="frame" x="90" y="278" width="150" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w87-JD-1UL" customClass="INTSlider">
                                 <rect key="frame" x="90" y="316" width="150" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

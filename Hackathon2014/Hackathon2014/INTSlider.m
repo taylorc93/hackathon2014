@@ -19,7 +19,7 @@
     if (self){
 
         CGRect fillerFrame = CGRectMake(0.0, 0.0, self.frame.size.width / 2, self.frame.size.height);
-        self.backgroundColor = [UIColor colorWithRed:22.0 / 255.0 green:118.0 / 255.0 blue:134.0 / 255.0 alpha:1.0];
+//        self.backgroundColor = [UIColor colorWithRed:110.0 / 255.0 green:128.0 / 255.0 blue:255.0 / 255.0 alpha:1.0];
         self.filler = [[UIView alloc] initWithFrame:fillerFrame];
         self.filler.backgroundColor = [UIColor colorWithRed:255.0 / 255.0 green:237.0 / 255.0 blue:79.0 / 255.0 alpha:1.0];
         
