@@ -50,20 +50,22 @@ obj 10 40 pd sandbox \, obj 10 0 inlet \, obj 150 40 r config \, obj
 #N canvas 58 602 1855 265 controller 0;
 #X obj 10 200 outlet~;
 #X obj 67 200 outlet~;
-#N canvas 278 176 450 300 sandbox 0;
+#N canvas 1164 103 450 300 sandbox 1;
 #X obj 0 200 outlet~;
 #X obj 67 200 outlet~;
 #X obj 0 0 inlet;
 #X obj 50 0 print LAYER-4-;
 #X obj 0 100 route 1;
-#N canvas 278 176 450 300 ch1 1;
+#N canvas 1164 103 450 300 ch1 1;
 #X obj 0 0 r control;
+#X obj 0 25 route 1;
 #X obj 0 50 Note;
 #X obj 0 100 outlet~;
 #X obj 200 0 print LAYER-5-DYNAMIC_1;
 #X connect 0 0 1 0;
-#X connect 0 0 3 0;
 #X connect 1 0 2 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
 #X restore 0 120 pd ch1;
 #X obj 0 150 *~;
 #X obj 50 100 r chvol1;
@@ -334,7 +336,7 @@ connect \$6 0 \$7 0 \, connect 5 0 \$8 0 \, connect \$8 0 \$9 0;
 #X msg 6 49 \$1 clear \, \$1 obj 0 0 r control \, \$1 obj 0 25 route
 \$1 \, \$1 obj 0 50 Note \, \$1 obj 0 100 outlet~ \, \$1 obj 200 0
 print LAYER-5-DYNAMIC_\$1 \, \$1 connect 0 0 1 0 \, \$1 connect 1 0
-2 0 \, \$1 connect 2 0 3 0 \, \$1 connect 0 0 4 0;
+2 0 \, \$1 connect 2 0 3 0 \, \$1 connect 1 0 4 0;
 #X connect 1 0 8 0;
 #X connect 2 0 9 0;
 #X connect 3 0 45 0;
