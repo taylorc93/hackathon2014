@@ -1,4 +1,4 @@
-#N canvas 559 69 1129 692 10;
+#N canvas 559 69 745 494 10;
 #X obj -306 389 pack 50 100 0.6 250;
 #X floatatom -306 278 5 0 0 1 Attack - -;
 #X obj -269 361 t b f;
@@ -9102,7 +9102,6 @@ pitchbend_range;
 #X msg 130 223 \; pd dsp 1 \; \$1-pitchbend 64 \; \$1-pitchbend_range
 2 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain 0.7 \; \$1-release
 300 \; \$1-wave 9 \;;
-#X obj -327 19 print NOTE_INPUT;
 #X msg -391 266 60 5;
 #X msg -388 293 60 0;
 #X connect 0 0 26 2;
@@ -9148,6 +9147,5 @@ pitchbend_range;
 #X connect 38 7 36 0;
 #X connect 38 9 37 0;
 #X connect 39 0 38 0;
-#X connect 39 0 41 0;
+#X connect 41 0 26 0;
 #X connect 42 0 26 0;
-#X connect 43 0 26 0;

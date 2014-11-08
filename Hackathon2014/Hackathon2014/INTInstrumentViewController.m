@@ -46,18 +46,24 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.selectedNotes = [[NSMutableArray alloc] init];
     self.initializing = YES;
     self.touchStartedOnNote = NO;
+    self.numChannels = 0;
 }
 
 // Cannot do this in viewWillLoad as bounds are not set properly at that time
 - (void)viewWillLayoutSubviews
 {
-    if ([self.notes count] == 0 && self.initializing){
-        [self initNotes];
-    }
+//    if ([self.notes count] == 0 && self.initializing){
+//        [self initNotes];
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (IBAction)createNotes:(id)sender
+{
+    [self initNotes];
 }
 
 - (void)initNotes
@@ -68,28 +74,34 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSArray *midiNums = [self getCurrentScale];
     NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
-    int channelId = 1;
+    //int channelId = 1;
+
+    _numChannels++;
     
-    [PdBase sendBangToReceiver:@"reset"];
-    for (int i = 0; i < 1; i++){
-        int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
-        for (int j = 0; j < 2; j++){
-            float x = coords[0][j];
-            float y = coords[1][j];
+    //[PdBase sendBangToReceiver:@"reset"];
+    //for (int i = 0; i < 1; i++){
+        //int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
+        int **coords = septagon_coordinates((_numChannels/8 - 1) * (int)height / 8, (int)width / 2, (int)height / 2);
+    
+        //for (int j = 0; j < 2; j++){
+            [PdBase sendMessage:[NSString stringWithFormat:@"About to initialize: %d", _numChannels] withArguments:nil toReceiver:[NSString stringWithFormat:@"pdprint"]];
+            float x = coords[0][_numChannels-1];
+            float y = coords[1][_numChannels-1];
             
             [PdBase sendBangToReceiver:@"add_note"];
             INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 65.0, 65.0)
-                                                                       noteNum:[midiNums[j] integerValue]
-                                                                    noteOctave:i + 4
-                                                                     channelId:channelId];
+                                                                       noteNum:[midiNums[_numChannels-1] integerValue]
+                                                                    noteOctave: _numChannels - 1 + 4
+                                                                     channelId:_numChannels];
             note.center = CGPointMake(x, y);
             
-            channelId++;
+            //channelId++;
             [self.view addSubview:note];
             [self.notes addObject:note];
-            [NSThread sleepForTimeInterval:0.020];
-        }
-    }
+//            [NSThread sleepForTimeInterval:3.000];
+            DDLogVerbose(@"finished initializing: %d", _numChannels);
+        //}
+    //}
     self.initializing = NO;
 }
 

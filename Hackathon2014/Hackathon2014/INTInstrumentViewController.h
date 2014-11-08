@@ -21,6 +21,7 @@
 @property int currentMidiNote;
 @property int currentOctave;
 @property int editFlag;
+@property int numChannels;
 
 - (void)updateEditFlag:(int)editFlag;
 
