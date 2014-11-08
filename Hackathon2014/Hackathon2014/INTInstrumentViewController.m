@@ -69,9 +69,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSArray *colors = @[[UIColor redColor], [UIColor yellowColor], [UIColor greenColor]];
     
     int channelId = 1;
-    for (int i = 0; i < 3; i++){
+    
+    [PdBase sendBangToReceiver:@"reset"];
+    for (int i = 0; i < 1; i++){
         int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
-        for (int j = 0; j < 7; j++){
+        for (int j = 0; j < 2; j++){
             float x = coords[0][j];
             float y = coords[1][j];
             
@@ -85,7 +87,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             channelId++;
             [self.view addSubview:note];
             [self.notes addObject:note];
-//            [NSThread sleepForTimeInterval:0.010];
+            [NSThread sleepForTimeInterval:0.020];
         }
     }
     self.initializing = NO;
@@ -195,13 +197,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
 
     if (note.playing){
+        DDLogVerbose(@"stopping");
         note.playing = NO;
-        
         [note stop];
         
         [self.playingNotes removeObject:note];
         [note.layer removeAllAnimations];
     } else {
+        DDLogVerbose(@"playing");
         note.playing = YES;
         [note play];
         [self.playingNotes addObject:note];
@@ -222,10 +225,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)killNote:(INTInstrumentNote *)note
 {
     note.playing = NO;
-    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInteger:[note getScaledMidiNum]],
-                     [NSNumber numberWithInteger:0], nil];
-    NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
-    [PdBase sendList:data toReceiver:playnote];
+    [note stop];
     
     [self.playingNotes removeObject:note];
     [note.layer removeAllAnimations];
