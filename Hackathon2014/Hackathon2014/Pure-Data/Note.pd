@@ -1,4 +1,4 @@
-#N canvas 559 69 752 493 10;
+#N canvas 559 69 1129 692 10;
 #X obj -306 389 pack 50 100 0.6 250;
 #X floatatom -306 278 5 0 0 1 Attack - -;
 #X obj -269 361 t b f;
