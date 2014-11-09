@@ -58,7 +58,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)viewWillLayoutSubviews
 {
     if ([self.notes count] == 0 && self.initializing){
-        [self initNotes];
+        [self initNotes:0];
     }
 }
 
@@ -68,10 +68,10 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (IBAction)createNotes:(id)sender
 {
-    [self initNotes];
+    [self initNotes:1];
 }
 
-- (void)initNotes
+- (void)initNotes:(int)i
 {
     float width = self.view.bounds.size.width;
     float height = self.view.bounds.size.height;
@@ -79,28 +79,30 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [self createPdNote];
     
     NSArray *midiNums = [self getCurrentScale];
-    
-    for (int i = 0; i < 1; i++){
+    DDLogVerbose(@"%@", midiNums);
+
+//    for (int i = 0; i < 2; i++){
         int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
         
-        for (int j = 0; j < 1; j++){
+        for (int j = 0; j < 7; j++){
+            DDLogVerbose(@"Midinum: %@", midiNums[j]);
             float x = coords[0][j];
             float y = coords[1][j];
             
             [self initNoteWithFrame:CGRectMake(x, y, 65.0, 65.0)
-                            midiNum:midiNums[j]
+                            midiNum:[midiNums[j] integerValue]
                              octave:i + 4
-                          channelId:_numChannels
+                          channelId:_numChannels + 1
                                   x:x
                                   y:y];
             _numChannels++;
         }
-    }
+//    }
     self.initializing = NO;
 }
 
 - (void)initNoteWithFrame:(CGRect)frame
-                  midiNum:(int)midiNum
+                  midiNum:(NSInteger)midiNum
                    octave:(int)octave
                 channelId:(int)channelId
                         x:(float)x
@@ -458,7 +460,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.selectedNotes = nil;
     self.selectedNotes = [[NSMutableArray alloc] init];
     
-    [self initNotes];
+//    [self initNotes];
 }
 
 - (NSArray *)getCurrentScale
@@ -509,13 +511,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)receiveBangFromSource:(NSString *)source
 {
-    if ([source  isEqual: @"config-ready"]){
-        DDLogVerbose(@"Received PD Message, adding new note");
-        self.initializedPDNotes++;
-        if (self.initializedPDNotes < 21){
-            [PdBase sendBangToReceiver:@"add_note"];
-        }
+    DDLogVerbose(@"%@", source);
+    DDLogVerbose(@"Received PD Message, adding new note");
+    if (self.initializedPDNotes < _numChannels){
+        [PdBase sendBangToReceiver:@"add_note"];
     }
+    self.initializedPDNotes++;
 }
 
 - (void)createPdNote
