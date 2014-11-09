@@ -21,6 +21,7 @@
 		BED4741419FC743A006DD472 /* INTEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED4741319FC743A006DD472 /* INTEffectsViewController.m */; };
 		BED4741A19FD6A5D006DD472 /* INTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED4741919FD6A5D006DD472 /* INTSettingsViewController.m */; };
 		E3BC1ACB1A88471588F2A91B /* libPods-Hackathon2014.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */; };
+		FA1C45851A0F068A00193F01 /* dPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C45841A0F068A00193F01 /* dPD.swift */; };
 		FA6462EC1A0EABA90062A213 /* _PD_Interface.txt in Resources */ = {isa = PBXBuildFile; fileRef = FA6462BB1A0EABA90062A213 /* _PD_Interface.txt */; };
 		FA6462ED1A0EABA90062A213 /* _Wave_Types.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6462BC1A0EABA90062A213 /* _Wave_Types.png */; };
 		FA6462EE1A0EABA90062A213 /* adsr~.pd in Resources */ = {isa = PBXBuildFile; fileRef = FA6462BD1A0EABA90062A213 /* adsr~.pd */; };
@@ -112,6 +113,7 @@
 		BED4741319FC743A006DD472 /* INTEffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTEffectsViewController.m; sourceTree = "<group>"; };
 		BED4741819FD6A5D006DD472 /* INTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTSettingsViewController.h; sourceTree = "<group>"; };
 		BED4741919FD6A5D006DD472 /* INTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTSettingsViewController.m; sourceTree = "<group>"; };
+		FA1C45841A0F068A00193F01 /* dPD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dPD.swift; sourceTree = "<group>"; };
 		FA6462BB1A0EABA90062A213 /* _PD_Interface.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _PD_Interface.txt; sourceTree = "<group>"; };
 		FA6462BC1A0EABA90062A213 /* _Wave_Types.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _Wave_Types.png; sourceTree = "<group>"; };
 		FA6462BD1A0EABA90062A213 /* adsr~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "adsr~.pd"; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				BED473A219FAF4F0006DD472 /* AppDelegate.h */,
 				BED473A319FAF4F0006DD472 /* AppDelegate.m */,
 				BEBACA7F1A0DA66100F612EB /* NoteManager.swift */,
+				FA1C45841A0F068A00193F01 /* dPD.swift */,
 				BED473A819FAF4F0006DD472 /* Main.storyboard */,
 				BED473AB19FAF4F0006DD472 /* Images.xcassets */,
 				BED473AD19FAF4F0006DD472 /* LaunchScreen.xib */,
@@ -533,6 +536,7 @@
 				BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */,
 				BEBACA801A0DA66100F612EB /* NoteManager.swift in Sources */,
 				FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */,
+				FA1C45851A0F068A00193F01 /* dPD.swift in Sources */,
 				BED473A119FAF4F0006DD472 /* main.m in Sources */,
 				BED473CF19FAFD40006DD472 /* INTInstrumentViewController.m in Sources */,
 				BED4741419FC743A006DD472 /* INTEffectsViewController.m in Sources */,
