@@ -181,7 +181,7 @@ panner_rate 1.3 \; panner_depth 0.5 \;;
 #X floatatom 77 352 5 0 0 0 - - -;
 #X floatatom 51 381 5 0 0 0 - - -;
 #X msg 72 401 fx tremolo_shape \$1;
-#X obj 136 288 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 136 288 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 163 194 release 10000;
 #X connect 0 0 3 4;
