@@ -81,7 +81,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSArray *midiNums = [self getCurrentScale];
     DDLogVerbose(@"%@", midiNums);
 
-//    for (int i = 0; i < 2; i++){
+    for (int i = 0; i < 4; i++){
         int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
         
         for (int j = 0; j < 7; j++){
@@ -97,7 +97,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                   y:y];
             _numChannels++;
         }
-//    }
+    }
     self.initializing = NO;
 }
 

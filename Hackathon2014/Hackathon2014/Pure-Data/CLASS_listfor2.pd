@@ -1,0 +1,115 @@
+#N canvas 537 42 426 345 10;
+#X obj 198 178 inlet SET;
+#X obj 106 175 inlet RUN;
+#N canvas 235 93 992 728 backend 0;
+#X obj 359 364 list;
+#X msg 337 315 obj 212 191;
+#X obj 226 -51 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 364 406 list trim;
+#X obj 267 -72 inlet SET;
+#X obj 359 281 t b a;
+#X msg 471 445 clear;
+#X obj 38 72 t b b;
+#X msg 30 258 connect 0 0 2 0 \, connect 2 0 1 0;
+#X obj 33 388 r \$0-out;
+#X obj 19 -52 s \$0-in;
+#X obj 19 -83 inlet RUN;
+#X obj 28 431 outlet;
+#X obj 240 520 s pd-\$0-FOR;
+#N canvas 299 80 197 253 \$0-shell 0;
+#X obj 76 -17 r \$0-in;
+#X obj 77 59 s \$0-out;
+#N canvas 158 535 450 300 \$0-FOR 0;
+#X obj 154 7 inlet;
+#X obj 185 60 list length;
+#X obj 188 84 >= 1;
+#X obj 161 109 spigot;
+#X obj 161 132 list split 1;
+#X obj 154 36 t a a b;
+#X obj 323 180 list;
+#X obj 83 77 sel 0;
+#X obj 83 102 t b b;
+#X obj 87 44 t f f;
+#X obj 163 156 t b b b a;
+#X obj 162 265 outlet;
+#X obj 293 100 r BINDING_REFERENCE_HERE;
+#X obj 212 191 pdjent_extract[];
+#X obj 160 238 lbuilder;
+#X connect 0 0 5 0;
+#X connect 1 0 9 0;
+#X connect 2 0 3 1;
+#X connect 3 0 4 0;
+#X connect 4 0 10 0;
+#X connect 4 1 6 1;
+#X connect 5 0 3 0;
+#X connect 5 1 1 0;
+#X connect 6 0 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 14 2;
+#X connect 8 1 14 1;
+#X connect 9 0 7 0;
+#X connect 9 1 2 0;
+#X connect 10 0 6 0;
+#X connect 10 3 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 11 0;
+#X restore 78 21 pd \$0-FOR;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 56 352 pd \$0-shell;
+#X obj 30 283 s pd-\$0-shell;
+#X msg 116 -94 YOUR_PATCH_HERE_TWO_INPUTS_ONE_OUTPUT \,;
+#X msg 382 32 obj 160 238 lbuilder \, connect 0 0 5 0 \, connect 1
+0 9 0 \, connect 2 0 3 1 \, connect 3 0 4 0 \, connect 4 0 10 0 \,
+connect 4 1 6 1 \, connect 5 0 3 0 \, connect 5 1 1 0 \, connect 6
+0 5 0 \, connect 7 0 8 0 \, connect 8 0 14 2 \, connect 8 1 14 1 \,
+connect 9 0 7 0 \, connect 9 1 2 0 \, connect 10 0 6 0 \, connect 10
+3 13 0 \, connect 12 0 13 1 \, connect 13 0 14 0 \, connect 14 0 11
+0 \, loadbang \,;
+#X msg 196 134 obj 154 7 inlet \, obj 185 60 list length \, obj 188
+84 >= 1 \, obj 161 109 spigot \, obj 161 132 list split 1 \, obj 154
+36 t a a b \, obj 323 180 list \, obj 83 77 sel 0 \, obj 83 102 t b
+b \, obj 87 44 t f f \, obj 163 156 t b b b a \, obj 162 265 outlet
+\,;
+#X obj 410 -76 inlet BINDINGS;
+#X obj 237 362 list;
+#X msg 223 312 obj 293 100 r;
+#X obj 242 -30 t b a b b b;
+#X connect 0 0 3 0;
+#X connect 1 0 0 0;
+#X connect 2 0 22 0;
+#X connect 3 0 13 0;
+#X connect 4 0 22 0;
+#X connect 5 0 1 0;
+#X connect 5 1 0 1;
+#X connect 6 0 13 0;
+#X connect 7 0 8 0;
+#X connect 7 1 17 0;
+#X connect 8 0 15 0;
+#X connect 9 0 12 0;
+#X connect 11 0 10 0;
+#X connect 16 0 22 0;
+#X connect 17 0 13 0;
+#X connect 18 0 13 0;
+#X connect 19 0 20 1;
+#X connect 20 0 3 0;
+#X connect 21 0 20 0;
+#X connect 22 0 7 0;
+#X connect 22 1 5 0;
+#X connect 22 2 21 0;
+#X connect 22 3 18 0;
+#X connect 22 4 6 0;
+#X restore 135 208 pd backend;
+#X text 24 -37 THIS IS A TEMPLATE - COPY AND PASTE IN A SUBPATCH TO
+USE IN YOUR OWN PROJECT. DO NOT USE OR SAVE OVER THIS COPY.;
+#X text 38 25 For loop that iterates over each element in a list and
+passes them through the object defined in the SET inlet: Example:;
+#X msg 59 80 makefilename PREFIX_%s;
+#X text 59 99 will cause each element in the list to be routed through
+the makefilename object \, which will prepend "PREFIX_" to each element
+in the list.;
+#X obj 137 241 outlet LOOP_OUTPUT;
+#X connect 0 0 2 1;
+#X connect 1 0 2 0;
+#X connect 2 0 7 0;

@@ -21,8 +21,8 @@
 #X floatatom 183 291 5 0 0 0 - - -;
 #X text 264 342 bang after last bang;
 #X text 235 386 current bang;
-#X obj 144 257 uzi 10;
-#X obj 93 33 uzi;
+#X obj 144 257 minigun 10;
+#X obj 93 33 minigun;
 #X connect 0 0 21 1;
 #X connect 4 0 21 0;
 #X connect 5 0 6 0;

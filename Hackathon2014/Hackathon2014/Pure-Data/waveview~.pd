@@ -1,0 +1,14 @@
+#N canvas 502 457 261 115 10;
+#X obj 14 55 metro 30;
+#X obj 14 32 loadfloat 1;
+#X obj 6 84 tabwrite~ \$1;
+#X obj 87 55 prepend set;
+#X obj 6 -4 inlet~ INPUT;
+#X obj 87 -4 inlet ARRAY;
+#X obj 162 -4 inlet FRAMERATE;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 3 0;
+#X connect 6 0 0 1;

@@ -1,0 +1,70 @@
+#N canvas 686 141 617 581 10;
+#X obj 24 16 inlet;
+#X obj 116 16 inlet;
+#X obj 28 533 outlet;
+#X msg 344 68 clear;
+#X msg 63 488 connect 0 0 2 0 \, connect 2 0 1 0;
+#X obj 291 520 s pd-\$0-shell;
+#X obj 159 528 s pd-\$0-creator;
+#N canvas 360 271 584 312 \$0-creator 0;
+#X obj 4 9 inlet;
+#X obj 3 82 outlet;
+#N canvas 1155 538 277 350 \$0-shell 0;
+#X obj 15 8 inlet;
+#X obj 45 319 outlet;
+#X obj 24 71 s2l;
+#X msg 41 44 symbol ];
+#X obj 21 127 list split 1;
+#X obj 164 150 lprint OTHER_CODE;
+#X obj 156 53 loadbang;
+#X obj 102 211 list;
+#X obj 206 180 lprint VAR;
+#X obj 44 235 lbuilder;
+#X obj 44 288 l2s;
+#X msg 58 261 symbol;
+#X obj 116 308 lprint IM_FINISHED;
+#X obj 16 169 s &CONSTANTS;
+#X obj 130 234 print FROM_DICTIONARY;
+#X obj 16 192 r &OP-CONST-BINDINGS;
+#X msg 170 105 symbol route1;
+#X connect 0 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 1;
+#X connect 4 0 8 0;
+#X connect 4 0 13 0;
+#X connect 4 1 5 0;
+#X connect 4 1 7 1;
+#X connect 6 0 3 0;
+#X connect 6 0 11 0;
+#X connect 7 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 1 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 1;
+#X connect 15 0 9 0;
+#X connect 15 0 14 0;
+#X connect 16 0 13 0;
+#X restore 5 47 pd \$0-shell;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 33 204 pd \$0-creator;
+#X msg 122 82 obj 46 30 inlet \, obj 76 341 outlet \, obj 55 93 s2l
+\, msg 72 66 symbol ] \, obj 52 149 list split 1 \, obj 349 186 lprint
+OTHER_CODE \, obj 187 75 loadbang \, obj 133 233 list \, obj 391 216
+lprint VAR \, obj 47 214 r &OP-CONST-BINDINGS \, obj 47 191 s &CONSTANTS
+\, obj 75 257 lbuilder \, obj 75 310 l2s \, msg 89 283 symbol \, obj
+147 330 lprint IM_FINISHED \, connect 0 0 2 0 \, connect 2 0 4 0 \,
+connect 3 0 2 1 \, connect 4 0 8 0 \, connect 4 0 10 0 \, connect 4
+1 5 0 \, connect 4 1 7 1 \, connect 6 0 3 0 \, connect 6 0 13 0 \,
+connect 7 0 11 0 \, connect 9 0 11 0 \, connect 11 0 12 0 \, connect
+12 0 1 0 \, connect 12 0 14 0 \, connect 13 0 12 1 \,;
+#X obj 117 44 t b b b;
+#X connect 0 0 7 0;
+#X connect 1 0 9 0;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 7 0 2 0;
+#X connect 8 0 5 0;
+#X connect 9 0 4 0;
+#X connect 9 1 8 0;
+#X connect 9 2 3 0;
