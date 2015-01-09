@@ -137,7 +137,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [data addObject:@"note"];
     [data addObject:[NSNumber numberWithInt:[self getScaledMidiNum]]];
     [data addObject:[NSNumber numberWithInt:50]];
-    [PdBase sendList:data toReceiver:[NSString stringWithFormat:@"control%d", self.channelId]];
+    [PdBase sendList:data toReceiver:[NSString stringWithFormat:@"channel%d", self.channelId]];
 }
 
 
@@ -154,7 +154,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [data addObject:@"note"];
     [data addObject:[NSNumber numberWithInt:[self getScaledMidiNum]]];
     [data addObject:[NSNumber numberWithInt:0]];
-    [PdBase sendList:data toReceiver:[NSString stringWithFormat:@"control%d", self.channelId]];
+    [PdBase sendList:data toReceiver:[NSString stringWithFormat:@"channel%d", self.channelId]];
 }
 
 /*

@@ -31,7 +31,7 @@ TO Main Patch:
 	[ringmod_rate]   float
 	[ringmod_depth]  float (0-1)
 	[filter_on]      1 / 0
-	[filter_freq]    float (0-22050)
+	[filter_freq]    float (0-22050, Hz)
 	[filter_q]       float (0-5ish)
 	[delay_on]       1 / 0
 	[delay_time] 	 float (Time in ms)
@@ -91,14 +91,14 @@ To Individual Note (Dynamically Created):
 
 	Send notes to different channels by using different receivers:
 
-		[control#] where # is the channel number.
+		[channel#] where # is the channel number.
 
 	Example:
 
-		[control3] release 400
-		[control3] fx delay_time 1000
-		[control3] fx delay_feedback .8
-		[control3] flush
+		[channel3] release 400
+		[channel3] fx delay_time 1000
+		[channel3] fx delay_feedback .8
+		[channel3] flush
 
 	Meaning:
 

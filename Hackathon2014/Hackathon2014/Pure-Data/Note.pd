@@ -1,4 +1,4 @@
-#N canvas 701 440 635 362 10;
+#N canvas 701 440 630 377 10;
 #X obj -326 194 pack 50 100 0.6 250;
 #X floatatom -326 83 5 0 0 1 Attack - -;
 #X obj -289 166 t b f;
@@ -9,17 +9,17 @@
 #X floatatom -215 145 5 0 0 1 Release - -;
 #X obj -169 204 bng 15 250 50 0 empty empty Note_Flush 17 7 0 10 -262144
 -1 -1;
-#X obj 33 -15 loadbang;
+#X obj 33 -25 loadbang;
 #X obj -326 28 r \$0-attack;
 #X obj -289 52 r \$0-decay;
 #X obj -252 76 r \$0-sustain;
 #X obj -215 101 r \$0-release;
 #X obj -169 180 r \$0-flush;
 #X obj -348 6 r \$0-note;
-#X obj 24 14 f \$0;
+#X obj 24 4 f \$0;
 #X floatatom -444 168 5 0 0 0 - - -;
 #X obj -444 142 r \$0-wave;
-#X obj 15 -15 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 15 -25 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #N canvas 45 47 1619 760 wavetables 0;
 #X obj 96 -166 inlet;
@@ -9281,17 +9281,17 @@ pitchbend_range print;
 #X obj -85 252 sel 0;
 #X text -423 71 Test Tones:;
 #X obj 96 180 r \$0-print;
-#X obj 96 204 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 96 204 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X msg 24 38 \; pd dsp 1 \; \$1-pitchbend 64 \; \$1-pitchbend_range
-2 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain 0.7 \; \$1-release
-300 \; \$1-wave 9 \; \$1-flush bang \;;
-#X obj -230 279 line~;
 #X obj -348 296 *~;
 #X obj -102 296 switch~;
 #X obj -129 266 t f f;
 #X obj -230 239 pipe 5;
 #X msg -230 259 \$1 10;
+#X obj -230 279 vline~;
+#X msg 24 28 \; pd dsp 1 \; \$1-pitchbend 64 \; \$1-pitchbend_range
+2 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain 0.7 \; \$1-release
+300 \; \$1-wave 9 \; \$1-flush bang \; \$1-print 1 \;;
 #X connect 0 0 26 2;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
@@ -9311,7 +9311,7 @@ pitchbend_range print;
 #X connect 13 0 7 0;
 #X connect 14 0 8 0;
 #X connect 15 0 26 0;
-#X connect 16 0 39 0;
+#X connect 16 0 45 0;
 #X connect 17 0 20 0;
 #X connect 18 0 17 0;
 #X connect 19 0 16 0;
@@ -9327,15 +9327,15 @@ pitchbend_range print;
 #X connect 28 0 32 0;
 #X connect 29 0 26 0;
 #X connect 30 0 26 0;
-#X connect 31 0 41 0;
+#X connect 31 0 39 0;
 #X connect 34 0 35 0;
-#X connect 34 0 43 0;
+#X connect 34 0 41 0;
 #X connect 35 0 25 0;
 #X connect 37 0 38 0;
 #X connect 38 0 26 6;
-#X connect 40 0 41 1;
-#X connect 41 0 27 0;
+#X connect 39 0 27 0;
+#X connect 41 0 42 0;
+#X connect 41 1 40 0;
+#X connect 42 0 43 0;
 #X connect 43 0 44 0;
-#X connect 43 1 42 0;
-#X connect 44 0 45 0;
-#X connect 45 0 40 0;
+#X connect 44 0 39 1;
