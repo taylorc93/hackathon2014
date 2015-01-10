@@ -8,6 +8,7 @@
 
 #import "INTRootViewController.h"
 #import "INTInstrumentViewController.h"
+#import "INTInstrumentNote.h"
 #include "septagon_coordinates.h"
 #import "PdDispatcher.h"
 
@@ -47,7 +48,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.selectedNotes = [[NSMutableArray alloc] init];
     self.initializing = YES;
     self.touchStartedOnNote = NO;
-    self.numChannels = 0;
+    self.numChannels = 1;
     
     PdDispatcher *dispatcher = [[PdDispatcher alloc] init];
     [PdBase setDelegate:dispatcher];
@@ -58,7 +59,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)viewWillLayoutSubviews
 {
     if ([self.notes count] == 0 && self.initializing){
-        [self initNotes:0];
+        [self initNotes];
     }
 }
 
@@ -66,20 +67,15 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)createNotes:(id)sender
-{
-    [self initNotes:1];
-}
-
-- (void)initNotes:(int)i
+- (void)initNotes
 {
     float width = self.view.bounds.size.width;
     float height = self.view.bounds.size.height;
     
+    //starts chain of note creations in PD patch
     [self createPdNote];
     
     NSArray *midiNums = [self getCurrentScale];
-    DDLogVerbose(@"%@", midiNums);
 
     for (int i = 0; i < 3; i++){
         int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
@@ -92,7 +88,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             [self initNoteWithFrame:CGRectMake(x, y, 65.0, 65.0)
                             midiNum:[midiNums[j] integerValue]
                              octave:i + 4
-                          channelId:_numChannels + 1
+                          channelId:self.numChannels
                                   x:x
                                   y:y];
             _numChannels++;
@@ -111,7 +107,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(x, y, 65.0, 65.0)
                                                                noteNum:midiNum
                                                             noteOctave:octave
-                                                             channelId:channelId];
+                                                             channelId:channelId
+                                                              parentVC:self];
     note.center = CGPointMake(x, y);
     [self.view addSubview:note];
     [self.notes addObject:note];
@@ -221,28 +218,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSString *playnote = [NSString stringWithFormat:@"%d-note", self.dollarZero];
 
     if (note.playing){
-        DDLogVerbose(@"stopping");
-        note.playing = NO;
-        [note stop];
-        
         [self.playingNotes removeObject:note];
-        [note.layer removeAllAnimations];
     } else {
-        DDLogVerbose(@"playing");
-        note.playing = YES;
-        [note play];
         [self.playingNotes addObject:note];
-        
-        CABasicAnimation *animation;
-        
-        animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        animation.duration=0.3;
-        animation.repeatCount=HUGE_VALF;
-        animation.autoreverses=NO;
-        animation.fromValue=[NSNumber numberWithFloat:1.0];
-        animation.toValue=[NSNumber numberWithFloat:0.3];
-        [note.layer addAnimation:animation forKey:@"animatePlaying"];
     }
+    [note toggle];
     note.touched = YES;
 }
 
@@ -258,57 +238,16 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)selectNote:(INTInstrumentNote *)note
 {
     if (note.selected){
-        note.selected = NO;
         [self.selectedNotes removeObject:note];
-        [note.layer removeAllAnimations];
-
     } else {
-        note.selected = YES;
         [self.selectedNotes addObject:note];
-        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
-        [note.layer removeAllAnimations];
-        
-        CABasicAnimation *animation;
-        animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        animation.duration=0.2;
-        animation.repeatCount=HUGE_VALF;
-        animation.autoreverses=YES;
-        animation.fromValue=[NSNumber numberWithFloat:1.0];
-        animation.toValue=[NSNumber numberWithFloat:0.6];
-        [note.layer addAnimation:animation forKey:@"animateSelection"];
-        
         self.currentNote = note;
         self.currentMidiNote = note.midiNum;
-        
         self.currentOctave = note.octave;
-        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
+//        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
     }
+    [note select];
     note.touched = YES;
-}
-
-- (void)bendNote:(INTInstrumentNote*)note
-       touch:(UITouch *)touch
-{
-    CGPoint noteCenter = note.center;
-    CGPoint touchPoint = [touch locationInView:self.view];
-    
-    DDLogVerbose(@"inital: %f touch: %f", self.initialTouchY, touchPoint.y);
-    
-    float yDiff = (self.initialTouchY - touchPoint.y) / 4;
-    float pitchBend = yDiff + 64;
-    
-    if (pitchBend > 127.0){
-        pitchBend = 127.0;
-    } else if (pitchBend < 0.0){
-        pitchBend = 0.0;
-    }
-    
-    [note bendPitch:pitchBend];
-    
-    NSString *receiver = [NSString stringWithFormat:@"%d-pitchbend", self.dollarZero];
-    [PdBase sendFloat:pitchBend toReceiver:receiver];
-    
-    DDLogVerbose(@"%f", pitchBend);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -370,8 +309,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                 }
                 note.touched = NO;
             }
-        } else if (self.touchStartedOnNote){
-            [self bendNote:tappedNote touch:touch];
         }
     }
 }
@@ -511,7 +448,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)receiveBangFromSource:(NSString *)source
 {
-    DDLogVerbose(@"%@", source);
     DDLogVerbose(@"Received PD Message, adding new note");
     if (self.initializedPDNotes < _numChannels){
         [PdBase sendBangToReceiver:@"add_note"];

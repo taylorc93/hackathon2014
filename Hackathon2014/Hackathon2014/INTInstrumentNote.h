@@ -13,16 +13,20 @@
 - (instancetype)initWithFrame:(CGRect)frame
                       noteNum:(int)midiNum
                    noteOctave:(int)octave
-                    channelId:(int)channelId;
+                    channelId:(int)channelId
+                     parentVC:(UIViewController *)parentVC;
 
 - (int)getScaledMidiNum;
+- (void)toggle;
 - (void)play;
 - (void)stop;
+- (void)select;
 - (void)bendPitch:(float)bendNum;
 
 @property (nonatomic, strong) UIColor *color;
 @property int midiNum;
 @property int octave;
+@property (nonatomic, weak) UIViewController *parentVC;
 
 @property BOOL playing;
 @property BOOL selected;

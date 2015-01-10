@@ -7,17 +7,21 @@
 //
 
 #import "INTInstrumentNote.h"
+#import "INTInstrumentViewController.h"
 #import "PdBase.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
-@implementation INTInstrumentNote
+@implementation INTInstrumentNote {
+    CGPoint originalTouchLocation;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
                       noteNum:(int)midiNum
                    noteOctave:(int)octave
-                    channelId:(int)channelId;
+                    channelId:(int)channelId
+                     parentVC:(UIViewController *)parentVC;
 {
     self = [super initWithFrame:frame];
     float width = frame.size.width;
@@ -36,13 +40,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         self.layer.cornerRadius = self.frame.size.width / 2;
         self.layer.borderColor = [UIColor blackColor].CGColor;
         self.layer.borderWidth = 2;
+        self.parentVC = parentVC;
         
         [self getNoteName];
         [self setBackgroundColor];
         
         UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(width / 4 + 10, height / 4, width / 2, height / 2)];
-//        noteLabel.textAlignment = NSTextAlignmentCenter;
-//        noteLabel.center = self.center;
         noteLabel.text = self.noteName;
         [self addSubview:noteLabel];
     }
@@ -131,6 +134,73 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.backgroundColor = self.color;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    INTInstrumentViewController *instrumentVC = (INTInstrumentViewController *)self.parentVC;
+    UITouch *originalTouch = (UITouch *)[touches anyObject];
+    originalTouchLocation = [originalTouch locationInView:self];
+    
+    if (instrumentVC.editFlag){
+        [instrumentVC selectNote:self];
+    } else {
+        if (self.playing){
+            [self stop];
+            self.playing = NO;
+        } else {
+            [self play];
+            self.playing = YES;
+        }
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *newTouch = (UITouch *)[touches anyObject];
+    CGPoint newLocation = [newTouch locationInView:self];
+    
+    float diff = (originalTouchLocation.y - newLocation.y) / 127.0;
+    if (diff > 1.0){
+        diff = 1.0;
+    } else if (diff < -1.0){
+        diff = -1.0;
+    }
+    
+    [self bendPitch:diff];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    INTInstrumentViewController *instrumentVC = (INTInstrumentViewController *)self.parentVC;
+    if (instrumentVC.editFlag){
+        NSLog(@"editting");
+    } else {
+        if (self.playing){
+            [self stop];
+            self.playing = NO;
+        } else {
+            [self play];
+            self.playing = YES;
+        }
+    }
+}
+
+-(void)toggle
+{
+    INTInstrumentViewController *instrumentVC = (INTInstrumentViewController *)self.parentVC;
+    NSLog(@"%d", instrumentVC.editFlag);
+    if (instrumentVC.editFlag){
+        NSLog(@"editting");
+    } else {
+        if (self.playing){
+            [self stop];
+            self.playing = NO;
+        } else {
+            [self play];
+            self.playing = YES;
+        }
+    }
+}
+
 - (void)play
 {
     NSMutableArray *data = [[NSMutableArray alloc] init];
@@ -138,14 +208,26 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [data addObject:[NSNumber numberWithInt:[self getScaledMidiNum]]];
     [data addObject:[NSNumber numberWithInt:50]];
     [PdBase sendList:data toReceiver:[NSString stringWithFormat:@"channel%d", self.channelId]];
+    
+    CABasicAnimation *animation;
+    
+    animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation.duration=0.3;
+    animation.repeatCount=HUGE_VALF;
+    animation.autoreverses=NO;
+    animation.fromValue=[NSNumber numberWithFloat:1.0];
+    animation.toValue=[NSNumber numberWithFloat:0.3];
+    [self.layer addAnimation:animation forKey:@"animatePlaying"];
 }
 
 
-- (void)bendPitch:(float)bendNum
+- (void)bendPitch:(float)diff
 {
-//    NSArray *data = [NSArray arrayWithObjects:[NSNumber numberWithInt:self.channelId],
-//                      @"pitchbend", [NSNumber numberWithInt:bendNum], nil];
-//    [PdBase sendList:data toReceiver:@"control"];
+    float bendNum = [self scaleBend:diff];
+    NSArray *data = [NSArray arrayWithObjects:@"pitchbend", [NSNumber numberWithFloat:bendNum], nil];
+    NSString *receiver = [NSString stringWithFormat:@"channel%d", self.channelId];
+
+    [PdBase sendList:data toReceiver:receiver];
 }
 
 - (void)stop
@@ -155,19 +237,32 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [data addObject:[NSNumber numberWithInt:[self getScaledMidiNum]]];
     [data addObject:[NSNumber numberWithInt:0]];
     [PdBase sendList:data toReceiver:[NSString stringWithFormat:@"channel%d", self.channelId]];
+    
+    [self.layer removeAllAnimations];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)select
+{
+    if (self.selected){
+        [self.layer removeAllAnimations];
+        self.selected = NO;
+    } else {
+        CABasicAnimation *animation;
+        animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        animation.duration=0.3;
+        animation.repeatCount=HUGE_VALF;
+        animation.autoreverses=NO;
+        animation.fromValue=[NSNumber numberWithFloat:1.0];
+        animation.toValue=[NSNumber numberWithFloat:0.3];
+        [self.layer addAnimation:animation forKey:@"animatePlaying"];
+        
+        self.selected = YES;
+    }
 }
-*/
 
-//- (void)panNote:(UIPanGestureRecognizer *)panRecognizer
-//{
-//    DDLogVerbose(@"Got gesture");
-//}
+- (float)scaleBend:(float)value
+{
+    return 64 * pow(value, 3.0) + 64;
+}
 
 @end
