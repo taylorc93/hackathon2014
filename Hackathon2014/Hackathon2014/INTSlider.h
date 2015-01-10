@@ -14,8 +14,6 @@
 @property (nonatomic, strong) UIView *filler;
 
 @property (nonatomic, strong) NSString *receiver;
-@property int maxValue;
-@property int minValue;
 @property float value;
 
 @property int dollarZero;

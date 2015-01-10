@@ -18,28 +18,18 @@
     self.chorusPlaying = NO;
     self.tremeloPlaying = NO;
     self.ringmodPlaying = NO;
-}
-
-- (IBAction)changeChorusRate:(UISlider *)sender
-{
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"chorus_rate"];
     
-    float value = sender.value;
-    [PdBase sendFloat:value toReceiver:receiver];}
-
-- (IBAction)changeChorusDepth:(UISlider *)sender
-{
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"chorus_depth"];
-    
-    float value = sender.value;
-    [PdBase sendFloat:value toReceiver:receiver];
+    NSArray *values = @[@"chorus_rate", @"chorus_depth", @"tremolo_rate",
+                        @"tremolo_depth", @"ringmod_rate", @"ringmod_depth"];
+    int count = 0;
+    for (INTSlider *slider in self.sliders){
+        slider.receiver = values[count];
+        count++;
+    }
 }
 
 - (IBAction)toggleChorus:(id)sender
 {
-    int dollarZero = self.instrumentVC.dollarZero;
     NSString *receiver = [NSString stringWithFormat:@"chorus_on"];
     if (self.chorusPlaying){
         [PdBase sendFloat:0 toReceiver:receiver];
@@ -53,27 +43,8 @@
     }
 }
 
-- (IBAction)changeTremoloRate:(UISlider *)sender
-{
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"tremolo_rate"];
-    
-    float value = sender.value;
-    [PdBase sendFloat:value toReceiver:receiver];
-}
-
-- (IBAction)changeTremoloDepth:(UISlider *)sender
-{
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"tremolo_depth"];
-    
-    float value = sender.value;
-    [PdBase sendFloat:value toReceiver:receiver];
-}
-
 - (IBAction)toggleTremolo:(id)sender
 {
-    int dollarZero = self.instrumentVC.dollarZero;
     NSString *receiver = [NSString stringWithFormat:@"tremolo_on"];
     if (self.tremeloPlaying){
         [PdBase sendFloat:0 toReceiver:receiver];
@@ -86,27 +57,8 @@
     }
 }
 
-- (IBAction)changeRingModRate:(UISlider *)sender
-{
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"ringmod_rate"];
-    
-    float value = sender.value;
-    [PdBase sendFloat:value toReceiver:receiver];
-}
-
-- (IBAction)changeRingModDepth:(UISlider *)sender
-{
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"ringmod_depth"];
-    
-    float value = sender.value;
-    [PdBase sendFloat:value toReceiver:receiver];
-}
-
 - (IBAction)toggleRingMod:(id)sender
 {
-    int dollarZero = self.instrumentVC.dollarZero;
     NSString *receiver = [NSString stringWithFormat:@"ringmod_on"];
     if (self.ringmodPlaying){
         [PdBase sendFloat:0 toReceiver:receiver];

@@ -11,6 +11,7 @@
 
 @implementation INTSlider{
     float currentWidth;
+    float scaleFactor;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -19,7 +20,6 @@
     if (self){
 
         CGRect fillerFrame = CGRectMake(0.0, 0.0, self.frame.size.width / 2, self.frame.size.height);
-//        self.backgroundColor = [UIColor colorWithRed:110.0 / 255.0 green:128.0 / 255.0 blue:255.0 / 255.0 alpha:1.0];
         self.filler = [[UIView alloc] initWithFrame:fillerFrame];
         self.filler.backgroundColor = [UIColor colorWithRed:255.0 / 255.0 green:237.0 / 255.0 blue:79.0 / 255.0 alpha:1.0];
         
@@ -49,14 +49,6 @@
     [self updateValue:touchLocation];
 }
 
-- (void)updateValue:(CGPoint)touchLocation
-{
-    float scaleFactor = currentWidth / self.frame.size.width;
-    self.value = scaleFactor * self.maxValue;
-    
-//    [PdBase sendFloat:self.value toReceiver:self.receiver];
-}
-
 - (void)updateFill:(CGPoint)touchLocation
 {
     float newWidth = touchLocation.x - self.filler.frame.origin.x;
@@ -69,6 +61,14 @@
     
     self.filler.frame = CGRectMake(0.0, 0.0, newWidth, self.frame.size.height);
     currentWidth = newWidth;
+}
+
+- (void)updateValue:(CGPoint)touchLocation
+{
+    float scaleFactor = currentWidth / self.frame.size.width;
+    self.value = scaleFactor * currentWidth;
+        
+    [PdBase sendFloat:self.value toReceiver:self.receiver];
 }
 
 @end
