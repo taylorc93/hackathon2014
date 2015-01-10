@@ -16,7 +16,7 @@
 -1 0 1;
 #X floatatom -8 94 5 0 0 1 Gain_amount - -;
 #X obj 195 604 tgl 15 0 empty empty Chorus_off/on 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X floatatom 185 584 5 0 0 1 Chorus_mix - -;
 #X floatatom 175 564 5 0 0 1 Chorus_depth - -;
 #X floatatom 165 544 5 0 0 1 Chorus_rate - -;
@@ -166,7 +166,7 @@
 #X floatatom 264 199 5 0 0 0 - - -;
 #X floatatom 38 259 5 0 0 1 Set_Channel - change_active_control;
 #X obj -2 4 piano;
-#N canvas 240 569 241 173 controls 0;
+#N canvas 240 569 263 183 controls 0;
 #X msg 75 -451 wave \$1;
 #X floatatom 125 -450 5 0 0 0 - - -;
 #X msg 75 -417 fx tremolo_rate \$1;
@@ -184,6 +184,7 @@
 #X msg 74 -435 fx tremolo_on \$1;
 #X msg 6 -449 wave 8;
 #X msg 75 -468 release 1000;
+#X msg 70 -362 pitchbend 127;
 #X connect 0 0 10 0;
 #X connect 1 0 0 0;
 #X connect 2 0 10 0;
@@ -199,6 +200,7 @@
 #X connect 13 0 10 0;
 #X connect 14 0 10 0;
 #X connect 15 0 10 0;
+#X connect 16 0 10 0;
 #X restore 166 176 pd controls;
 #X obj 310 444 waveview~ OUTPUT;
 #N canvas 0 22 450 278 (subpatch) 0;

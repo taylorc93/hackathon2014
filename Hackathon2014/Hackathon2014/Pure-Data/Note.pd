@@ -1,4 +1,4 @@
-#N canvas 701 440 630 377 10;
+#N canvas 194 101 630 377 10;
 #X obj -326 194 pack 50 100 0.6 250;
 #X floatatom -326 83 5 0 0 1 Attack - -;
 #X obj -289 166 t b f;
@@ -9234,7 +9234,7 @@ gain_amount;
 #X text 8 38 SYNTH:;
 #X text -81 157 FX:;
 #X obj 418 85 s \$0-print;
-#X obj 122 40 route note wave attack decay sustain release flush pitchbend
+#X obj 62 37 route note wave attack decay sustain release flush pitchbend
 pitchbend_range print;
 #X obj 291 1 route fx;
 #X obj 290 -19 inlet;
@@ -9270,8 +9270,8 @@ pitchbend_range print;
 #X connect 37 5 5 0;
 #X connect 37 6 6 0;
 #X connect 37 7 7 0;
-#X connect 37 9 8 0;
-#X connect 37 10 36 0;
+#X connect 37 8 8 0;
+#X connect 37 9 36 0;
 #X connect 38 0 33 0;
 #X connect 38 1 37 0;
 #X connect 39 0 38 0;
