@@ -67,9 +67,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     float width = self.view.bounds.size.width;
     float height = self.view.bounds.size.height;
     
-    //starts chain of note creations in PD patch
-    [self createPdNote];
-    
     NSArray *midiNums = [self getCurrentScale];
 
     for (int i = 0; i < 3; i++){
@@ -86,6 +83,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                           channelId:self.numChannels
                                   x:x
                                   y:y];
+            [self createPdNote];
+
             _numChannels++;
         }
     }
@@ -133,18 +132,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         [note removeFromSuperview];
     }
 }
-
-//- (void)dragNote:(INTInstrumentNote *)note
-//           touch:(UITouch *)touch
-//{
-//    CGPoint prevTouchPoint = [self.previousTouch locationInView:self.view];
-//    CGPoint currTouchPoint = [touch locationInView:self.view];
-//    
-//    DDLogVerbose(@"%@ %@", NSStringFromCGPoint(prevTouchPoint), NSStringFromCGPoint(currTouchPoint));
-//    [UIView animateWithDuration:0.1 animations:^{
-//        [note setCenter:currTouchPoint];
-//    }];
-//}
 
 - (INTInstrumentNote *)getIntersectsForTouch:(UITouch *)touch
                                     inEvent:(UIEvent *)event
@@ -384,14 +371,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.editFlag = editFlag;
 }
 
-- (void)receiveBangFromSource:(NSString *)source
-{
-    DDLogVerbose(@"Received PD Message, adding new note");
-    if (self.initializedPDNotes < _numChannels){
-        [PdBase sendBangToReceiver:@"add_note"];
-    }
-    self.initializedPDNotes++;
-}
+//- (void)receiveBangFromSource:(NSString *)source
+//{
+//    DDLogVerbose(@"Received PD Message, adding new note");
+//    if (self.initializedPDNotes < _numChannels){
+//        [PdBase sendBangToReceiver:@"add_note"];
+//    }
+//    self.initializedPDNotes++;
+//}
 
 - (void)createPdNote
 {
