@@ -157,15 +157,20 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     UITouch *newTouch = (UITouch *)[touches anyObject];
     CGPoint newLocation = [newTouch locationInView:self];
-    
-    float diff = (originalTouchLocation.y - newLocation.y) / 127.0;
-    if (diff > 1.0){
-        diff = 1.0;
-    } else if (diff < -1.0){
-        diff = -1.0;
+    INTInstrumentViewController *instrumentVC = (INTInstrumentViewController *)self.parentVC;
+
+    if (instrumentVC.editFlag){
+        
+        [self reposition:[self convertPoint:newLocation toView:instrumentVC.view]];
+    } else {
+        float diff = (originalTouchLocation.y - newLocation.y) / 127.0;
+        if (diff > 1.0){
+            diff = 1.0;
+        } else if (diff < -1.0){
+            diff = -1.0;
+        }
+        [self bendPitch:diff];
     }
-    
-    [self bendPitch:diff];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -258,6 +263,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         
         self.selected = YES;
     }
+}
+
+- (void)reposition:(CGPoint)newCenter
+{
+    [UIView animateWithDuration:0.1 animations:^{
+        [self setCenter:newCenter];
+    }];
 }
 
 - (float)scaleBend:(float)value

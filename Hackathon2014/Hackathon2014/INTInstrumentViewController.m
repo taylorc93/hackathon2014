@@ -17,11 +17,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 @interface INTInstrumentViewController ()
 
 @property (nonatomic, strong) NSMutableArray *playingNotes;
-@property (nonatomic, strong) UITouch *previousTouch;
-@property BOOL touchStartedOnNote;
 @property BOOL initializing;
-@property float initialTouchX;
-@property float initialTouchY;
 @property int initializedPDNotes;
 
 @end
@@ -47,7 +43,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.playingNotes = [[NSMutableArray alloc] init];
     self.selectedNotes = [[NSMutableArray alloc] init];
     self.initializing = YES;
-    self.touchStartedOnNote = NO;
     self.numChannels = 1;
     
     PdDispatcher *dispatcher = [[PdDispatcher alloc] init];
@@ -139,17 +134,17 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }
 }
 
-- (void)dragNote:(INTInstrumentNote *)note
-           touch:(UITouch *)touch
-{
-    CGPoint prevTouchPoint = [self.previousTouch locationInView:self.view];
-    CGPoint currTouchPoint = [touch locationInView:self.view];
-    
-    DDLogVerbose(@"%@ %@", NSStringFromCGPoint(prevTouchPoint), NSStringFromCGPoint(currTouchPoint));
-    [UIView animateWithDuration:0.1 animations:^{
-        [note setCenter:currTouchPoint];
-    }];
-}
+//- (void)dragNote:(INTInstrumentNote *)note
+//           touch:(UITouch *)touch
+//{
+//    CGPoint prevTouchPoint = [self.previousTouch locationInView:self.view];
+//    CGPoint currTouchPoint = [touch locationInView:self.view];
+//    
+//    DDLogVerbose(@"%@ %@", NSStringFromCGPoint(prevTouchPoint), NSStringFromCGPoint(currTouchPoint));
+//    [UIView animateWithDuration:0.1 animations:^{
+//        [note setCenter:currTouchPoint];
+//    }];
+//}
 
 - (INTInstrumentNote *)getIntersectsForTouch:(UITouch *)touch
                                     inEvent:(UIEvent *)event
@@ -232,7 +227,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [note stop];
     
     [self.playingNotes removeObject:note];
-    [note.layer removeAllAnimations];
 }
 
 - (void)selectNote:(INTInstrumentNote *)note
@@ -250,100 +244,44 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     note.touched = YES;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    DDLogVerbose(@"Started");
     UITouch *touch = [touches anyObject];
-
     INTInstrumentNote *tappedNote = [self getIntersectsForTouch:touch
                                                         inEvent:event
                                                        forNotes:self.notes];
-    
     CGRect noteRect = tappedNote.frame;
-    
-    if (tappedNote){
+    NSArray *untappedNotes = [self getNonintersectsForTouch:touch
+                                                  inEvent:event
+                                                 forNotes:self.notes];
+
+    if (tappedNote && !tappedNote.touched){
         if (self.editFlag){
             [self selectNote:tappedNote];
         } else {
             [self playNote: tappedNote];
         }
-        self.touchStartedOnNote = YES;
-        
-        CGPoint touchLocation = [touch locationInView:self.view];
-        self.initialTouchX = touchLocation.x;
-        self.initialTouchY = touchLocation.y;
     }
-    
-    self.previousTouch = touch;
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    DDLogVerbose(@"Moved");
-    UITouch *touch = [touches anyObject];
-    
-    INTInstrumentNote *tappedNote = [self getIntersectsForTouch:touch
-                                                        inEvent:event
-                                                       forNotes:self.notes];
-    CGRect noteRect = tappedNote.frame;
-    
-    if (self.editFlag){
-        if (tappedNote && !tappedNote.touched){
-            [self selectNote:tappedNote];
-        } else if (tappedNote && self.touchStartedOnNote){
-            [self dragNote:tappedNote touch:touch];
-        }
-    } else {
-        if (!self.touchStartedOnNote){
-            if (tappedNote && !tappedNote.touched){
-                [self playNote: tappedNote];
-            }
-            NSArray *notesToKill = [self getNonintersectsForTouch:touch
-                                                          inEvent:event
-                                                         forNotes:self.playingNotes];
             
-            for (int i = 0; i < [notesToKill count]; i++){
-                INTInstrumentNote *note = (INTInstrumentNote *)[notesToKill objectAtIndex:i];
-                if (!note.hold){
-                    [self killNote:note];
-                }
-                note.touched = NO;
-            }
-        }
-    }
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    DDLogVerbose(@"ended");
-    UITouch *touch = [touches anyObject];
-    
-    INTInstrumentNote *tappedNote = [self getIntersectsForTouch:touch
-                                                        inEvent:event
-                                                       forNotes:self.notes];
-    NSArray *notesToToggle = [self getNonintersectsForTouch:touch
-                                                    inEvent:event
-                                                   forNotes:self.notes];
-    if (tappedNote){
-        if (!self.editFlag && !tappedNote.hold){
-            [self killNote: tappedNote];
-        }
-        tappedNote.touched = NO;
-    }
-    
-    for (int i = 0; i < [notesToToggle count]; i++){
-        INTInstrumentNote *note = (INTInstrumentNote *)[notesToToggle objectAtIndex:i];
-
+    for (int i = 0; i < [untappedNotes count]; i++){
+        INTInstrumentNote *note = (INTInstrumentNote *)[untappedNotes objectAtIndex:i];
         if (!self.editFlag && !note.hold){
             [self killNote:note];
         }
         note.touched = NO;
     }
-//    NSString *receiver = [NSString stringWithFormat:@"%d-pitchbend", self.dollarZero];
-//    [PdBase sendFloat:64.0 toReceiver:receiver];
-    
-    self.touchStartedOnNote = NO;
-    self.previousTouch = nil;
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (!self.editFlag){
+        for (INTInstrumentNote *note in self.notes){
+            if (!note.hold){
+                [self killNote:note];
+            }
+            note.touched = NO;
+        }
+    }
 }
 
 - (void)incrementNote
@@ -459,13 +397,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     [PdBase sendBangToReceiver:@"add_note"];
 }
-
-//
-//#pragma mark - Navigation
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    
-//}
 
 
 @end
