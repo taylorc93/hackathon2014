@@ -47,7 +47,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.selectedNotes = [[NSMutableArray alloc] init];
     self.initializing = YES;
     self.touchStartedOnNote = NO;
-    self.numChannels = 0;
+    self.numChannels = 1;
     
     PdDispatcher *dispatcher = [[PdDispatcher alloc] init];
     [PdBase setDelegate:dispatcher];
