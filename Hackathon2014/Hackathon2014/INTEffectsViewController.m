@@ -2,7 +2,7 @@
 //  INTEffectsViewController.m
 //  Hackathon2014
 //
-//  Created by Connor Taylor on 10/25/14.
+//  Created by Connor Taylor & Chris Penny on 10/25/14.
 //  Copyright (c) 2014 Intrinsic Audio. All rights reserved.
 //
 
@@ -20,7 +20,7 @@
     self.ringmodPlaying = NO;
     
     NSArray *values = @[@"chorus_rate", @"chorus_depth", @"tremolo_rate",
-                        @"tremolo_depth", @"ringmod_rate", @"ringmod_depth"];
+                        @"tremolo_depth", @"ringmod_rate", @"ringmod_depth", @"all"];
     int count = 0;
     for (INTSlider *slider in self.sliders){
         slider.receiver = values[count];

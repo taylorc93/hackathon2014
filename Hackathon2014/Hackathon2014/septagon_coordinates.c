@@ -2,7 +2,7 @@
 //  septagon_coordinates.c
 //  Hackathon2014
 //
-//  Created by Chris Penny on 10/24/14.
+//  Created by Chris Penny & Connor Taylor on 10/24/14.
 //  Copyright (c) 2014 Intrinsic Audio. All rights reserved.
 //
 

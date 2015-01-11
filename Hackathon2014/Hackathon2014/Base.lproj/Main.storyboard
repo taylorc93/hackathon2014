@@ -517,6 +517,16 @@
                                 <rect key="frame" x="90" y="316" width="150" height="20"/>
                                 <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNp-N9-pjh">
+                                <rect key="frame" x="25" y="339" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wlf-1Q-P7V" customClass="INTSlider">
+                                <rect key="frame" x="90" y="340" width="150" height="20"/>
+                                <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -531,6 +541,7 @@
                         <outletCollection property="sliders" destination="7W0-Yw-bd9" id="z0c-Kd-Brj"/>
                         <outletCollection property="sliders" destination="G6J-Im-tC5" id="WF1-es-Pda"/>
                         <outletCollection property="sliders" destination="w87-JD-1UL" id="VX1-lJ-Ljz"/>
+                        <outletCollection property="sliders" destination="wlf-1Q-P7V" id="Uie-lS-qFw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKD-8m-2wt" userLabel="First Responder" sceneMemberID="firstResponder"/>

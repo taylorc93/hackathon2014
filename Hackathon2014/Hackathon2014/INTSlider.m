@@ -2,7 +2,7 @@
 //  INTSlider.m
 //  Hackathon2014
 //
-//  Created by Connor Taylor on 11/7/14.
+//  Created by Connor Taylor & Chris Penny on 11/7/14.
 //  Copyright (c) 2014 Intrinsic Audio. All rights reserved.
 //
 
@@ -37,7 +37,12 @@
     CGPoint touchLocation = [touch locationInView:self];
     
     [self updateFill:touchLocation];
-    [self updateValue:touchLocation];
+    if([self.receiver  isEqual: @"all"]) {
+        [self updateRelease:touchLocation];
+    }
+    else {
+        [self updateValue:touchLocation];    
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -46,7 +51,12 @@
     CGPoint touchLocation = [touch locationInView:self];
     
     [self updateFill:touchLocation];
-    [self updateValue:touchLocation];
+    if([self.receiver  isEqual: @"all"]) {
+        [self updateRelease:touchLocation];
+    }
+    else {
+        [self updateValue:touchLocation];
+    }
 }
 
 - (void)updateFill:(CGPoint)touchLocation
@@ -69,6 +79,19 @@
     self.value = scaleFactor * currentWidth;
         
     [PdBase sendFloat:self.value toReceiver:self.receiver];
+}
+
+- (void)updateRelease:(CGPoint)touchLocation
+{
+    float scaleFactor = (currentWidth / self.frame.size.width) * 66 + (2.0/3.0);
+    self.value = scaleFactor * currentWidth;
+    if(self.value < 3) {
+        self.value = 1;
+    }
+    NSNumber *releaseValue = [NSNumber numberWithFloat:(self.value)];
+    
+    NSString *messageToSend = [NSString stringWithFormat:@"release"];
+    [PdBase sendMessage:messageToSend withArguments:[NSArray arrayWithObjects:releaseValue, nil] toReceiver:self.receiver];
 }
 
 @end

@@ -2,7 +2,7 @@
 //  INTInstrumentViewController.m
 //  Hackathon2014
 //
-//  Created by Connor Taylor on 10/24/14.
+//  Created by Connor Taylor & Chris Penny on 10/24/14.
 //  Copyright (c) 2014 Intrinsic Audio. All rights reserved.
 //
 
@@ -80,7 +80,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             _numChannels++;
             
             [self initNoteWithFrame:CGRectMake(x, y, 65.0, 65.0)
-                            midiNum:[midiNums[[self circleOfFifths:(j + i)]] integerValue]
+                            midiNum:[midiNums[[self circleOfFifths:(j + (i*4))]] integerValue]
                              octave:i + 4
                           channelId:self.numChannels
                                   x:x
@@ -358,7 +358,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (int)circleOfFifths:(int)position
 {
+    // Inverted Circle of Fifths, but chords with First Inversion:
     return (position * 4) % 7;
+
+    // Normal Circle of Fifths, but chords with Second Inversion
+//    return (7 - ((position * 4) % 7) ) % 7;
 }
 
 - (void)updateEditFlag:(int)editFlag
