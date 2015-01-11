@@ -1,5 +1,5 @@
-# Tsunami: A customizable iPad instrument interface
-#### Tufts Hackathon Fall 2014 Project
+# Tsunami (Working Title): A customizable iPad instrument interface
+#### Tufts Hackathon Fall 2014 Project & Comp150 Demo Project
 
 By Connor Taylor and Chris Penny
 
@@ -18,6 +18,7 @@ This repository contains the iOS app that was built for the Tufts Fall 2014 Hack
 
 ### Todo
 
+* Play some dank music
 * Make notes more customizable
 * More preset note configurations
 * Figure out octave color scheme
@@ -27,3 +28,8 @@ This repository contains the iOS app that was built for the Tufts Fall 2014 Hack
 * Note chaining
 * User defined colors
 * Streamline interface for quicker actions
+* Individual Note Settings
+* Master Note Settings
+* Presets
+* Reverb
+* Copy/Paste Functionality
