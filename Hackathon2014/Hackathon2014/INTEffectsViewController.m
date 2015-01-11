@@ -13,6 +13,10 @@
 
 - (void)viewDidLoad
 {
+    UIColor *noteControlFillColor = [UIColor colorWithRed:245.0 / 255.0
+                                                    green:245.0 / 255.0
+                                                     blue:230.0 / 255.0
+                                                    alpha:1.0];
     [super viewDidLoad];
     
     self.chorusPlaying = NO;
@@ -25,6 +29,9 @@
     for (INTSlider *slider in self.sliders){
         slider.receiver = values[count];
         count++;
+        if([slider.receiver  isEqual: @"all"]) {
+            slider.filler.backgroundColor = noteControlFillColor;
+        }
     }
 }
 

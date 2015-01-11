@@ -392,43 +392,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E67-Hg-KMl">
-                                <rect key="frame" x="22" y="49" width="42" height="21"/>
+                                <rect key="frame" x="22" y="82" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Depth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ca-vs-PCm">
-                                <rect key="frame" x="22" y="87" width="52" height="21"/>
+                                <rect key="frame" x="22" y="111" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibo-2v-0fe">
-                                <rect key="frame" x="22" y="163" width="42" height="21"/>
+                                <rect key="frame" x="22" y="188" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Depth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89c-CD-2kO">
-                                <rect key="frame" x="22" y="201" width="52" height="21"/>
+                                <rect key="frame" x="22" y="217" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tremolo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6Z-Pc-hCi">
-                                <rect key="frame" x="19" y="122" width="100" height="30"/>
+                                <rect key="frame" x="19" y="146" width="100" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chorus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dew-Db-HYg">
-                                <rect key="frame" x="19" y="8" width="100" height="30"/>
+                                <rect key="frame" x="19" y="41" width="100" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38e-Ap-Ff7">
-                                <rect key="frame" x="137" y="122" width="100" height="30"/>
+                                <rect key="frame" x="137" y="146" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Turn On">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -444,25 +444,25 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WM9-xV-bjx">
-                                <rect key="frame" x="25" y="277" width="42" height="21"/>
+                                <rect key="frame" x="25" y="302" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Depth" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01j-hD-U8I">
-                                <rect key="frame" x="25" y="315" width="52" height="21"/>
+                                <rect key="frame" x="25" y="331" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ring Mod" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7k-CP-tRm">
-                                <rect key="frame" x="22" y="236" width="107" height="30"/>
+                                <rect key="frame" x="22" y="261" width="107" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELo-Av-RL9">
-                                <rect key="frame" x="137" y="236" width="100" height="30"/>
+                                <rect key="frame" x="137" y="261" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Turn On">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -478,7 +478,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81g-0p-xZ9">
-                                <rect key="frame" x="137" y="8" width="100" height="30"/>
+                                <rect key="frame" x="137" y="41" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.75686274509999996" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Turn On">
                                     <color key="titleColor" red="0.97092013889999995" green="0.95804034260000004" blue="0.84270711330000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -494,37 +494,37 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OdW-XI-T0L" customClass="INTSlider">
-                                <rect key="frame" x="90" y="50" width="150" height="20"/>
+                                <rect key="frame" x="90" y="83" width="150" height="20"/>
                                 <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZs-Gv-YLx" customClass="INTSlider">
-                                <rect key="frame" x="90" y="87" width="150" height="20"/>
+                                <rect key="frame" x="90" y="111" width="150" height="20"/>
                                 <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSA-hN-Ajm" customClass="INTSlider">
-                                <rect key="frame" x="90" y="164" width="150" height="20"/>
+                                <rect key="frame" x="90" y="189" width="150" height="20"/>
                                 <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7W0-Yw-bd9" customClass="INTSlider">
-                                <rect key="frame" x="90" y="202" width="150" height="20"/>
+                                <rect key="frame" x="90" y="218" width="150" height="20"/>
                                 <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6J-Im-tC5" customClass="INTSlider">
-                                <rect key="frame" x="90" y="278" width="150" height="20"/>
+                                <rect key="frame" x="90" y="303" width="150" height="20"/>
                                 <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w87-JD-1UL" customClass="INTSlider">
-                                <rect key="frame" x="90" y="316" width="150" height="20"/>
+                                <rect key="frame" x="90" y="332" width="150" height="20"/>
                                 <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNp-N9-pjh">
-                                <rect key="frame" x="25" y="339" width="61" height="21"/>
+                                <rect key="frame" x="22" y="8" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wlf-1Q-P7V" customClass="INTSlider">
-                                <rect key="frame" x="90" y="340" width="150" height="20"/>
+                                <rect key="frame" x="90" y="9" width="150" height="20"/>
                                 <color key="backgroundColor" red="0.41852953009999999" green="0.3819335331" blue="0.99471695699999996" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
