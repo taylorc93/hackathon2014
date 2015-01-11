@@ -113,7 +113,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             self.color = [UIColor colorWithRed:214.0 / 255.0 green:51.0 / 255.0 blue:51.0 / 255.0 alpha:0.2];
             break;
         case 3:
-            self.color = [UIColor colorWithRed:219.0 / 255.0 green:77.0 / 255.0 blue:77.0 / 255.0 alpha:0.4];
+            self.color = [UIColor colorWithRed:10 / 255.0 green:50 / 255.0 blue:70 / 255.0 alpha:0.525];
+//            self.color = [UIColor colorWithRed:219.0 / 255.0 green:77.0 / 255.0 blue:77.0 / 255.0 alpha:0.4];
             break;
         case 4:
             self.color = [UIColor colorWithRed:78.0 / 255.0 green:118.0 / 255.0 blue:134.0 / 255.0 alpha:1.0];
