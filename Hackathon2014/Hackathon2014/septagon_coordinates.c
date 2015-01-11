@@ -9,12 +9,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 int **septagon_coordinates(int r, int x_center, int y_center)
 {
+// ORIGINAL:
     double theta[7] = { 0, 0.897597901025655, 1.795195802051310,
                            2.692793703076966, 3.590391604102621,
                            4.487989505128276, 5.385587406153931 };
+    
+// RANDOM (TRIPPY): - use with original code
+//    srand((int)time(0)); srand((int)time(0)); srand((int)time(0));
+//    double theta[7] = { rand(),  rand(), rand(),
+//                            rand(), rand(),
+//                            rand(), rand()};
     
     int *x = malloc(sizeof(int) * 7);
     int *y = malloc(sizeof(int) * 7);

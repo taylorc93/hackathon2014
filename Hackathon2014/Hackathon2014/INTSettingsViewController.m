@@ -21,6 +21,7 @@
 
 - (IBAction)resetPreset:(id)sender
 {
+    [PdBase sendBangToReceiver:@"reset"];
     [self.instrumentVC reset];
 }
 

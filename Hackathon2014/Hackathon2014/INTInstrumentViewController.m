@@ -10,6 +10,7 @@
 #import "INTInstrumentViewController.h"
 #import "INTInstrumentNote.h"
 #include "septagon_coordinates.h"
+#include "penis_coordinates.h"
 #import "PdDispatcher.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -71,7 +72,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
     for (int i = 0; i < 4; i++){
         float radius = (i + 1) * (int)height / 8;
-        int **coords = septagon_coordinates(radius / 1.12, (int)width / 2, (int)height / 2);
+//        int **coords = septagon_coordinates(radius / 1.12, (int)width / 2, (int)height / 2);
+        int **coords = penis_coordinates(i);
         
         for (int j = 0; j < 7; j++){
             DDLogVerbose(@"Midinum: %@", midiNums[j]);

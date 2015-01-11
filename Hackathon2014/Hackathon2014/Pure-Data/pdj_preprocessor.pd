@@ -1,6 +1,0 @@
-#N canvas 0 22 450 300 10;
-#X obj 80 99 pdj_process[];
-#X obj 88 33 inlet;
-#X obj 74 171 outlet;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
