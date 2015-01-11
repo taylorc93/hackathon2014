@@ -80,7 +80,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             _numChannels++;
             
             [self initNoteWithFrame:CGRectMake(x, y, 65.0, 65.0)
-                            midiNum:[midiNums[j] integerValue]
+                            midiNum:[midiNums[[self circleOfFifths:(j + i)]] integerValue]
                              octave:i + 4
                           channelId:self.numChannels
                                   x:x
@@ -354,6 +354,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     } else{
         return @[];
     }
+}
+
+- (int)circleOfFifths:(int)position
+{
+    return (position * 4) % 7;
 }
 
 - (void)updateEditFlag:(int)editFlag

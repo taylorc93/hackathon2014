@@ -39,6 +39,7 @@
     if([self.instrumentVC incrementOctave]){
         NSString *octaveText = [NSString stringWithFormat:@"Octave: %d", self.instrumentVC.currentOctave];
         self.octaveLabel.text = octaveText;
+        
     }
 }
 
@@ -72,9 +73,9 @@
     if (self.waveNum < 16){
         self.waveNum++;
     }
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"%d-wave", dollarZero];
-    [PdBase sendFloat:self.waveNum toReceiver:receiver];
+    NSString *receiver = [NSString stringWithFormat:@"all"];
+    NSArray *message = [NSArray arrayWithObjects:@"wave", [NSNumber numberWithInt:self.waveNum], nil];
+    [PdBase sendList:message toReceiver:receiver];
     self.waveLabel.text = [NSString stringWithFormat:@"Wave: %d", self.waveNum];
 }
 
@@ -83,9 +84,9 @@
     if (self.waveNum > 0){
         self.waveNum--;
     }
-    int dollarZero = self.instrumentVC.dollarZero;
-    NSString *receiver = [NSString stringWithFormat:@"%d-wave", dollarZero];
-    [PdBase sendFloat:self.waveNum toReceiver:receiver];
+    NSString *receiver = [NSString stringWithFormat:@"all"];
+    NSArray *message = [NSArray arrayWithObjects:@"wave", [NSNumber numberWithInt:self.waveNum], nil];
+    [PdBase sendList:message toReceiver:receiver];
     self.waveLabel.text = [NSString stringWithFormat:@"Wave: %d", self.waveNum];
 }
 

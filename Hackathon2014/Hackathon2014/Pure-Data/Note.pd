@@ -187,7 +187,6 @@ pitchbend_range print;
 #X obj -230 279 vline~;
 #X obj -348 318 outlet~ L;
 #X obj -283 317 outlet~ R;
-#X obj -145 296 outlet;
 #X msg 24 28 \; pd dsp 1 \; \$1-pitchbend 64 \; \$1-pitchbend_range
 2 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain 0.7 \; \$1-release
 300 \; \$1-wave 9 \; \$1-flush bang \; \$1-print 1 \;;
@@ -210,7 +209,7 @@ pitchbend_range print;
 #X connect 13 0 7 0;
 #X connect 14 0 8 0;
 #X connect 15 0 26 0;
-#X connect 16 0 46 0;
+#X connect 16 0 45 0;
 #X connect 17 0 20 0;
 #X connect 18 0 17 0;
 #X connect 19 0 16 0;
@@ -235,7 +234,6 @@ pitchbend_range print;
 #X connect 37 0 44 0;
 #X connect 39 0 40 0;
 #X connect 39 1 38 0;
-#X connect 39 1 45 0;
 #X connect 40 0 41 0;
 #X connect 41 0 42 0;
 #X connect 42 0 37 1;
