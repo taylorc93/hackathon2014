@@ -1,27 +1,14 @@
-#N canvas 950 213 450 300 10;
+#N canvas 161 251 228 160 10;
 #X obj 16 8 inlet ADD_NOTE;
 #X obj 16 38 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#N canvas 616 98 450 300 \$0-guts 0;
-#X obj 11 86 outlet~;
-#X obj 74 86 outlet~;
+#N canvas 616 98 140 71 \$0-guts 0;
+#X obj 5 45 outlet~;
+#X obj 68 45 outlet~;
 #N canvas 305 296 443 300 \$0-shell 0;
 #X obj 0 200 outlet~ L;
 #X obj 100 200 outlet~ R;
-#N canvas 370 242 450 300 ch1 0;
-#X obj 0 0 r channel1;
-#X obj 0 25 list trim;
-#X obj 0 80 Note;
-#X obj 0 125 outlet~ L;
-#X obj 100 125 outlet~ R;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 2 1 4 0;
-#X restore 0 100 pd ch1;
-#X connect 2 0 0 0;
-#X connect 2 1 1 0;
-#X restore 11 46 pd \$0-shell;
+#X restore 5 5 pd \$0-shell;
 #X connect 2 0 0 0;
 #X connect 2 1 1 0;
 #X restore 16 91 pd \$0-guts;
@@ -29,18 +16,18 @@
 #X obj 73 134 outlet~;
 #X obj 121 36 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 121 10 inlet RESET;
-#N canvas 574 500 450 300 \$0-reset 0;
+#X obj 121 8 inlet RESET;
+#N canvas 574 500 364 217 \$0-reset 0;
 #X obj 15 6 inlet;
-#X obj 88 150 s pd-\$0-shell;
-#X obj 61 208 s pd-\$0-guts;
-#X msg 61 179 connect 2 0 0 0 \, connect 2 1 1 0 \,;
-#X obj 49 66 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 54 97 s pd-\$0-shell;
+#X obj 34 141 s pd-\$0-guts;
+#X msg 34 120 connect 2 0 0 0 \, connect 2 1 1 0 \,;
+#X obj 15 30 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 49 85 t b b b;
-#X obj 14 229 s \$0-count;
-#X msg 14 179 0;
-#X msg 88 117 clear \, obj 0 200 outlet~ L \, obj 100 200 outlet~ R
+#X obj 15 49 t b b b;
+#X obj 15 185 s \$0-count;
+#X msg 15 163 0;
+#X msg 54 74 clear \, obj 0 200 outlet~ L \, obj 100 200 outlet~ R
 ;
 #X connect 0 0 4 0;
 #X connect 3 0 2 0;
@@ -51,52 +38,51 @@
 #X connect 7 0 6 0;
 #X connect 8 0 1 0;
 #X restore 121 64 pd \$0-reset;
-#N canvas 94 224 607 534 \$0-add_note 0;
-#X obj 23 19 inlet;
-#X obj 185 37 r \$0-count;
-#X obj 185 62 + 1;
-#X floatatom 185 123 5 0 0 0 - - -;
-#X obj 204 464 s pd-\$0-shell;
-#X obj 26 47 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#N canvas 94 224 412 400 \$0-add_note 0;
+#X obj 77 4 inlet;
+#X obj 5 3 r \$0-count;
+#X obj 5 28 + 1;
+#X floatatom 5 89 5 0 0 0 - - -;
+#X obj 39 375 s pd-\$0-shell;
+#X obj 77 32 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 185 146 f!= 0;
-#X obj 204 230 pack 0 0;
-#X msg 204 256 obj \$2 100 pd ch\$1;
-#X text 340 205 \$2 - x position \, \$1 - channel # \,;
-#X obj 249 209 * 100;
-#X obj 249 187 - 1;
-#X obj 123 484 s;
-#X obj 123 204 t f f;
-#X obj 185 168 t f f f f;
-#X obj 18 214 + 1;
-#X msg 14 392 connect \$1 0 0 0 \, connect \$1 1 1 0 \,;
-#X msg 148 306 symbol pd-ch\$1;
-#X msg 120 336 obj 0 0 r channel\$1 \, obj 0 25 list trim \, obj 0
-80 Note \, obj 0 125 outlet~ L \, obj 100 125 outlet~ R \, connect
-0 0 1 0 \, connect 1 0 2 0 \, connect 2 0 3 0 \, connect 2 1 4 0 \,
-loadbang;
-#X obj 185 96 iterator;
+#X obj 5 112 f!= 0;
+#X obj 39 202 pack 0 0;
+#X msg 39 223 obj \$2 100 pd ch\$1;
+#X obj 84 176 * 100;
+#X obj 84 154 - 1;
+#X obj 22 331 s;
+#X obj 22 178 t f f;
+#X obj 5 134 t f f f f;
+#X obj 5 157 + 1;
+#X msg 5 350 connect \$1 0 0 0 \, connect \$1 1 1 0 \,;
+#X msg 49 305 symbol pd-ch\$1;
+#X obj 5 62 iterator;
+#X msg 22 246 obj 0 0 r channel\$1 \, obj 0 25 list trim \, obj 0 80
+Note \, obj 0 125 outlet~ L \, obj 100 125 outlet~ R \, connect 0 0
+1 0 \, connect 1 0 2 0 \, connect 2 0 3 0 \, connect 2 1 4 0 \, loadbang
+;
 #X connect 0 0 5 0;
 #X connect 1 0 2 0;
-#X connect 2 0 19 0;
+#X connect 2 0 17 0;
 #X connect 3 0 6 0;
-#X connect 5 0 19 5;
-#X connect 6 0 14 0;
+#X connect 5 0 17 5;
+#X connect 6 0 13 0;
 #X connect 7 0 8 0;
 #X connect 8 0 4 0;
-#X connect 10 0 7 1;
-#X connect 11 0 10 0;
-#X connect 13 0 18 0;
-#X connect 13 1 17 0;
+#X connect 9 0 7 1;
+#X connect 10 0 9 0;
+#X connect 12 0 18 0;
+#X connect 12 1 16 0;
+#X connect 13 0 14 0;
+#X connect 13 1 12 0;
+#X connect 13 2 7 0;
+#X connect 13 3 10 0;
 #X connect 14 0 15 0;
-#X connect 14 1 13 0;
-#X connect 14 2 7 0;
-#X connect 14 3 11 0;
-#X connect 15 0 16 0;
-#X connect 16 0 4 0;
-#X connect 17 0 12 1;
-#X connect 18 0 12 0;
-#X connect 19 0 3 0;
+#X connect 15 0 4 0;
+#X connect 16 0 11 1;
+#X connect 17 0 3 0;
+#X connect 18 0 11 0;
 #X restore 16 64 pd \$0-add_note;
 #X connect 0 0 1 0;
 #X connect 1 0 8 0;

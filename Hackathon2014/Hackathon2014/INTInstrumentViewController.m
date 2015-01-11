@@ -43,7 +43,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.playingNotes = [[NSMutableArray alloc] init];
     self.selectedNotes = [[NSMutableArray alloc] init];
     self.initializing = YES;
-    self.numChannels = 1;
+    self.numChannels = 0;
     
     PdDispatcher *dispatcher = [[PdDispatcher alloc] init];
     [PdBase setDelegate:dispatcher];
@@ -77,6 +77,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             float x = coords[0][j];
             float y = coords[1][j];
             
+            _numChannels++;
+            
             [self initNoteWithFrame:CGRectMake(x, y, 65.0, 65.0)
                             midiNum:[midiNums[j] integerValue]
                              octave:i + 4
@@ -84,8 +86,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                   x:x
                                   y:y];
             [self createPdNote];
-
-            _numChannels++;
         }
     }
     self.initializing = NO;
