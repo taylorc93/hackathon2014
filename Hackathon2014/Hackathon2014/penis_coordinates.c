@@ -27,22 +27,25 @@ int **penis_coordinates(int r)
     penis_coordinates[0] = x_penis;
     penis_coordinates[1] = y_penis;
     
+    int y_pos1 = y_max - y_grid - fudge;
+    int y_pos2 = y_max - 2*y_grid;
+    
     if ( r == 0 ) {
         penis_coordinates[0][0] = x_init;
         penis_coordinates[1][0] = y_max;
         penis_coordinates[0][1] = x_init + x_grid - fudge;
-        penis_coordinates[1][1] = y_max - y_grid - fudge;
+        penis_coordinates[1][1] = y_pos1;
         penis_coordinates[0][2] = x_init + 2*x_grid;
-        penis_coordinates[1][2] = y_max - 2*y_grid;
+        penis_coordinates[1][2] = y_pos2;
         penis_coordinates[0][3] = x_init + 3*x_grid + fudge;
-        penis_coordinates[1][3] = y_max - y_grid - fudge;
+        penis_coordinates[1][3] = y_pos1;
         penis_coordinates[0][4] = x_init + 4*x_grid;
         penis_coordinates[1][4] = y_max;
         
         penis_coordinates[0][5] = x_init + 5*x_grid;
         penis_coordinates[1][5] = y_max;
         penis_coordinates[0][6] = x_init + 7*x_grid;
-        penis_coordinates[1][6] = y_max - 2*y_grid;
+        penis_coordinates[1][6] = y_pos2;
     }
     
     int left_shaft_x = (x_init + 2*x_grid + x_init + 3*x_grid + 2.8*fudge) / 2;
@@ -50,9 +53,9 @@ int **penis_coordinates(int r)
     
     if ( r == 1 ) {
         penis_coordinates[0][0] = x_init + 4.5*x_grid;
-        penis_coordinates[1][0] = y_max - y_grid - fudge;
+        penis_coordinates[1][0] = y_pos1;
         penis_coordinates[0][1] = x_init + 8*x_grid + fudge;
-        penis_coordinates[1][1] = y_max - y_grid - fudge;
+        penis_coordinates[1][1] = y_pos1;
         penis_coordinates[0][2] = x_init + 9*x_grid;
         penis_coordinates[1][2] = y_max;
         penis_coordinates[0][3] = left_shaft_x;
@@ -96,7 +99,7 @@ int **penis_coordinates(int r)
         penis_coordinates[0][5] = right_shaft_x;
         penis_coordinates[1][5] = y_max - 3*y_grid;
         penis_coordinates[0][6] = x_init + 6*x_grid - fudge;
-        penis_coordinates[1][6] = y_max - y_grid - fudge;
+        penis_coordinates[1][6] = y_pos1;
     }
         return penis_coordinates;
 }
