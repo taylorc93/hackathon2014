@@ -83,7 +83,7 @@
 
 - (void)updateRelease:(CGPoint)touchLocation
 {
-    float scaleFactor = (currentWidth / self.frame.size.width) * 66 + (2.0/3.0);
+    float scaleFactor = ((currentWidth / self.frame.size.width) * 66 + (2.0/3.0)) * 2;
     self.value = scaleFactor * currentWidth;
     if(self.value < 3) {
         self.value = 1;

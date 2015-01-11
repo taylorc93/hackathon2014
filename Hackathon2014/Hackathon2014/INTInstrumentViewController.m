@@ -69,8 +69,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     NSArray *midiNums = [self getCurrentScale];
 
-    for (int i = 0; i < 3; i++){
-        int **coords = septagon_coordinates((i + 1) * (int)height / 8, (int)width / 2, (int)height / 2);
+    for (int i = 0; i < 4; i++){
+        float radius = (i + 1) * (int)height / 8;
+        int **coords = septagon_coordinates(radius / 1.12, (int)width / 2, (int)height / 2);
         
         for (int j = 0; j < 7; j++){
             DDLogVerbose(@"Midinum: %@", midiNums[j]);
@@ -81,7 +82,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             
             [self initNoteWithFrame:CGRectMake(x, y, 65.0, 65.0)
                             midiNum:[midiNums[[self circleOfFifths:(j + (i*4))]] integerValue]
-                             octave:i + 4
+                             octave:i + 3
                           channelId:self.numChannels
                                   x:x
                                   y:y];
