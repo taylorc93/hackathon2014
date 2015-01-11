@@ -75,17 +75,17 @@ int **penis_coordinates(int r)
         penis_coordinates[1][1] = y_max - 10.5*y_grid;
         penis_coordinates[0][2] = left_shaft_x;
         penis_coordinates[1][2] = y_max - 12*y_grid;
-        penis_coordinates[0][3] = (x_init + 3*x_grid + fudge + x_init + 4*x_grid) / 2 - (fudge/2);
-        penis_coordinates[1][3] = y_max - 13*y_grid - (fudge/2);
+        penis_coordinates[0][3] = (x_init + 3*x_grid + fudge + x_init + 4*x_grid) / 2 - (fudge/1.5);
+        penis_coordinates[1][3] = y_max - 13*y_grid - (fudge/1.4);
         penis_coordinates[0][4] = (x_init + 4*x_grid + x_init + 5*x_grid) / 2;
-        penis_coordinates[1][4] = y_max - 13*y_grid - fudge*2;
-        penis_coordinates[0][5] = (x_init + 5*x_grid + x_init + 6*x_grid - fudge) / 2 + (fudge/2);
-        penis_coordinates[1][5] = y_max - 13*y_grid - (fudge/2);
+        penis_coordinates[1][4] = y_max - 13*y_grid - fudge*2.5;
+        penis_coordinates[0][5] = (x_init + 5*x_grid + x_init + 6*x_grid - fudge) / 2 + (fudge/1.5);
+        penis_coordinates[1][5] = y_max - 13*y_grid - (fudge/1.4);
         penis_coordinates[0][6] = right_shaft_x;
         penis_coordinates[1][6] = y_max - 12*y_grid;
     }
     
-    if ( r == 3 ) {
+    if ( r > 2 ) {
         penis_coordinates[0][0] = right_shaft_x;
         penis_coordinates[1][0] = y_max - 10.5*y_grid;
         penis_coordinates[0][1] = right_shaft_x;
