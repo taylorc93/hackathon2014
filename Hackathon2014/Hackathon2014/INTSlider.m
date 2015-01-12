@@ -51,7 +51,7 @@
     CGPoint touchLocation = [touch locationInView:self];
     
     [self updateFill:touchLocation];
-    if([self.receiver  isEqual: @"all"]) {
+    if( [self.receiver  isEqual: @"all"] ) {
         [self updateRelease:touchLocation];
     }
     else {
@@ -76,8 +76,15 @@
 - (void)updateValue:(CGPoint)touchLocation
 {
     float scaleFactor = currentWidth / self.frame.size.width;
-    self.value = scaleFactor * currentWidth;
-        
+    if( [self.receiver isEqual:@"autodelay"] || [self.receiver isEqual:@"tremolo_depth"] || [self.receiver isEqual:@"ringmod_depth"] ) {
+        self.value = scaleFactor;
+    } else if ( [self.receiver isEqual:@"chorus_depth"] ) {
+        self.value = scaleFactor * 2;
+    }
+    else {
+        self.value = scaleFactor * currentWidth;
+    }
+    
     [PdBase sendFloat:self.value toReceiver:self.receiver];
 }
 
