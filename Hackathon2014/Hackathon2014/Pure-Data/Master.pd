@@ -1,7 +1,7 @@
-#N canvas 14 525 303 349 10;
+#N canvas 472 165 303 349 10;
 #X obj 4 220 panner~;
 #X obj 4 108 remove_dc_offset~;
-#N canvas 1166 23 763 818 audio_effects~ 0;
+#N canvas 272 23 763 818 audio_effects~ 1;
 #X obj -21 795 outlet~;
 #X obj -21 13 inlet~;
 #X obj 6 115 tgl 15 0 empty empty Gain_off/on 17 7 0 10 -262144 -1
@@ -58,7 +58,7 @@
 #X obj 7 404 r delay_time;
 #X obj -21 346 multifilter~;
 #X obj 121 304 tgl 15 0 empty empty Filter_off/on 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X floatatom 100 285 5 0 0 1 Filter_Q - -;
 #X floatatom 79 265 5 0 0 1 Filter_Center - -;
 #X obj 79 200 r filter_freq;
@@ -87,12 +87,6 @@
 #X obj 400 202 pow 0.9;
 #X obj 400 163 * 0.93;
 #X obj 354 202 * 1300;
-#X obj 360 416 vcf~;
-#X obj 338 344 noise~;
-#X obj 358 448 dac~ 1 2;
-#X obj 404 351 sig~;
-#X floatatom 404 330 5 0 0 0 - - -;
-#X floatatom 451 351 5 0 0 0 - - -;
 #X connect 1 0 55 0;
 #X connect 2 0 55 2;
 #X connect 3 0 55 1;
@@ -170,12 +164,6 @@
 #X connect 73 0 68 0;
 #X connect 74 0 71 0;
 #X connect 75 0 72 0;
-#X connect 76 0 78 0;
-#X connect 76 0 78 1;
-#X connect 77 0 76 0;
-#X connect 79 0 76 1;
-#X connect 80 0 79 0;
-#X connect 81 0 76 2;
 #X restore 4 82 pd audio_effects~;
 #X obj 4 247 volume~;
 #X obj 12 271 dac~;
@@ -5790,7 +5778,7 @@
 0.877117 0.877116 0.877116 0.877115 0.877114 0.877097 0.87708 0.877062
 0.877045 0.877028 0.877011 0.876994 0.876976 0.876943 0.876909 0.876875
 0.876841 0.876808 0.876774 0.87674 0.876706 0.876656 0.876606 0.876556
-0.876505 0.876455 0.876405 0.876355;
+0.876505 0.876455 0.876405 0.876355 ;
 #X coords 0 1 4098 -1 200 140 1 0 0;
 #X restore 853 183 graph;
 #N canvas 0 22 1063 367 (subpatch) 0;
