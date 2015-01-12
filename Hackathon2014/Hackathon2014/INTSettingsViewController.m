@@ -55,7 +55,7 @@
 - (IBAction)incrementNote:(id)sender
 {
     [self.instrumentVC incrementNote];
-    NSString *noteName = [self getNoteName:self.instrumentVC.currentNote];
+    NSString *noteName = [self getNoteName:self.instrumentVC.currentMidiNote];
     NSLog(@"%@", noteName);
     NSString *noteText = [NSString stringWithFormat:@"Note: %@", noteName];
     self.noteLabel.text = noteText;
@@ -64,7 +64,7 @@
 - (IBAction)decrementNote:(id)sender
 {
     [self.instrumentVC decrementNote];
-    NSString *noteName = [self getNoteName:self.instrumentVC.currentNote];
+    NSString *noteName = [self getNoteName:self.instrumentVC.currentMidiNote];
     NSString *noteText = [NSString stringWithFormat:@"Note: %@", noteName];
     self.noteLabel.text = noteText;
 }

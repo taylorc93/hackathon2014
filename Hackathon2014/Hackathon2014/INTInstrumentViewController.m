@@ -38,7 +38,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     self.dollarZero = [PdBase dollarZeroForFile:patch];
     self.currentNote = nil;
     self.currentMidiNote = 0;
-    self.currentOctave = 5;
+    self.currentOctave = 4;
     self.currentScale = @"C";
     self.notes = [[NSMutableArray alloc] init];
     self.playingNotes = [[NSMutableArray alloc] init];
@@ -90,15 +90,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             float x = coords[0][j];
             float y = coords[1][j];
             
-            _numChannels++;
-            
             [self initNoteWithFrame:CGRectMake(x, y, 65.0, 65.0)
                             midiNum:[midiNums[[self circleOfFifths:(j + (i*4))]] integerValue]
                              octave:i + 3
-                          channelId:self.numChannels
+                          channelId:self.numChannels + 1
                                   x:x
                                   y:y];
-            [self createPdNote];
         }
     }
     self.initializing = NO;
@@ -117,19 +114,22 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                                              channelId:channelId
                                                               parentVC:self];
     note.center = CGPointMake(x, y);
+    [self createPdNote];
     [self.view addSubview:note];
     [self.notes addObject:note];
 }
 
 - (void)addNote
 {
-//    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(50.0, 325.0, 65.0, 65.0)
-//                                                               noteNum:self.currentMidiNote
-//                                                            noteOctave:self.currentOctave];
-//    note.center = CGPointMake(50.0, 325.0);
-//    
-//    [self.view addSubview:note];
-//    [self.notes addObject:note];
+    INTInstrumentNote *note = [[INTInstrumentNote alloc] initWithFrame:CGRectMake(25.0, 50.0, 65.0, 65.0)
+                                                               noteNum:self.currentMidiNote
+                                                            noteOctave:self.currentOctave
+                                                             channelId:self.numChannels + 1
+                                                              parentVC:self];
+    self.numChannels++;
+    [self createPdNote];
+    [self.view addSubview:note];
+    [self.notes addObject:note];
 }
 
 - (void)deleteNote
@@ -238,7 +238,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         self.currentNote = note;
         self.currentMidiNote = note.midiNum;
         self.currentOctave = note.octave;
-//        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
+        [(INTRootViewController *)self.parentViewController setLabelsNeedUpdate];
     }
     [note select];
     note.touched = YES;
@@ -405,6 +405,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)createPdNote
 {
     [PdBase sendBangToReceiver:@"add_note"];
+    self.numChannels++;
 }
 
 
