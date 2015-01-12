@@ -42,7 +42,7 @@
 #X obj 77 4 inlet;
 #X obj 5 3 r \$0-count;
 #X obj 5 28 + 1;
-#X floatatom 5 89 5 0 0 0 - - -;
+#X floatatom 5 89 5 0 0 0 - - -, f 5;
 #X obj 39 375 s pd-\$0-shell;
 #X obj 77 32 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;

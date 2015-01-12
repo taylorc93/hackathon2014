@@ -164,7 +164,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         
         [self reposition:[self convertPoint:newLocation toView:instrumentVC.view]];
     } else {
-        float diff = (originalTouchLocation.y - newLocation.y) / 127.0;
+        float diff = ((originalTouchLocation.y - newLocation.y) / 127.0) * 0.333;
         if (diff > 1.0){
             diff = 1.0;
         } else if (diff < -1.0){
@@ -230,6 +230,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 - (void)bendPitch:(float)diff
 {
     float bendNum = [self scaleBend:diff];
+    
+    NSLog(@"%f", bendNum);
     NSArray *data = [NSArray arrayWithObjects:@"pitchbend", [NSNumber numberWithFloat:bendNum], nil];
     NSString *receiver = [NSString stringWithFormat:@"channel%d", self.channelId];
 

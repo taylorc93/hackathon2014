@@ -97,6 +97,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                                   y:y];
         }
     }
+    NSArray *message = @[@"pitchbend_range",[NSNumber numberWithInt:19]];
+    [PdBase sendList:message toReceiver:@"all"];
     self.initializing = NO;
 }
 

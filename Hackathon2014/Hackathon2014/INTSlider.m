@@ -90,7 +90,7 @@
 
 - (void)updateRelease:(CGPoint)touchLocation
 {
-    float scaleFactor = ((currentWidth / self.frame.size.width) * 66 + (2.0/3.0)) * 2;
+    float scaleFactor = ((currentWidth / self.frame.size.width) * 22 + (2.0/3.0)) * 2;
     self.value = scaleFactor * currentWidth;
     NSNumber *releaseValue = [NSNumber numberWithFloat:(self.value)];
     

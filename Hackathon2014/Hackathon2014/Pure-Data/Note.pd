@@ -1,12 +1,12 @@
 #N canvas 194 101 649 377 10;
 #X obj -326 194 pack 50 100 0.6 250;
-#X floatatom -326 83 5 0 0 1 Attack - -;
+#X floatatom -326 83 5 0 0 1 Attack - -, f 5;
 #X obj -289 166 t b f;
 #X obj -252 166 t b f;
 #X obj -215 166 t b f;
-#X floatatom -289 103 5 0 0 1 Decay - -;
-#X floatatom -252 124 5 0 0 1 Sustain - -;
-#X floatatom -215 145 5 0 0 1 Release - -;
+#X floatatom -289 103 5 0 0 1 Decay - -, f 5;
+#X floatatom -252 124 5 0 0 1 Sustain - -, f 5;
+#X floatatom -215 145 5 0 0 1 Release - -, f 5;
 #X obj -169 204 bng 15 250 50 0 empty empty Note_Flush 17 7 0 10 -262144
 -1 -1;
 #X obj 61 -25 loadbang;
@@ -17,7 +17,7 @@
 #X obj -169 180 r \$0-flush;
 #X obj -348 6 r \$0-note;
 #X obj 52 4 f \$0;
-#X floatatom -444 168 5 0 0 0 - - -;
+#X floatatom -444 168 5 0 0 0 - - -, f 5;
 #X obj -444 142 r \$0-wave;
 #X obj 43 -25 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -80,7 +80,7 @@
 #X restore -444 202 pd wavetables;
 #X obj -41 66 vsl 30 150 0 127 0 0 empty empty empty 0 -9 0 10 -59444
 -262144 -1 7509 1;
-#X floatatom -6 203 5 0 0 0 - - -;
+#X floatatom -6 203 5 0 0 0 - - -, f 5;
 #X obj -41 39 r \$0-pitchbend;
 #X obj -6 178 r \$0-pitchbend_range;
 #X msg -41 274 64;
@@ -88,7 +88,7 @@
 #X obj -427 -3 inlet;
 #X msg -401 89 60 5;
 #X msg -388 108 60 0;
-#N canvas 106 143 1376 432 routers 1;
+#N canvas 106 143 1376 432 routers 0;
 #X obj -305 85 s \$0-note;
 #X obj -241 84 s \$0-wave;
 #X obj -173 85 s \$0-attack;
@@ -181,8 +181,8 @@ pitchbend_range print;
 #X connect 43 0 40 0;
 #X connect 44 0 39 0;
 #X restore -427 28 pd routers;
-#X floatatom -206 316 5 0 0 1 Number_of_voices_in_use - -;
-#X floatatom -129 236 5 0 0 0 - - -;
+#X floatatom -206 316 5 0 0 1 Number_of_voices_in_use - -, f 5;
+#X floatatom -129 236 5 0 0 0 - - -, f 5;
 #X obj -57 252 sel 0;
 #X text -423 71 Test Tones:;
 #X obj 124 180 r \$0-print;
@@ -195,9 +195,6 @@ pitchbend_range print;
 #X obj -230 279 vline~;
 #X obj -348 318 outlet~ L;
 #X obj -283 317 outlet~ R;
-#X msg 53 30 \; pd dsp 1 \; \$1-pitchbend 64 \; \$1-pitchbend_range
-7 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain 0.7 \; \$1-release
-300 \; \$1-wave 9 \; \$1-flush bang \; \$1-print 1 \;;
 #N canvas 291 417 450 300 if==0 0;
 #X obj 30 11 inlet;
 #X obj 31 119 outlet;
@@ -215,6 +212,9 @@ pitchbend_range print;
 #X obj -129 276 t f f;
 #X obj -185 239 pipe 10;
 #X obj -84 276 t f f;
+#X msg 53 30 \; pd dsp 1 \; \$1-pitchbend 64 \; \$1-pitchbend_range
+19 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain 0.7 \; \$1-release
+300 \; \$1-wave 9 \; \$1-flush bang \; \$1-print 1 \;;
 #X connect 0 0 26 2;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
@@ -234,7 +234,7 @@ pitchbend_range print;
 #X connect 13 0 7 0;
 #X connect 14 0 8 0;
 #X connect 15 0 26 0;
-#X connect 16 0 44 0;
+#X connect 16 0 48 0;
 #X connect 17 0 20 0;
 #X connect 18 0 17 0;
 #X connect 19 0 16 0;
@@ -251,7 +251,7 @@ pitchbend_range print;
 #X connect 28 0 26 0;
 #X connect 29 0 26 0;
 #X connect 32 0 33 0;
-#X connect 32 0 45 0;
+#X connect 32 0 44 0;
 #X connect 33 0 25 0;
 #X connect 35 0 36 0;
 #X connect 36 0 26 6;
@@ -260,10 +260,10 @@ pitchbend_range print;
 #X connect 39 0 40 0;
 #X connect 40 0 41 0;
 #X connect 41 0 37 1;
-#X connect 45 0 46 0;
-#X connect 45 1 48 0;
-#X connect 46 0 39 0;
-#X connect 46 1 38 0;
-#X connect 47 0 38 0;
-#X connect 48 0 47 0;
-#X connect 48 1 40 0;
+#X connect 44 0 45 0;
+#X connect 44 1 47 0;
+#X connect 45 0 39 0;
+#X connect 45 1 38 0;
+#X connect 46 0 38 0;
+#X connect 47 0 46 0;
+#X connect 47 1 40 0;
