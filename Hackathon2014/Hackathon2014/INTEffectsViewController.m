@@ -24,7 +24,7 @@
     self.ringmodPlaying = NO;
     
     NSArray *values = @[@"chorus_rate", @"chorus_depth", @"tremolo_rate",
-                        @"tremolo_depth", @"ringmod_rate", @"ringmod_depth", @"all"];
+                        @"tremolo_depth", @"ringmod_rate", @"ringmod_depth", @"all", @"autodelay"];
     int count = 0;
     for (INTSlider *slider in self.sliders){
         slider.receiver = values[count];

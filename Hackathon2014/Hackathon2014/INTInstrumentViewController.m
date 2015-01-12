@@ -74,16 +74,15 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         float radius = (i + 1) * (int)height / 8;
         int **coords = septagon_coordinates(radius / 1.12, (int)width / 2, (int)height / 2);
         
-        // Delete the stuff below to go back to the original config:
-        
-        ////////////////////////////////////////////
-        //                                        //
-        // SUCK MY DICK WHILE I FUCK THAT ASS HEY //
-        //                                        //
-        ////////////////////////////////////////////
-        coords = penis_coordinates(i);
-        ////////////////////////////////////////////
-        
+//
+//        ////////////////////////////////////////////
+//        //                                        //
+//        // SUCK MY DICK WHILE I FUCK THAT ASS HEY //
+//        //                                        //
+//        ////////////////////////////////////////////
+//        coords = penis_coordinates(i);
+//        ////////////////////////////////////////////
+//        
         
         for (int j = 0; j < 7; j++){
             DDLogVerbose(@"Midinum: %@", midiNums[j]);
