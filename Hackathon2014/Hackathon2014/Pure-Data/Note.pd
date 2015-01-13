@@ -219,7 +219,7 @@ pitchbend_range print volume_bend volume;
 #X obj -339 303 r \$0-volume_bend;
 #X obj -349 363 gain~;
 #X obj -416 283 loadfloat 1;
-#X msg 53 30 \; pd dsp 1 \; \$1-volume_bend 0.5 \; \$1-pitchbend 64
+#X msg 53 30 \; pd dsp 1 \; \$1-volume_bend 2.5 \; \$1-pitchbend 64
 \; \$1-pitchbend_range 19 \; \$1-attack 10 \; \$1-decay 300 \; \$1-sustain
 0.7 \; \$1-release 300 \; \$1-wave 9 \; \$1-print 1 \;;
 #X connect 0 0 26 2;
