@@ -114,7 +114,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             break;
         case 3:
             self.color = [UIColor colorWithRed:10 / 255.0 green:50 / 255.0 blue:70 / 255.0 alpha:0.525];
-//            self.color = [UIColor colorWithRed:219.0 / 255.0 green:77.0 / 255.0 blue:77.0 / 255.0 alpha:0.4];
             break;
         case 4:
             self.color = [UIColor colorWithRed:78.0 / 255.0 green:118.0 / 255.0 blue:134.0 / 255.0 alpha:1.0];
@@ -164,13 +163,21 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         
         [self reposition:[self convertPoint:newLocation toView:instrumentVC.view]];
     } else {
-        float diff = ((originalTouchLocation.y - newLocation.y) / 127.0) * 0.333;
-        if (diff > 1.0){
-            diff = 1.0;
-        } else if (diff < -1.0){
-            diff = -1.0;
+        float ydiff = ((originalTouchLocation.y - newLocation.y) / 127.0) * 0.333;
+        if (ydiff > 1.0){
+            ydiff = 1.0;
+        } else if (ydiff < -1.0){
+            ydiff = -1.0;
         }
-        [self bendPitch:diff];
+        
+        float xdiff = (newLocation.x - originalTouchLocation.x) * 0.01 + 0.5;
+        if (xdiff > 1.0){
+            xdiff = 1.0;
+        } else if (xdiff < 0.0){
+            xdiff = 0.0;
+        }
+        
+        [self bendWithYdiff:ydiff XDiff:xdiff];
     }
 }
 
@@ -227,15 +234,23 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 }
 
 
-- (void)bendPitch:(float)diff
+- (void)bendWithYdiff:(float)ydiff
+                XDiff:(float)xdiff
 {
-    float bendNum = [self scaleBend:diff];
+    float bendNum = [self scalePitchBend:ydiff];
     
-    NSLog(@"%f", bendNum);
+    // Trigger pitch bend for vertical vibrato
     NSArray *data = [NSArray arrayWithObjects:@"pitchbend", [NSNumber numberWithFloat:bendNum], nil];
     NSString *receiver = [NSString stringWithFormat:@"channel%d", self.channelId];
 
     [PdBase sendList:data toReceiver:receiver];
+    
+    // Trigger volume swell for horizontal vibrato
+    data = @[@"volume_bend", [NSNumber numberWithFloat:xdiff]];
+    receiver = [NSString stringWithFormat:@"channel%d", self.channelId];
+    
+    [PdBase sendList:data toReceiver:receiver];
+    
 }
 
 - (void)stop
@@ -275,7 +290,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }];
 }
 
-- (float)scaleBend:(float)value
+- (float)scalePitchBend:(float)value
 {
     return 64 * pow(value, 3.0) + 64;
 }

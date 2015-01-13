@@ -21,7 +21,9 @@
 - (void)play;
 - (void)stop;
 - (void)select;
-- (void)bendPitch:(float)bendNum;
+- (float)scalePitchBend:(float)bendNum;
+- (void)bendWithYdiff:(float)ydiff
+                XDiff:(float)xdiff;
 
 @property (nonatomic, strong) UIColor *color;
 @property int midiNum;

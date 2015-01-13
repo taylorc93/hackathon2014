@@ -85,7 +85,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 //        
         
         for (int j = 0; j < 7; j++){
-            DDLogVerbose(@"Midinum: %@", midiNums[j]);
             float x = coords[0][j];
             float y = coords[1][j];
             
