@@ -8,6 +8,19 @@
 #N canvas 305 296 443 300 \$0-shell 0;
 #X obj 0 200 outlet~ L;
 #X obj 100 200 outlet~ R;
+#N canvas 481 202 450 300 ch1 1;
+#X obj 0 0 r channel1;
+#X obj 0 25 list trim;
+#X obj 0 80 Note;
+#X obj 0 125 outlet~ L;
+#X obj 100 125 outlet~ R;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X restore 0 100 pd ch1;
+#X connect 2 0 0 0;
+#X connect 2 1 1 0;
 #X restore 5 5 pd \$0-shell;
 #X connect 2 0 0 0;
 #X connect 2 1 1 0;
@@ -42,7 +55,7 @@
 #X obj 77 4 inlet;
 #X obj 5 3 r \$0-count;
 #X obj 5 28 + 1;
-#X floatatom 5 89 5 0 0 0 - - -, f 5;
+#X floatatom 5 89 5 0 0 0 - - -;
 #X obj 39 375 s pd-\$0-shell;
 #X obj 77 32 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
