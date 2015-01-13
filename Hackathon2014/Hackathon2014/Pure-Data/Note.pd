@@ -88,7 +88,7 @@
 #X obj -427 -3 inlet;
 #X msg -401 89 60 5;
 #X msg -388 108 60 0;
-#N canvas 106 143 1376 432 routers 0;
+#N canvas 106 143 1376 432 routers 1;
 #X obj -305 85 s \$0-note;
 #X obj -241 84 s \$0-wave;
 #X obj -173 85 s \$0-attack;
