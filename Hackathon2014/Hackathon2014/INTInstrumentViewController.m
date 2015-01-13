@@ -197,6 +197,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         for (int j = 0; j < numRects; j++){
             if (CGRectIntersectsRect(noteRect, touchRects[j]) || CGRectIntersectsRect(noteRect, touchRect)){
                 shouldAdd = NO;
+            } else if (note.isActive){
+                shouldAdd = NO;
             }
         }
         
@@ -276,7 +278,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
     if (!self.editFlag){
         for (INTInstrumentNote *note in self.notes){
-            if (!note.hold){
+            if (note.hold || note.isActive){
+                // Do nothing
+            } else {
                 [self killNote:note];
             }
             note.touched = NO;

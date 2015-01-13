@@ -30,6 +30,7 @@
 @property int octave;
 @property (nonatomic, weak) UIViewController *parentVC;
 
+@property BOOL isActive;
 @property BOOL playing;
 @property BOOL selected;
 @property BOOL hold;

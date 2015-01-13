@@ -34,6 +34,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         self.playing = NO;
         self.selected = NO;
         self.hold = NO;
+        self.isActive = NO;
         self.touched = NO;
         self.channelId = channelId;
         
@@ -140,6 +141,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     UITouch *originalTouch = (UITouch *)[touches anyObject];
     originalTouchLocation = [originalTouch locationInView:self];
     
+    self.isActive = YES;
     if (instrumentVC.editFlag){
         [instrumentVC selectNote:self];
     } else {
@@ -170,9 +172,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             ydiff = -1.0;
         }
         
-        float xdiff = (newLocation.x - originalTouchLocation.x) * 0.01 + 0.5;
-        if (xdiff > 1.0){
-            xdiff = 1.0;
+        float xdiff = (newLocation.x - originalTouchLocation.x) * 0.01 + 2.5;
+        if (xdiff > 5.0){
+            xdiff = 5.0;
         } else if (xdiff < 0.0){
             xdiff = 0.0;
         }
@@ -195,6 +197,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             self.playing = YES;
         }
     }
+    self.isActive = NO;
 }
 
 -(void)toggle
