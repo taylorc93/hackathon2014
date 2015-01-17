@@ -1,29 +1,25 @@
 Pure Data Interface
 
 Master List of Receivers
-Last Updated 11/8/14
+Last Updated 1/17/15
 
 Main Patch: Master.pd
 
 Interface is divided into two distinct sections: Master patch & 
-		Dynamic subpatches (Notes).
+		Dynamic subpatches (channels).
 
 MASTER:
 
-From PD:
-	[config-ready] bang
-	[num_channels] float
+FROM Main Patch: (add a receiver to listen to the values)
+	NOTE_COUNT: the current count of notes that have been created by PD
 
 TO Main Patch:
 
-	[reset]    bang
-	[add_note] bang
-	[change_active_control] float (Change Channel that the "control" 
-									receiver sends to)
-	[control] message/list (Message to send to Note instance)
-	[get_num_channels] bang (Sends # of channels in PD to [num_channels])
+	[reset]    bang   # Reset Everything
+	[add_note] bang   # Add a note
+	[all] 	   message   	# Message to send to all notes at once
 
-	Master Effects:
+	Master Audio Effects: 		# These will be applied to everything
 
 	[pregain_on]     1 / 0
 	[pregain_amount] float 
@@ -52,14 +48,19 @@ TO Main Patch:
 	[panner_on] 	 1 / 0
 	[panner_rate] 	 float 
 	[panner_depth] 	 float (0-1)
-	[volume] 		 float (1-0)
-	[pan] 			 float (0-100)
+
+	[volume] 		 float (1-0)		# Master Volume Control
+	[pan] 			 float (0-100) 		# Master Pan Control
 
 To Individual Note (Dynamically Created):
 
-	All messages to notes are of the format:
+	Send messages (or lists) to the receiver:
 
-		method message
+		channel#
+
+	where the # is the note number to send the messages to.
+
+	Sending "note 60 60" to "channel1" triggers the note on channel1 to play the MIDI note 60.
 
 	Effects methods are always prepended with "fx".
 
@@ -128,6 +129,9 @@ To Individual Note (Dynamically Created):
 		flush
 		pitchbend
 		pitchbend_range
+		volume_bend
+		volume_bend_default
+		print 					# Prints ADSR output to console
 		fx pregain_on
 		fx pregain_amount
 		fx ringmod_on
