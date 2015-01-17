@@ -120,18 +120,19 @@ To Individual Note (Dynamically Created):
 
 	All Note Methods:
 
-		note
-		wave
-		attack
-		decay
-		sustain
-		release
-		flush
-		pitchbend
-		pitchbend_range
-		volume_bend
-		volume_bend_default
-		print 					# Prints ADSR output to console
+		note <note#> <velocity>		# velocity of 0 == Note Off
+		wave <wave#>				# Goes from 1 - 16
+		attack  <time_in_ms> 
+		decay   <time_in_ms>
+		sustain <volume_0-1>
+		release <time_in_ms>
+		flush <bang>
+		pitchbend <pitchbend_value> 	# Goes from 0 - 127
+		pitchbend_range <range_in_semitones>
+		volume_bend <volume_bend_amount>    # < 1 == quieter, >1 == louder
+		volume_bend_default <default_value>
+		print <bang> 					# Toggles ADSR output printing to console
+		
 		fx pregain_on
 		fx pregain_amount
 		fx ringmod_on
