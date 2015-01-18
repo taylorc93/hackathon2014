@@ -273,14 +273,30 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         [self.layer removeAllAnimations];
         self.selected = NO;
     } else {
-        CABasicAnimation *animation;
-        animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        animation.duration=0.3;
-        animation.repeatCount=HUGE_VALF;
-        animation.autoreverses=NO;
-        animation.fromValue=[NSNumber numberWithFloat:1.0];
-        animation.toValue=[NSNumber numberWithFloat:0.3];
-        [self.layer addAnimation:animation forKey:@"animatePlaying"];
+        CABasicAnimation *color = [CABasicAnimation animationWithKeyPath:@"borderColor"];
+        color.fromValue = (id)[UIColor blackColor].CGColor;
+        color.toValue   = (id)[UIColor redColor].CGColor;
+
+        CABasicAnimation *width = [CABasicAnimation animationWithKeyPath:@"borderWidth"];
+        width.fromValue = @2;
+        width.toValue   = @6;
+        
+        CAAnimationGroup *both = [CAAnimationGroup animation];
+        both.duration   = 0.25;
+        both.autoreverses=YES;
+        both.repeatCount=HUGE_VALF;
+        both.animations = @[color, width];
+        
+        [self.layer addAnimation:both forKey:@"color and width"];
+//
+//        CABasicAnimation *animation;
+//        animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+//        animation.duration=0.3;
+//        animation.repeatCount=HUGE_VALF;
+//        animation.autoreverses=NO;
+//        animation.fromValue=[NSNumber numberWithFloat:1.0];
+//        animation.toValue=[NSNumber numberWithFloat:0.3];
+//        [self.layer addAnimation:animation forKey:@"animatePlaying"];
         
         self.selected = YES;
     }

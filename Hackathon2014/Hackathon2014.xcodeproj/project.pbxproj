@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE7D30861A6B0AC300D03092 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7D30851A6B0AC300D03092 /* Constants.swift */; };
+		BE7D308B1A6B2BF700D03092 /* EffectSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7D308A1A6B2BF700D03092 /* EffectSlider.swift */; };
+		BE7D308D1A6B2BFF00D03092 /* EffectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7D308C1A6B2BFF00D03092 /* EffectButton.swift */; };
+		BE7D30931A6B2C3800D03092 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7D30921A6B2C3800D03092 /* Composition.swift */; };
+		BE7D30951A6B2C3D00D03092 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7D30941A6B2C3D00D03092 /* Note.swift */; };
+		BE7D30971A6B2C4400D03092 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7D30961A6B2C4400D03092 /* Effect.swift */; };
 		BEBACA7D1A0D7ECF00F612EB /* INTSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBACA7C1A0D7ECF00F612EB /* INTSlider.m */; };
-		BEBACA801A0DA66100F612EB /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBACA7F1A0DA66100F612EB /* NoteManager.swift */; };
 		BED473A119FAF4F0006DD472 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473A019FAF4F0006DD472 /* main.m */; };
 		BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BED473A319FAF4F0006DD472 /* AppDelegate.m */; };
 		BED473AA19FAF4F0006DD472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED473A819FAF4F0006DD472 /* Main.storyboard */; };
@@ -151,10 +156,15 @@
 /* Begin PBXFileReference section */
 		6D27106291E14436A730D648 /* Pods-Hackathon2014.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackathon2014.xcconfig"; path = "Pods/Pods-Hackathon2014.xcconfig"; sourceTree = "<group>"; };
 		BD0C5724B16348D3987FB49D /* libPods-Hackathon2014.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hackathon2014.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE7D30851A6B0AC300D03092 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BE7D308A1A6B2BF700D03092 /* EffectSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectSlider.swift; sourceTree = "<group>"; };
+		BE7D308C1A6B2BFF00D03092 /* EffectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectButton.swift; sourceTree = "<group>"; };
+		BE7D30921A6B2C3800D03092 /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
+		BE7D30941A6B2C3D00D03092 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		BE7D30961A6B2C4400D03092 /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		BEBACA7B1A0D7ECF00F612EB /* INTSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTSlider.h; sourceTree = "<group>"; };
 		BEBACA7C1A0D7ECF00F612EB /* INTSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTSlider.m; sourceTree = "<group>"; };
 		BEBACA7E1A0DA66000F612EB /* Hackathon2014-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hackathon2014-Bridging-Header.h"; sourceTree = "<group>"; };
-		BEBACA7F1A0DA66100F612EB /* NoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteManager.swift; sourceTree = "<group>"; };
 		BED4739B19FAF4F0006DD472 /* Hackathon2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackathon2014.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED4739F19FAF4F0006DD472 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BED473A019FAF4F0006DD472 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -322,6 +332,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BE7D30871A6B18DF00D03092 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BE7D308A1A6B2BF700D03092 /* EffectSlider.swift */,
+				BE7D308C1A6B2BFF00D03092 /* EffectButton.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		BE7D30881A6B2BA400D03092 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE7D30921A6B2C3800D03092 /* Composition.swift */,
+				BE7D30941A6B2C3D00D03092 /* Note.swift */,
+				BE7D30961A6B2C4400D03092 /* Effect.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		BED4739219FAF4F0006DD472 = {
 			isa = PBXGroup;
 			children = (
@@ -346,11 +375,11 @@
 		BED4739D19FAF4F0006DD472 /* Hackathon2014 */ = {
 			isa = PBXGroup;
 			children = (
+				BE7D30871A6B18DF00D03092 /* Components */,
 				BED473C419FAFBBA006DD472 /* Controllers */,
 				BED473C619FAFBCD006DD472 /* Views */,
 				BED473A219FAF4F0006DD472 /* AppDelegate.h */,
 				BED473A319FAF4F0006DD472 /* AppDelegate.m */,
-				BEBACA7F1A0DA66100F612EB /* NoteManager.swift */,
 				BED473A819FAF4F0006DD472 /* Main.storyboard */,
 				BED473AB19FAF4F0006DD472 /* Images.xcassets */,
 				BED473AD19FAF4F0006DD472 /* LaunchScreen.xib */,
@@ -360,6 +389,8 @@
 				FA9F2B971A627D9400B2ACD6 /* penis_coordinates.c */,
 				FA9F2B981A627D9400B2ACD6 /* penis_coordinates.h */,
 				BEBACA7E1A0DA66000F612EB /* Hackathon2014-Bridging-Header.h */,
+				BE7D30851A6B0AC300D03092 /* Constants.swift */,
+				BE7D30881A6B2BA400D03092 /* Models */,
 			);
 			path = Hackathon2014;
 			sourceTree = "<group>";
@@ -788,11 +819,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BED4740E19FB704F006DD472 /* INTRootViewController.m in Sources */,
+				BE7D30861A6B0AC300D03092 /* Constants.swift in Sources */,
+				BE7D308D1A6B2BFF00D03092 /* EffectButton.swift in Sources */,
 				BEBACA7D1A0D7ECF00F612EB /* INTSlider.m in Sources */,
+				BE7D30971A6B2C4400D03092 /* Effect.swift in Sources */,
 				BED4741A19FD6A5D006DD472 /* INTSettingsViewController.m in Sources */,
+				BE7D30951A6B2C3D00D03092 /* Note.swift in Sources */,
 				BED473C919FAFBE8006DD472 /* INTInstrumentNote.m in Sources */,
+				BE7D308B1A6B2BF700D03092 /* EffectSlider.swift in Sources */,
 				BED473A419FAF4F0006DD472 /* AppDelegate.m in Sources */,
-				BEBACA801A0DA66100F612EB /* NoteManager.swift in Sources */,
+				BE7D30931A6B2C3800D03092 /* Composition.swift in Sources */,
 				FAC3908119FB28AA00B589C4 /* septagon_coordinates.c in Sources */,
 				FA9F2B991A627D9400B2ACD6 /* penis_coordinates.c in Sources */,
 				BED473A119FAF4F0006DD472 /* main.m in Sources */,
