@@ -37,13 +37,9 @@
 #X obj 129 27 inlet NOTE_VELOCITY;
 #X obj 129 152 t f b;
 #X obj 186 217 adsr~ ----------;
-#X floatatom 265 252 5 0 0 0 - - -;
-#X obj 75 261 view~;
-#X floatatom 76 296 5 0 0 0 - - -;
 #X obj 268 52 list prepend set;
 #X obj 268 74 list trim;
 #X connect 1 0 0 0;
-#X connect 1 0 38 0;
 #X connect 2 0 35 0;
 #X connect 3 0 12 0;
 #X connect 3 1 36 0;
@@ -63,7 +59,7 @@
 #X connect 20 1 12 1;
 #X connect 24 0 3 0;
 #X connect 25 0 3 0;
-#X connect 27 0 40 0;
+#X connect 27 0 37 0;
 #X connect 28 0 7 0;
 #X connect 29 0 9 0;
 #X connect 30 0 15 0;
@@ -73,6 +69,5 @@
 #X connect 35 0 11 0;
 #X connect 36 0 1 1;
 #X connect 36 1 21 0;
-#X connect 38 0 39 0;
-#X connect 40 0 41 0;
-#X connect 41 0 11 0;
+#X connect 37 0 38 0;
+#X connect 38 0 11 0;

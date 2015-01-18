@@ -1,4 +1,4 @@
-#N canvas 628 181 303 349 10;
+#N canvas 165 66 303 349 10;
 #X obj 4 220 panner~;
 #X obj 4 108 remove_dc_offset~;
 #N canvas 272 23 763 818 audio_effects~ 0;
