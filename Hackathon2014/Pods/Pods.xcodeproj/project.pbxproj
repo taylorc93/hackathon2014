@@ -142,6 +142,13 @@
 		EA4CB976AA034001AFEE8499 /* s_path.c in Sources */ = {isa = PBXBuildFile; fileRef = BCD28E3E089B4ECABA0B9D2F /* s_path.c */; settings = {COMPILER_FLAGS = "-w -DPD -DUSEAPI_DUMMY -DHAVE_LIBDL -DHAVE_UNISTD_H"; }; };
 		F0D88F6C26394364A4582855 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1B2243EE26B4730B47DCA87 /* Foundation.framework */; };
 		F2011122952D4552A80D2010 /* PdReceiver.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BC40EAF52B26402EA2F952A6 /* PdReceiver.hpp */; };
+		FAEC10891A6F84D9004AAA82 /* dollarg.c in Sources */ = {isa = PBXBuildFile; fileRef = FAEC10871A6F84D9004AAA82 /* dollarg.c */; };
+		FAEC108A1A6F84D9004AAA82 /* iemlib.h in Headers */ = {isa = PBXBuildFile; fileRef = FAEC10881A6F84D9004AAA82 /* iemlib.h */; };
+		FAEC10B31A6F9E0B004AAA82 /* counter.c in Sources */ = {isa = PBXBuildFile; fileRef = FAEC10B01A6F9E0B004AAA82 /* counter.c */; };
+		FAEC10B41A6F9E0B004AAA82 /* fitter.h in Headers */ = {isa = PBXBuildFile; fileRef = FAEC10B11A6F9E0B004AAA82 /* fitter.h */; };
+		FAEC10B51A6F9E0B004AAA82 /* loud.h in Headers */ = {isa = PBXBuildFile; fileRef = FAEC10B21A6F9E0B004AAA82 /* loud.h */; };
+		FAEC10D31A6FA451004AAA82 /* fitter.c in Sources */ = {isa = PBXBuildFile; fileRef = FAEC10D11A6FA451004AAA82 /* fitter.c */; };
+		FAEC10D41A6FA451004AAA82 /* loud.c in Sources */ = {isa = PBXBuildFile; fileRef = FAEC10D21A6FA451004AAA82 /* loud.c */; };
 		FBC824FAEBD042AFBF531D88 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 48926B6F816C4151AE8F120B /* DDASLLogger.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
 		FD48A895F61745CCAC76164D /* PdTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEC4880279B34DA7A9CD3AB6 /* PdTypes.cpp */; settings = {COMPILER_FLAGS = "-w -DPD -DUSEAPI_DUMMY -DHAVE_LIBDL -DHAVE_UNISTD_H"; }; };
 		FE68C1CE033E4D2197E2053A /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BB8637E8DDA4C3EB9DB4D11 /* CocoaLumberjack.h */; };
@@ -313,6 +320,13 @@
 		F358C3E57AFF4A78BC8F20BC /* PdMidiReceiver.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = PdMidiReceiver.hpp; path = cpp/PdMidiReceiver.hpp; sourceTree = "<group>"; };
 		F6A220DFFDE4455C84E10386 /* g_scalar.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = g_scalar.c; path = "pure-data/src/g_scalar.c"; sourceTree = "<group>"; };
 		FA228B0D633A428F929FD401 /* s_audio.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = s_audio.c; path = "pure-data/src/s_audio.c"; sourceTree = "<group>"; };
+		FAEC10871A6F84D9004AAA82 /* dollarg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dollarg.c; sourceTree = "<group>"; };
+		FAEC10881A6F84D9004AAA82 /* iemlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iemlib.h; sourceTree = "<group>"; };
+		FAEC10B01A6F9E0B004AAA82 /* counter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = counter.c; sourceTree = "<group>"; };
+		FAEC10B11A6F9E0B004AAA82 /* fitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fitter.h; sourceTree = "<group>"; };
+		FAEC10B21A6F9E0B004AAA82 /* loud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loud.h; sourceTree = "<group>"; };
+		FAEC10D11A6FA451004AAA82 /* fitter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fitter.c; sourceTree = "<group>"; };
+		FAEC10D21A6FA451004AAA82 /* loud.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = loud.c; sourceTree = "<group>"; };
 		FB0945AB68284674A07579D8 /* PdBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PdBase.m; path = objc/PdBase.m; sourceTree = "<group>"; };
 		FB36C8BF1A50490D9EAB9200 /* m_class.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = m_class.c; path = "pure-data/src/m_class.c"; sourceTree = "<group>"; };
 		FE71088B121745CC99B94CC5 /* d_fft_mayer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = d_fft_mayer.c; path = "pure-data/src/d_fft_mayer.c"; sourceTree = "<group>"; };
@@ -438,6 +452,7 @@
 		79641569054848A8B39D14BF /* libpd */ = {
 			isa = PBXGroup;
 			children = (
+				FAEC10861A6F84A3004AAA82 /* externals */,
 				9392EFCAE9C34EDFBB387FE2 /* AudioHelpers.h */,
 				543EAF290FF24D7BBA105192 /* AudioHelpers.m */,
 				D4E85968299C4AA3A0F1D86C /* PdAudioController.h */,
@@ -608,6 +623,20 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		FAEC10861A6F84A3004AAA82 /* externals */ = {
+			isa = PBXGroup;
+			children = (
+				FAEC10871A6F84D9004AAA82 /* dollarg.c */,
+				FAEC10881A6F84D9004AAA82 /* iemlib.h */,
+				FAEC10B01A6F9E0B004AAA82 /* counter.c */,
+				FAEC10D11A6FA451004AAA82 /* fitter.c */,
+				FAEC10B11A6F9E0B004AAA82 /* fitter.h */,
+				FAEC10D21A6FA451004AAA82 /* loud.c */,
+				FAEC10B21A6F9E0B004AAA82 /* loud.h */,
+			);
+			path = externals;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -645,13 +674,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAEC10B51A6F9E0B004AAA82 /* loud.h in Headers */,
 				FE68C1CE033E4D2197E2053A /* CocoaLumberjack.h in Headers */,
 				289F4F4232D94E1E93AB58C8 /* DDASLLogCapture.h in Headers */,
 				544D8A0558F7435697545401 /* DDASLLogger.h in Headers */,
 				39CFF6746F784702B5301628 /* DDAbstractDatabaseLogger.h in Headers */,
 				5B63AB9521BF49528050A04A /* DDAssertMacros.h in Headers */,
 				7C8499E9DF73452296E563B1 /* DDContextFilterLogFormatter.h in Headers */,
+				FAEC108A1A6F84D9004AAA82 /* iemlib.h in Headers */,
 				9A3DF1185AEA4B8A85DBA272 /* DDDispatchQueueLogFormatter.h in Headers */,
+				FAEC10B41A6F9E0B004AAA82 /* fitter.h in Headers */,
 				803C620B92874EF5853432D0 /* DDFileLogger.h in Headers */,
 				3B7BE53BAF3D42E58E91B570 /* DDLog+LOGV.h in Headers */,
 				8A7342D5F016448D9B5C04FB /* DDLog.h in Headers */,
@@ -749,14 +781,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BFDC3B527C44E5AB28018B1 /* DDASLLogCapture.m in Sources */,
+				FAEC10D41A6FA451004AAA82 /* loud.c in Sources */,
 				FBC824FAEBD042AFBF531D88 /* DDASLLogger.m in Sources */,
 				87010FF5932846DDAD85B941 /* DDAbstractDatabaseLogger.m in Sources */,
 				8F91D1C5C7BA4391B09F0FDA /* DDContextFilterLogFormatter.m in Sources */,
 				8B8321300B05460F8D2FC0C4 /* DDDispatchQueueLogFormatter.m in Sources */,
 				A708ACD0DF1944DF957273D1 /* DDFileLogger.m in Sources */,
+				FAEC10B31A6F9E0B004AAA82 /* counter.c in Sources */,
 				DCC2181ADCD04886BDC2E62D /* DDLog.m in Sources */,
+				FAEC10D31A6FA451004AAA82 /* fitter.c in Sources */,
 				05DDA874D3794F059C2E6D86 /* DDMultiFormatter.m in Sources */,
 				B19071A592024FF1A3F16E57 /* DDTTYLogger.m in Sources */,
+				FAEC10891A6F84D9004AAA82 /* dollarg.c in Sources */,
 				89BEA3AD5812443F9E34A8DB /* Pods-Hackathon2014-CocoaLumberjack-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

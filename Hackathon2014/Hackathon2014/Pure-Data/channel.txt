@@ -1,6 +1,0 @@
-1 clear
-1 obj 0 0 inlet
-1 obj 0 50 phasor~ 250
-1 obj 0 100 outlet~
-1 connect 0 0 1 0
-1 connect 1 0 2 0

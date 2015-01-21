@@ -213,6 +213,7 @@ static NSTimer *midiPollTimer;
   libpd_set_queued_midibytehook(midiByteHook);
 
   libpd_queued_init();
+    
 }
 
 // Only to be called from main thread.

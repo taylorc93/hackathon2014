@@ -14,8 +14,15 @@
 
 @end
 
+extern void dollarg_setup(void);
+extern void counter_setup(void);
+
 @implementation AppDelegate
 
++ (void)setup {
+    dollarg_setup();
+    counter_setup();
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     _audioController = [[PdAudioController alloc] init];
@@ -27,6 +34,9 @@
     
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    [PdBase addToSearchPath:@"/Users/ChrisPenny/Desktop/Comp150/PD-for-LIBPD/source"];
+    [[self class] setup];
     
     return YES;
 }

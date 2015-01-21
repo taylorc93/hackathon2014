@@ -1,0 +1,6 @@
+#N canvas 0 22 450 300 10;
+#X obj 107 51 dollarg;
+#X obj 108 24 loadbang;
+#X obj 111 89 print DOLLARGWORKS;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
